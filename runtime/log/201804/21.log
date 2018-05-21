@@ -1,0 +1,857 @@
+[ 2018-04-21T01:23:56+08:00 ] 172.16.252.49 60.191.52.254 HEAD http://wap.ip138.com/
+[ log ] wap.ip138.comhttp://wap.ip138.com/ [运行时间：0.010714s][吞吐率：93.34req/s] [内存消耗：477.26kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Java/1.8.0_77',
+  'host' => 'wap.ip138.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'proxy-connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003856s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_o60v0l094ulmdme5hbg381cri7' AND session_expire > '1524245036' [ RunTime:0.002696s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T01:23:56+08:00 ] 172.16.252.49 60.191.52.254 HEAD http://wap.ip138.com/login.html
+[ log ] wap.ip138.comhttp://wap.ip138.com/login.html [运行时间：0.004163s][吞吐率：240.21req/s] [内存消耗：477.48kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Java/1.8.0_77',
+  'host' => 'wap.ip138.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'proxy-connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T02:19:09+08:00 ] 172.16.252.49 80.82.70.187 GET http://www.baidu.com/cache/global/img/gs.gif
+[ log ] www.baidu.comhttp://www.baidu.com/cache/global/img/gs.gif [运行时间：0.003652s][吞吐率：273.82req/s] [内存消耗：313.31kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cache',
+    1 => 'global',
+    2 => 'img',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.baidu.com',
+  'user-agent' => 'Mozilla',
+  'if-modified-since' => 'Thu, 19 Apr 2012 09:51:20 GMT',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T02:23:04+08:00 ] 172.16.252.49 101.201.124.10 GET /
+[ log ] 114.55.93.13:2049/ [运行时间：0.010933s][吞吐率：91.46req/s] [内存消耗：476.97kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '114.55.93.13:2049',
+  'connection' => 'Close',
+  'accept-encoding' => 'identity',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003998s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_q48617ivh2v868j1uurkem9ke5' AND session_expire > '1524248584' [ RunTime:0.002793s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T08:38:22+08:00 ] 172.16.252.49 120.77.57.35 GET /
+[ log ] 47.98.246.22:2049/ [运行时间：0.011357s][吞吐率：88.05req/s] [内存消耗：477.98kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.98.246.22:2049',
+  'connection' => 'Close',
+  'accept-encoding' => 'identity',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003440s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_jb65ki6qbbeior8sp29qjfm207' AND session_expire > '1524271102' [ RunTime:0.002284s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T10:27:00+08:00 ] 172.16.252.49 106.11.242.100 GET /
+[ log ] sea.yuhal.com/ [运行时间：0.010006s][吞吐率：99.94req/s] [内存消耗：478.05kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'host' => 'sea.yuhal.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003300s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_j8j3ktdqjra7j0g6hrs5gg1dg1' AND session_expire > '1524277620' [ RunTime:0.002308s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T10:27:00+08:00 ] 172.16.252.49 106.11.242.100 GET /login.html
+[ log ] sea.yuhal.com/login.html [运行时间：0.005136s][吞吐率：194.70req/s] [内存消耗：479.09kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=j8j3ktdqjra7j0g6hrs5gg1dg1',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'host' => 'sea.yuhal.com',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T11:21:44+08:00 ] 172.16.252.49 80.82.70.187 GET http://www.baidu.com/cache/global/img/gs.gif
+[ log ] www.baidu.comhttp://www.baidu.com/cache/global/img/gs.gif [运行时间：0.004035s][吞吐率：247.83req/s] [内存消耗：313.31kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cache',
+    1 => 'global',
+    2 => 'img',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.baidu.com',
+  'user-agent' => 'Mozilla',
+  'if-modified-since' => 'Thu, 19 Apr 2012 09:51:20 GMT',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T13:03:19+08:00 ] 172.16.252.49 80.82.78.50 GET http://www.baidu.com/cache/global/img/gs.gif
+[ log ] www.baidu.comhttp://www.baidu.com/cache/global/img/gs.gif [运行时间：0.003759s][吞吐率：266.03req/s] [内存消耗：313.31kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cache',
+    1 => 'global',
+    2 => 'img',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.baidu.com',
+  'user-agent' => 'Mozilla',
+  'if-modified-since' => 'Thu, 19 Apr 2012 09:51:20 GMT',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T13:31:27+08:00 ] 172.16.252.49 211.151.3.208 GET HTTP://58dun.58.com/monum.html
+[ log ] 58dun.58.comHTTP://58dun.58.com/monum.html [运行时间：0.004064s][吞吐率：246.07req/s] [内存消耗：313.63kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'monum',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16',
+  'host' => '58dun.58.com',
+  'accept' => '*/*',
+  'proxy-connection' => 'Keep-Alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T13:32:00+08:00 ] 172.16.252.49 109.8.246.221 GET /core/modules/language/language.info.yml
+[ log ] 118.31.23.98:80/core/modules/language/language.info.yml [运行时间：0.003721s][吞吐率：268.75req/s] [内存消耗：313.29kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'core',
+    1 => 'modules',
+    2 => 'language',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'curl/7.40.0',
+  'host' => '118.31.23.98:80',
+  'connection' => 'Close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:31+08:00 ] 172.16.252.49 101.90.124.148 GET /
+[ log ] sea.yuhal.com/ [运行时间：0.010207s][吞吐率：97.97req/s] [内存消耗：478.13kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003264s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_gt1l0fhp9plotm4erej5ikfh65' AND session_expire > '1524293791' [ RunTime:0.002336s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:31+08:00 ] 172.16.252.49 101.90.124.148 GET /login.html
+[ log ] sea.yuhal.com/login.html [运行时间：0.005418s][吞吐率：184.57req/s] [内存消耗：479.22kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:31+08:00 ] 172.16.252.49 101.90.124.148 GET /static/font/roboto/Roboto-Regular.woff
+[ log ] sea.yuhal.com/static/font/roboto/Roboto-Regular.woff [运行时间：0.003825s][吞吐率：261.44req/s] [内存消耗：315.70kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'font',
+    2 => 'roboto',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'origin' => 'http://sea.yuhal.com',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://sea.yuhal.com/static/css/materialize.css',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:45+08:00 ] 172.16.252.49 101.90.124.148 GET /oauthlogin
+[ log ] sea.yuhal.com/oauthlogin [运行时间：0.005804s][吞吐率：172.29req/s] [内存消耗：471.72kb] [文件加载：40]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'oauthlogin',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://sea.yuhal.com/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->oauthlogin[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/oauthlogin.html [ array (
+  0 => 'redirect_url',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:45+08:00 ] 172.16.252.49 101.90.124.148 GET /static/font/roboto/Roboto-Regular.woff
+[ log ] sea.yuhal.com/static/font/roboto/Roboto-Regular.woff [运行时间：0.004301s][吞吐率：232.51req/s] [内存消耗：315.70kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'font',
+    2 => 'roboto',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'origin' => 'http://sea.yuhal.com',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://sea.yuhal.com/static/css/materialize.css',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:53+08:00 ] 172.16.252.49 101.90.124.148 GET /login
+[ log ] sea.yuhal.com/login [运行时间：0.004868s][吞吐率：205.42req/s] [内存消耗：479.61kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://sea.yuhal.com/oauthlogin',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:53+08:00 ] 172.16.252.49 101.90.124.148 GET /static/font/roboto/Roboto-Regular.woff
+[ log ] sea.yuhal.com/static/font/roboto/Roboto-Regular.woff [运行时间：0.003977s][吞吐率：251.44req/s] [内存消耗：315.70kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'font',
+    2 => 'roboto',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'origin' => 'http://sea.yuhal.com',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://sea.yuhal.com/static/css/materialize.css',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:56+08:00 ] 172.16.252.49 101.90.124.148 GET /phonevcode
+[ log ] sea.yuhal.com/phonevcode [运行时间：0.004582s][吞吐率：218.24req/s] [内存消耗：479.63kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'phonevcode',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://sea.yuhal.com/login',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->phonevcode[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/phonevcode.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:56+08:00 ] 172.16.252.49 101.90.124.148 GET /static/font/roboto/Roboto-Regular.woff
+[ log ] sea.yuhal.com/static/font/roboto/Roboto-Regular.woff [运行时间：0.004081s][吞吐率：245.04req/s] [内存消耗：315.70kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'font',
+    2 => 'roboto',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'origin' => 'http://sea.yuhal.com',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://sea.yuhal.com/static/css/materialize.css',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T14:56:58+08:00 ] 172.16.252.49 101.90.124.148 GET /static/font/roboto/Roboto-Regular.woff
+[ log ] sea.yuhal.com/static/font/roboto/Roboto-Regular.woff [运行时间：0.003558s][吞吐率：281.04req/s] [内存消耗：315.70kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'font',
+    2 => 'roboto',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sea.yuhal.com',
+  'connection' => 'keep-alive',
+  'origin' => 'http://sea.yuhal.com',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://sea.yuhal.com/static/css/materialize.css',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=gt1l0fhp9plotm4erej5ikfh65',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T18:49:55+08:00 ] 172.16.252.49 107.170.193.95 GET /
+[ log ] 118.31.23.98/ [运行时间：0.010192s][吞吐率：98.12req/s] [内存消耗：477.18kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003401s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_cr1pk99td0fl8f2jljtjj85j35' AND session_expire > '1524307795' [ RunTime:0.002407s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T19:53:14+08:00 ] 172.16.252.49 140.143.241.113 GET /w00tw00t.at.blackhats.romanian.anti-sec:)
+[ log ] 118.31.23.98/w00tw00t.at.blackhats.romanian.anti-sec:) [运行时间：0.003600s][吞吐率：277.77req/s] [内存消耗：314.30kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'w00tw00t.at.blackhats.romanian.anti-sec:)',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-language' => 'en-us',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'ZmEu',
+  'host' => '118.31.23.98',
+  'connection' => 'Close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T20:18:44+08:00 ] 172.16.252.49 80.82.70.187 GET http://www.baidu.com/cache/global/img/gs.gif
+[ log ] www.baidu.comhttp://www.baidu.com/cache/global/img/gs.gif [运行时间：0.003628s][吞吐率：275.63req/s] [内存消耗：313.31kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'cache',
+    1 => 'global',
+    2 => 'img',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.baidu.com',
+  'user-agent' => 'Mozilla',
+  'if-modified-since' => 'Thu, 19 Apr 2012 09:51:20 GMT',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T21:07:16+08:00 ] 172.16.252.49 47.91.151.200 GET /
+[ log ] 106.14.34.210:2049/ [运行时间：0.011031s][吞吐率：90.65req/s] [内存消耗：476.97kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '106.14.34.210:2049',
+  'connection' => 'Close',
+  'accept-encoding' => 'identity',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003905s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_o0g6on8mn8al3bha339s2cko22' AND session_expire > '1524316036' [ RunTime:0.002748s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T21:59:41+08:00 ] 172.16.252.49 181.161.221.201 GET /
+[ log ] 118.31.23.98:80/ [运行时间：0.009129s][吞吐率：109.54req/s] [内存消耗：476.95kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'curl/7.40.0',
+  'host' => '118.31.23.98:80',
+  'connection' => 'Close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002815s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_40d3a4mm13qfjs0vjurbct7ki2' AND session_expire > '1524319181' [ RunTime:0.002056s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T23:14:07+08:00 ] 172.16.252.49 202.110.130.21 GET /
+[ log ] 118.31.23.98/ [运行时间：0.009880s][吞吐率：101.22req/s] [内存消耗：477.43kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'python-requests/2.18.4',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'sea',
+  'type' => 'driver\\session\\Mysql',
+  'auto_start' => true,
+  'table_name' => 's_session',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003356s ] mysql:dbname=yuhal;host=118.31.23.98;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT session_data FROM yh_s_session WHERE session_id = 'think_71106qu8d530qrq3devo96l692' AND session_expire > '1524323647' [ RunTime:0.002308s ]
+
+---------------------------------------------------------------
+[ 2018-04-21T23:14:08+08:00 ] 172.16.252.49 202.110.130.21 GET /login.html
+[ log ] 118.31.23.98/login.html [运行时间：0.004583s][吞吐率：218.20req/s] [内存消耗：478.29kb] [文件加载：41]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sea',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => '118.31.23.98',
+  'user-agent' => 'python-requests/2.18.4',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=71106qu8d530qrq3devo96l692',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\sea\controller\Login->index[ /var/www/sea/application/sea/controller/Login.php ]
+[ info ] [ VIEW ] /var/www/sea/application/sea/view/page/login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T23:21:25+08:00 ] 172.16.252.49 179.221.119.139 GET /moo
+[ log ] 118.31.23.98/moo [运行时间：0.003831s][吞吐率：261.02req/s] [内存消耗：313.07kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'moo',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'host' => '118.31.23.98',
+  'user-agent' => 'Wget(linux)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-04-21T23:21:29+08:00 ] 172.16.252.49 179.221.119.139 GET /hndUnblock.cgi
+[ log ] 118.31.23.98/hndUnblock.cgi [运行时间：0.003585s][吞吐率：278.95req/s] [内存消耗：313.09kb] [文件加载：27]
+[ info ] [ LANG ] /var/www/sea/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'hndUnblock.cgi',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'host' => '118.31.23.98',
+  'user-agent' => 'Wget(linux)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------

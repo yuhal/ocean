@@ -1,0 +1,122 @@
+{extend name="base"/}
+{block name="title"}发送验证码 | {__block__}{/block}
+{block name="main"}
+<div id="login-page" class="row">
+  <div class="col s12 z-depth-4 card-panel">
+      <div class="row">
+        <div class="input-field col s12 center">
+          <p class="center login-form-text">发送验证码</p>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix"></i>
+          <input id="username" name="username" maxlength="11" type="text" required/>
+          <label for="username" class="center-align">输入手机号</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="mdi-communication-message prefix"></i>
+          <input id="vcode" name="vcode" maxlength="4" type="text" required/>
+          <label for="vcode" class="center-align">输入验证码</label>
+        </div>
+        <div class="input-field col s6">
+          <button class="btn col s12" id="sfvcode_btn" type="button">获取验证码</button>
+        </div>
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix"></i>
+          <input name="password" maxlength="12" id="password" type="password" required>
+          <label for="password">输入新密码</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix"></i>
+          <input name="password" maxlength="12" id="checkpassword" type="password" required>
+          <label for="password">确认新密码</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <a id="savepassword" class="btn waves-effect waves-light col s12">保存</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a href="oauthlogin">其他账号登录</a></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+          <p class="margin right-align medium-small"><a href="javascript:void(0)">获取不到验证码?</a></p>
+        </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript">  
+  var wait=60;  
+  function time(o) {  
+    if (wait == 0) {  
+        o.removeAttribute("disabled");            
+        o.innerHTML="重新获取";  
+        wait = 60;  
+    } else {  
+        o.setAttribute("disabled", "true");  
+        o.innerHTML="重新发送(" + wait + ")";  
+        wait--;  
+        setTimeout(function() {  
+            time(o)  
+        },  
+        1000)  
+    }  
+  }  
+  document.getElementById("sfvcode_btn").onclick=function(){
+    var username = document.getElementById("username").value;
+    if(!username){
+      Materialize.toast('请输入手机号', 1000); return false;  
+    }
+    time(this);
+    $.ajax({
+       type: "POST",
+       url: "sf_vcode/"+username,
+       data: {},
+       dataType: "json",
+       success: function(data){
+       }
+    });  
+    
+  }
+  document.getElementById("savepassword").onclick=function(){
+    var vcode = document.getElementById("vcode").value;
+    var password = document.getElementById("password").value;
+    var checkpassword = document.getElementById("checkpassword").value;
+    var username = document.getElementById("username").value;
+    if(!vcode){
+      Materialize.toast('请输入验证码', 1000); return false;  
+    }
+    if(!password){
+      Materialize.toast('请输入密码', 1000); return false;  
+    }
+    if(!checkpassword){
+      Materialize.toast('请确认密码', 1000); return false;  
+    }
+    if(password!=checkpassword){
+      Materialize.toast('两次密码输入不一致', 1000); return false;  
+    }
+    $.ajax({
+       type: "POST",
+       url: "savepassword",
+       data: {
+        phone:username,
+        password:password,
+        vcode:vcode
+       },
+       dataType: "json",
+       success: function(data){
+          if(data.ret==200){
+            Materialize.toast(data.msg,1000,'',function(){
+              location.href="login"; 
+            })
+          }else{
+            Materialize.toast(data.msg, 1000); return false; 
+          }
+       }
+    }); 
+  }  
+</script> 
+{/block}

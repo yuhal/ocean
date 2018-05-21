@@ -1,0 +1,131 @@
+{extend name="base"/}
+{block name="title"}编辑文章 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+{/block}
+{block name="body"}{/block}
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTENT -->
+      <section id="content">
+
+        {include file="blog_category/breadcrumbs"}
+
+        <!--start container-->
+        <div class="container">  
+            <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card-panel">
+                <div class="row">
+                  <form class="col s12">
+                    <div id="list">    
+                      <div class="row" id="block1">
+                        <div class="input-field col s<{$length}>">
+                          <i class="mdi-action-class prefix"></i>
+                          <input id="value" type="text" length="16" maxlength="16" value="<{$content.value}>">
+                          <label for="value" class="active">分类名称</label>
+                        </div> 
+                        <div class="input-field col s<{$length}>">
+                          <i class="mdi-image-color-lens prefix"></i>
+                          <select id="color" class="browser-default" style="margin-left: 40px;width:88%">
+                            <option value="" disabled>选择分类颜色</option>
+                            {volist name="colors" id="v"}
+                            <option {if $content.color==$v.value} selected {/if} class="<{$v.name}> <{$v.style}>" value="<{$v.value}>"><{$v.value}></option>
+                            {/volist}
+                          </select>
+                        </div>
+                        <div class="input-field col s12">
+                          <i class="mdi-action-assignment prefix"></i>
+                          <input id="intro" type="text" length="18" maxlength="18" value="<{$content.intro}>">
+                          <label for="intro" class="active">分类简介</label>
+                        </div> 
+                      </div>
+                      <div id="line" class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <br/>
+                        <div class="input-field col s12">
+                          <button onclick="checksubmit(<{$content.id}>)" class="btn cyan waves-effect waves-light right" type="button">Submit<i class="mdi-content-send right"></i></button>
+                        </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <!--end container-->
+  </section>
+  <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+
+    <script type="text/javascript">
+      function checksubmit(id){
+          var value = document.getElementById('value').value;
+          var color = document.getElementById('color').value;
+          var intro = document.getElementById('intro').value; 
+          if(value==""){
+              Materialize.toast('分类名称不能为空', 1000);
+              return false;
+          }else if(checks(value)){
+              Materialize.toast('不能含有特殊字符', 1000);
+              return false;
+          }
+          if(color==""){
+              Materialize.toast('选择一个分类颜色', 1000);
+              return false;
+          }
+          if(intro==""){
+              Materialize.toast('分类简介不能为空', 1000);
+              return false;
+          }else if(checks(intro)){
+              Materialize.toast('不能含有特殊字符', 1000);
+              return false;
+          }
+          var categories = '[{"id":"'+id+'","value":"'+value+'","color":"'+color+'","intro":"'+intro+'"}]'; 
+          $.ajax({
+             type: "POST",
+             url: "/blog_category/create",
+             data: {
+              "categories":categories
+             },
+             dataType: "json",
+             success: function(data){
+                Materialize.toast(data.msg,1000,'',function(){
+                })  
+             }
+          });       
+      } 
+    </script>
+
+    <!-- END FOOTER -->
+{/block}
+
+
+

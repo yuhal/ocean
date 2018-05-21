@@ -1,0 +1,176 @@
+{extend name="base"/}
+{block name="title"}文章列表 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+{/block}
+{block name="body"}{/block}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START CONTENT -->
+            <section id="content">
+
+                {include file="blog_article/breadcrumbs"}
+
+                <!--start container-->
+                <div class="container">
+                        <div class="divider"></div>
+                        <!--Creating Responsive Layouts-->
+                        <div id="grid-responsive" class="section">
+                            <div class="row">
+                                <div class="col s12 m8 l12">
+                                    <div class="card-panel">
+                                        <table class="hoverable">
+                                            <thead>
+                                                <tr>
+                                                    <th>文章标题</th>
+                                                    <th data-field="id">文章类型</th>
+                                                    <th data-field="name">发布时间</th>
+                                                    <th data-field="price">发布者</th>
+                                                    <th data-field="price"></th>
+                                                    <th data-field="price"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {volist name="allart" id="v"}
+                                                <tr>
+                                                    <td>
+                                                        <strong>
+                                                            <{$v.article_title}>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <a style="color: <{$v.color}>">
+                                                            <i class="mdi-action-class"></i>
+                                                        </a><{$v.value}>
+                                                    </td>
+                                                    <td><{$v.create_time}></td>
+                                                    <td>@HaI</td>
+                                                    <td>
+                                                        <i title="编辑" onclick="location='create/<{$v.article_id}>'" class="mdi-image-edit"></i>
+                                                    </td>
+                                                    <td>
+                                                        {if $v.delete_time}
+                                                        <i onclick="dispatchById('article','restore','<{$v.article_id}>')" title="还原" class="mdi-action-settings-backup-restore"></i>
+                                                        {else}
+                                                        <i onclick="dispatchById('article','destory','<{$v.article_id}>')" title="删除" class="mdi-action-delete"></i>
+                                                        {/if}
+                                                    </td>
+                                                </tr>
+                                                {/volist}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <ul class="pagination" style="float: right;">
+                                    {if $p==1}
+                                        <li class="disabled">
+                                        <a><i class="mdi-hardware-keyboard-arrow-left"></i></a>
+                                        </li> 
+                                    {else}
+                                        <li class="waves-effect">
+                                        <a href="/blog_article/index/<{$p-1}>"><i class="mdi-hardware-keyboard-arrow-left"></i></a>
+                                        </li> 
+                                    {/if}    
+                                    {if $p<=4}
+                                        {for start="1" end="$p+3"}
+                                            {if $i<$page}
+                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
+                                            </li>
+                                            {/if}   
+                                        {/for} 
+                                        {if $p>1}
+                                            <li class="disabled"><a>...</a></li> 
+                                        {/if}
+                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
+                                        </li>
+                                    {elseif $p>$page-4}
+                                        <li {if $p==1} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/1">1</a>
+                                        </li>
+                                        <li class="disabled"><a>...</a></li> 
+                                        {for start="$p-2" end="$page+1"}
+                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
+                                            </li> 
+                                        {/for}                                 
+                                    {elseif $p-3>1}                    
+                                        <li {if $p==1} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/1">1</a>
+                                        </li>
+                                        <li class="disabled"><a>...</a></li> 
+                                        {for start="$p-2" end="$p+3"}
+                                            {if $i<$page}
+                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
+                                            </li>
+                                            {/if}   
+                                        {/for}
+                                        <li class="disabled"><a>...</a></li> 
+                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
+                                        </li>
+                                    {elseif $p+3<$page}
+                                        {for start="$p-2" end="$p+3"}
+                                            {if $i<$page}
+                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
+                                            </li>
+                                            {/if}   
+                                        {/for}   
+                                        <li class="disabled"><a>...</a></li>  
+                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
+                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
+                                        </li>
+                                    {/if}                               
+                                    {if $p==$page}
+                                        <li class="disabled">
+                                        <a><i class="mdi-hardware-keyboard-arrow-right"></i></a>
+                                        </li>                           
+                                    {else/}
+                                        <li class="waves-effect">
+                                        <a href="/blog_article/index/<{$p+1}>"><i class="mdi-hardware-keyboard-arrow-right"></i></a>
+                                        </li>
+                                    {/if}
+                               </ul>
+                            </div>
+                        </div>                     
+                    </div>
+                    
+
+                </div>
+                <!--end container-->
+
+            </section>
+            <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+    <!-- END FOOTER -->
+{/block}
+
+
+

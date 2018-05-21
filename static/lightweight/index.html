@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>演示：lightweight清爽简洁的编辑器</title>
+        <meta name="keywords" content="lightweight编辑器" />
+        <meta name="description" content="这是一款经过ace主题切换过的编辑器，比起官方的编辑器要好看的多，主要缺点是引入文件有点多，若放在管理员后台无所谓了。" />
+    
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/css/ace.min.css" />
+    </head>
+    <body style="margin:30px 0 0">
+          <div class="wysiwyg-editor" id="editor1"></div>
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script> 
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.hotkeys.min.js"></script>
+        <script src="assets/js/bootstrap-wysiwyg.min.js"></script>
+        <script src="assets/js/ace-elements.min.js"></script>
+
+        <script type="text/javascript">
+            jQuery(function($) {
+
+                function showErrorAlert(reason, detail) {
+                    var msg = '';
+                    if (reason === 'unsupported-file-type') {
+                        msg = "Unsupported format " + detail;
+                    }
+                    else {
+                        console.log("error uploading file", reason, detail);
+                    }
+                    $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                            '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
+                }//$('#editor1').ace_wysiwyg();//this will create the default editor will all buttons
+                $('#editor1').ace_wysiwyg({
+                    toolbar:
+                            [
+                                'font',
+                                null,
+                                'fontSize',
+                                null,
+                                {name: 'bold', className: 'btn-info'},
+                                {name: 'italic', className: 'btn-info'},
+                                {name: 'strikethrough', className: 'btn-info'},
+                                {name: 'underline', className: 'btn-info'},
+                                null,
+                                {name: 'insertunorderedlist', className: 'btn-success'},
+                                {name: 'insertorderedlist', className: 'btn-success'},
+                                {name: 'outdent', className: 'btn-purple'},
+                                {name: 'indent', className: 'btn-purple'},
+                                null,
+                                {name: 'justifyleft', className: 'btn-primary'},
+                                {name: 'justifycenter', className: 'btn-primary'},
+                                {name: 'justifyright', className: 'btn-primary'},
+                                {name: 'justifyfull', className: 'btn-inverse'},
+                                null,
+                                {name: 'createLink', className: 'btn-pink'},
+                                {name: 'unlink', className: 'btn-pink'},
+                                null,
+                                {name: 'insertImage', className: 'btn-success'},
+                                null,
+                                'foreColor',
+                                null,
+                                {name: 'undo', className: 'btn-grey'},
+                                {name: 'redo', className: 'btn-grey'}
+                            ],
+                    'wysiwyg': {
+                        fileUploadError: showErrorAlert
+                    }
+                }).prev().addClass('wysiwyg-style2');
+            });
+        </script>
+        <style>
+.vad { position: absolute; left: 0;	top: 45%; width: 100%; font-family: Consolas,arial,宋体; text-align: center;}
+.vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+.vad a:hover { color: #fff; background-color: #000;}
+.thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 60px solid transparent;}
+</style>
+<p class="vad">
+	<a href="http://www.sucaihuo.com/" target="_blank">返回首页</a>
+	<a href="http://www.sucaihuo.com/js/216.html" target="_blank">说明</a>
+	<a href="http://www.sucaihuo.com/js/216.html" target="_blank">下载</a>
+</p>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+{extend name="base"/}
+{block name="title"}登录 | {__block__}{/block}
+{block name="main"}
+<div id="login-page" class="row">
+  <div class="col s12 z-depth-4 card-panel">
+    <form class="login-form">
+      <div class="row">
+        <div class="input-field col s12 center">
+          <img id="avatar" src="__STATIC__/images/default-user.png" class="circle responsive-img valign profile-image-login">
+          <p class="center login-form-text">管理中心</p>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix"></i>
+          <input name="username" id="username" maxlength="11" type="text" onmouseover="showavatar(this);" required/>
+          <label for="username" class="center-align">输入手机号</label>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix"></i>
+          <input name="password" id="password"  maxlength="12" type="password" required>
+          <label for="password">输入密码</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button class="btn col s12" id="login_btn" onfocus="window.buttonIsFocused=true;" onblur="window.buttonIsFocused=false;" type="button">登录</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a href="oauthlogin">其他账号登录</a></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+          <p class="margin right-align medium-small"><a href="phonevcode">忘记密码?</a></p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<script type="text/javascript"> 
+
+document.getElementById("login_btn").onclick=function(){
+   login();
+}
+
+//登录
+function login(){
+  var username = document.getElementById("username").value;
+  if(!username){
+    Materialize.toast('请输入手机号', 1000); return false;  
+  }
+  var password = document.getElementById("password").value;
+  if(!password){
+    Materialize.toast('请输入密码', 1000); return false;  
+  }
+  $.ajax({
+     type: "POST",
+     url: "dologin",
+     data: {
+      username:username,
+      password:password
+     },
+     dataType: "json",
+     success: function(data){
+      if(data.code==1){
+        Materialize.toast(data.msg,1000,'',function(){
+          location.href="index"; 
+        })
+      }else{
+        Materialize.toast(data.msg, 1000); return false; 
+      }
+     }
+  }); 
+}
+
+//显示用户头像
+function showavatar(a){
+  var username = document.getElementById("username").value;
+  if(username.length==11){
+    $.ajax({
+       type: "POST",
+       url: "showavatar/"+username,
+       data: {},
+       dataType: "json",
+       success: function(data){
+        if(data.code==1){
+          document.getElementById("avatar").src=data.msg;
+        }else{
+          document.getElementById("avatar").src="__STATIC__/images/default-user.png";
+        }
+       }
+    });  
+  }else{
+    document.getElementById("avatar").src="__STATIC__/images/default-user.png";
+  }
+}
+
+//回车登录
+document.onkeydown = function(event){
+  var e = event || window.event; //兼容ie
+  switch(e.keyCode) {
+    case 13: // enter 键
+      if (!window.buttonIsFocused) login(); // login()是封装登录的方法
+      break; 
+  }
+};
+</script>
+{/block}

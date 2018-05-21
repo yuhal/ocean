@@ -1,0 +1,221 @@
+{extend name="base"/}
+{block name="title"}图片 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<style type="text/css">
+    .shadow-demo{
+        width: 168px;
+        height: 168px;
+    }
+    .card .card-content .card-title {
+        line-height: 24px; 
+    }  
+    .activator{
+        width:273px;height:178px;overflow: hidden;
+    }  
+</style>
+{/block}
+{block name="body"}{/block}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START CONTENT -->
+            <section id="content">
+        
+            <!--breadcrumbs start-->
+            <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+              <div class="container">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <h5 class="breadcrumbs-title">图片</h5>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!--breadcrumbs end-->
+            
+
+            <!--start container-->
+            <div class="container">
+              <p class="caption">
+                <form id="postForm" action="" method="post" enctype="multipart/form-data" class="col s12">
+                  <div class="row">
+                    <div class="file-field input-field col s10">
+                      <input id="uploadfilename" class="file-path validate" placeholder="   上传一张或多张图片" type="text" value=""/>
+                      <div class="btn">
+                        <span>选择图片</span>
+                        <input name="file[]" type="file" multiple="multiple"/>
+                      </div>
+                    </div>
+                    <div class="input-field col s2">                          
+                      <button onclick="checkupload()" class="btn cyan waves-effect waves-light right" type="button">上传<i class="mdi-content-send right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </p>
+              <!--Card Reveal-->
+              <div class="divider"></div>
+              <div id="card-reveal" class="section">
+                <div class="row">
+                  {volist name="pictures" id="v"}
+                  <div class="col s12 m8 l3">
+                    <div class="card">
+                      <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="<{$v.path}>" alt="<{$v.title}>">
+                      </div>
+                      <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><{$v.title|mb_substr=0,13,'utf-8'}>
+                          <i class="mdi-image-edit right"></i>
+                        </span>
+                        </p>
+                      </div>
+                      <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">  
+                          <i class="mdi-navigation-close right"></i>
+                        </span>
+                        <p>
+                          <form action="">
+                            <div class="col s12 m8 l12">
+                              <label>编辑图片名称</label>
+                              <input type="text" id="title<{$v.id}>" name="title<{$v.id}>" value="<{$v.title}>">
+                            </div>
+                            <div class="col s12 m8 l12">
+                                <label>移动分组</label>
+                                <p>
+                                  <input name="group_id<{$v.id}>" type="radio" id="group" value="0" {if $v.group_id==0 || $v.group_id==''} checked {/if} >
+                                  <label for="group">未分组</label>
+                                  {volist name="groups" key="k" id="vo"}
+                                  <input name="group_id<{$v.id}>" type="radio" id="group<{$k}>" value="<{$vo.id}>" {if $v.group_id==$k} checked {/if} >
+                                  <label for="group<{$k}>"><{$vo.value}></label>
+                                  {/volist}
+                                </p>
+                            </div>
+                          </form>
+                        </p>
+                        <i onclick="checksubmit(<{$v.id}>)" class="mdi-action-done right"></i>
+                      </div>
+                    </div>
+                  </div>
+                  {/volist}
+                </div>
+              </div>
+            </div>
+            <!--end container-->
+
+          </section>
+            <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+    <!-- END FOOTER --> 
+{/block}
+{block name="script"}
+<!-- ================================================
+Scripts
+================================================ -->
+<!-- jQuery Library -->
+<script type="text/javascript" src="__STATIC__/js/jquery-1.11.2.min.js"></script>
+<!--materialize js-->
+<script type="text/javascript" src="__STATIC__/js/materialize.min.js"></script> 
+<!-- <script type="text/javascript" src="http://www.materialscss.com/public/js/materialize.min.js"></script> -->
+<!--prism-->
+<script type="text/javascript" src="__STATIC__/js/prism.js"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script type="text/javascript" src="__STATIC__/js/plugins.js"></script>
+<script type="text/javascript">
+  function checkupload(){  
+      var formData = new FormData($( "#postForm" )[0]);
+      var uploadfilename = document.getElementById('uploadfilename').value;
+      if(uploadfilename){
+        $.ajax({  
+            url: '/material_picture/create' ,  
+            type: 'POST',  
+            data: formData,  
+            async: false,  
+            cache: false,  
+            contentType: false,  
+            processData: false,  
+            success: function (data) {  
+              Materialize.toast(data.msg,1000,'',function(){
+                  history.go(0); 
+              })
+            },   
+        });  
+      }else{
+        Materialize.toast('请选择需要上传的图片',2000,'',function(){
+            history.go(0); 
+        })
+      }    
+  }
+  function checksubmit(id){
+      var title = $("#title"+id).val();
+      var group_id = document.getElementsByName('group_id'+id);
+      for (var i=0;i<group_id.length;i++){ //遍历Radio 
+        if(group_id[i].checked){ 
+        group_id=group_id[i].value; 
+        } 
+      } 
+      if(title==""){
+        Materialize.toast('图片名称不能为空', 1000);
+        return false;
+      }
+      $.ajax({
+         type: "POST",
+         url: "/material_picture/edit",
+         data: {"id":id,"title":title,"group_id":group_id},
+         dataType: "json",
+         success: function(data){
+            Materialize.toast(data.msg,2000,'',function(){
+                history.go(0); 
+            })
+         }
+      });       
+  }
+  var options = [
+    {selector: '#staggered-test', offset: 50, callback: function(el) {
+      Materialize.toast("This is our ScrollFire Demo!", 1500);
+      $("#call-1").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});
+    } },
+    {selector: '#staggered-test', offset: 205, callback: function(el) {
+      Materialize.toast("Please continue scrolling!", 1500);
+      $("#call-2").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});
+    } },
+    {selector: '#staggered-test', offset: 500, callback: function(el) {
+      Materialize.showStaggeredList($(el));
+      $("#call-3").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});
+    } },
+    {selector: '#image-test', offset: 500, callback: function(el) {
+      Materialize.fadeInImage($(el));
+      $("#call-4").velocity({ backgroundColor: "#333", color: "#ef5350" }, {duration: 500});
+    } }
+  ];
+  Materialize.scrollFire(options);
+</script>
+{/block}
+
+

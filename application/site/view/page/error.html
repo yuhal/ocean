@@ -1,0 +1,41 @@
+{extend name="base"/}
+{block name="title"}Error page | {__block__}{/block}
+{block name="main"}
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+      <form class="login-form">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <h4><{$msg}></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="javascript:CloseWebPage();" class="btn waves-effect waves-light col s12">关闭</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function CloseWebPage() {     
+        if (navigator.userAgent.indexOf("MSIE") > 0) {     
+            if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {     
+                window.opener = null; window.close();     
+            }     
+            else {     
+                window.open('', '_top'); window.top.close();     
+            }     
+        }     
+        else if (navigator.userAgent.indexOf("Firefox") > 0) {     
+            window.location.href = 'about:blank '; //火狐默认状态非window.open的页面window.close是无效的    
+            //window.history.go(-2);     
+        }     
+        else {     
+            window.opener = null;      
+            window.open('', '_self', '');     
+            window.close();     
+        }     
+    } 
+  </script>
+{/block}
