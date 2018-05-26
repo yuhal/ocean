@@ -44,7 +44,7 @@ class BlogArticle extends Base
             if(array_key_exists('article_id',$article)){
                 $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);         
                 $insertId = $re ? $article['article_id'] : '';
-                $ids = $this->ArticleDes->getIdBypid($insertId);
+                $ids = $this->ArticleDes->getIdByArticleId($insertId);
                 $this->destorybyid('ArticleDes',$ids,2);
             }else{
                 $insertId = $this->Article->allowField(true)->insertGetId($article);
@@ -52,7 +52,7 @@ class BlogArticle extends Base
             if($insertId){
                 $des = json_decode(input('post.des/a')[0],true);
                 foreach ($des as $key=>$value) {
-                    $article_des[$key]['pid'] = $insertId;
+                    $article_des[$key]['article_id'] = $insertId;
                     $article_des[$key]['name'] = $value['name'];
                     $article_des[$key]['text'] = $value['text'];
                 }
@@ -94,7 +94,7 @@ class BlogArticle extends Base
                 }
             }
             $content['tag_ids'] = $tags;
-            $content['des'] = $this->Article->getDes()->where("pid={$id}")->select();
+            $content['des'] = $this->Article->getDes()->where("article_id",$id)->select();
             $this->assign('content',$content);
             return $this->fetch('edit');
         }

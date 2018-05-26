@@ -8,8 +8,8 @@ class ArticleDes extends Model{
      * 查询该详情所属的文章id
      * @param $pid
      */
-    public function getIdBypid($pid){
-    	return $this->where('pid',$pid)->column('id');
+    public function getIdByArticleId($article_id){
+    	return $this->where('article_id',$article_id)->column('id');
     }
 
 }

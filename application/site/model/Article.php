@@ -15,7 +15,7 @@ class Article extends Model{
     */
     public function getDes()
     {
-        return $this->hasMany('ArticleDes', 'pid');
+        return $this->hasMany('ArticleDes', 'article_id');
     }
 
     /**
