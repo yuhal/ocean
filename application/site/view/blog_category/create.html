@@ -42,7 +42,7 @@
                         </div> 
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-image-color-lens prefix"></i>
-                          <select id="color1" class="browser-default" style="margin-left: 40px;width:88%">
+                          <select id="color" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="margin-left: 40px;width:88%">
                             <option value="" disabled selected>选择分类颜色</option>
                             {volist name="colors" id="v"}
                             <option class="<{$v.name}> <{$v.style}>" value="<{$v.value}>"><{$v.value}></option>
