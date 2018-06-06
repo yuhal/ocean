@@ -21,7 +21,8 @@ class BlogTag extends Base
     /**
      * 文章标签列表
      */
-	public function index(){
+	public function index()
+    {
         $tags = $this->ArticleTags->getAllTagsByWhere();
         foreach ($tags as $key => $value) {
             $value['count'] = $this->Article->getAticleCountsByTagId($value['id']);
@@ -34,8 +35,10 @@ class BlogTag extends Base
      * 创建文章标签
      * @param id
      */
-    public function create($id=''){
-        if(request()->isAjax()){
+    public function create($id='')
+    {
+        if(request()->isAjax())
+        {
             $tags = object_to_array(json_decode(input('post.tags/a')[0]));
             $tag = [];
             foreach ($tags as $key=>$value) {
@@ -46,16 +49,19 @@ class BlogTag extends Base
                 $tag[$key]['intro'] = $value['intro'];
             }
             $re = $this->ArticleTags->allowField(true)->saveAll($tag);
-            if($re){
+            if($re)
+            {
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');
             } 
         }
-        if(!empty($id)){
+        if(!empty($id))
+        {
             $obj = $this->ArticleTags;
             $content = $obj::get($id);
-            if(empty($content)){
+            if(empty($content))
+            {
                 $this->redirect('/error');
             }
             $this->assign('content',$content);

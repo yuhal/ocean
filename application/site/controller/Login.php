@@ -29,14 +29,16 @@ class Login extends Controller
     /**
      * 登录页面
      */
-    public function index(){
+    public function index()
+    {
         return view('page/login');
     }
 
     /**
      * 其他方式登录页面
      */
-    public function oauthlogin(){
+    public function oauthlogin()
+    {
         $redirect_url['qq'] = $this->Qauth_Qc->qq_login();
         $redirect_url['sign'] = $this->Sign->getAuthorizeURL(config('sign.callback'));
         $this->assign('redirect_url',$redirect_url);
@@ -46,17 +48,20 @@ class Login extends Controller
     /**
      * 忘记密码页面
      */
-    public function phonevcode(){
+    public function phonevcode()
+    {
         return view('page/phonevcode');
     }
 
     /**
      * 账号登录
      */
-    public function login(){
+    public function login()
+    {
         $data_p = input('post.');
         $re = $this->user->checkLogin($data_p);
-        if(!empty($re)){
+        if(!empty($re))
+        {
             $session_data['avatar'] = $re->avatar;
             $session_data['id'] = $re->id;
             $session_data['nick_name'] = $re->nick_name;
@@ -71,7 +76,8 @@ class Login extends Controller
     /**
      * QQ登录
      */
-    public function qqcallback(){       
+    public function qqcallback()
+    {       
         $acs =  $this->Qauth_Qc->qq_callback();
         $oid =  $this->Qauth_Qc->get_openid();
         $qc = new QC($acs,$oid);
@@ -92,11 +98,13 @@ class Login extends Controller
     /**
      * sign登录
      */
-    public function signcallback(){ 
+    public function signcallback()
+    { 
         $data['code'] = input('get.code');
         $data['redirect_uri'] = config('sign.callback');
         $token = $this->Sign->getAccessToken('code',$data); 
-        if(!empty($token['error'])){
+        if(!empty($token['error']))
+        {
             return $this->fetch('page/error',['code'=>$token['error_code'],'msg'=>$token['error_description']]);
         }     
         $client = new SaeTClientV2(config('sign.appkey'),config('sign.appsecret'),$token['access_token']);   
@@ -104,7 +112,8 @@ class Login extends Controller
         $session_data['avatar'] = $user_message['profile_image_url'];
         $session_data['nick_name'] = $user_message['screen_name'];
         $session_data['id'] = $this->user->saveUserInfo($session_data); 
-        if($session_data['id']){
+        if($session_data['id'])
+        {
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
             $this->redirect('/index');    
@@ -117,7 +126,8 @@ class Login extends Controller
      * 忘记密码发送验证码
      * @param $phone
      */
-    public function sf_vcode($phone){
+    public function sf_vcode($phone)
+    {
         if(cache('code_'.$phone,'0507',60)){
             $this->success('发送成功');
         }else{
@@ -129,9 +139,11 @@ class Login extends Controller
      * 显示登录用户头像
      * @param $username
      */
-    public function showavatar($username){
+    public function showavatar($username)
+    {
         $avatar = $this->user->getAvatarByusername($username);
-        if($avatar){
+        if($avatar)
+        {
             $this->success($avatar);
         }else{
             $this->error(10040);
@@ -141,7 +153,8 @@ class Login extends Controller
     /**
      * 修改密码
      */
-    public function savepassword(){
+    public function savepassword()
+    {
         $data_p = input('post.');
         $true_code = cache('code_'.$data_p['phone']);
         if($data_p['vcode']==$true_code){
@@ -154,7 +167,8 @@ class Login extends Controller
     /**
      * 退出
      */
-    public function logout(){
+    public function logout()
+    {
         session(null);
         $this->redirect(url('/login'));
     }

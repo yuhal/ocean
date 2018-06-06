@@ -25,7 +25,8 @@ class MaterialPicture extends Base
     /**
      * 图片列表
      */
-	public function index(){
+	public function index()
+    {
         $groups = $this->PictureGroup->getAllGroupsByWhere();
         $pictures = $this->Picture->getAllPicturesByWhere();
         foreach ($groups as $key => $value) {
@@ -39,8 +40,10 @@ class MaterialPicture extends Base
     /**
      * 编辑图片
      */
-    public function edit(){
-        if(request()->isAjax()){
+    public function edit()
+    {
+        if(request()->isAjax())
+        {
             $data = input('post.');
             $title = $data['title'];
             $group_id = $data['group_id'];
@@ -48,7 +51,8 @@ class MaterialPicture extends Base
             $edit = ['title'=>$title,'group_id'=>$group_id];
             $where = "title='{$title}' and group_id={$group_id}";
             $re = $this->Picture->save($edit,['id'=>$id]);
-            if($re || ($re===0)){
+            if($re || ($re===0))
+            {
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');
@@ -60,13 +64,16 @@ class MaterialPicture extends Base
     /**
      * 创建图片
      */
-    public function create(){
-        if(request()->isAjax()){
+    public function create()
+    {
+        if(request()->isAjax())
+        {
             $name = array_keys($_FILES)[0];
             $file = play_file($_FILES['file'],$name);
             $ids = array();
             $count = 0;
-            if(count($file[$name])>0 && checkuc($file[$name])){
+            if(count($file[$name])>0 && checkuc($file[$name]))
+            {
                 foreach ($file[$name] as $k=>$v){
                    $ext = get_extension($v['name']);
                    $title = uniqid().'.'.strtolower($ext);
@@ -78,7 +85,8 @@ class MaterialPicture extends Base
                    }catch(\Exception $e){
                     $this->error($e->getMessage());
                    }
-                   if($upload){
+                   if($upload)
+                   {
                        $data[$k]['title']=$title;
                        $data[$k]['group_id']=0;
                        $data[$k]['path']=$this->qiniu_sdk['url'].$title;
@@ -88,7 +96,8 @@ class MaterialPicture extends Base
                 }
                 $this->Picture->insertAll($data); 
             }
-            if(count($file[$name])==$count){
+            if(count($file[$name])==$count)
+            {
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');

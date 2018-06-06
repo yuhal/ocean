@@ -24,9 +24,11 @@ class MaterialSdk extends Base
      * Sdk配置
      * @param id
      */
-	public function index($id){
+	public function index($id)
+    {
         $sdk = $this->Sdk->getSdkByWhere(array('sdk_id'=>$id));
-        if(empty($sdk)){
+        if(empty($sdk))
+        {
             $this->redirect('/error');
         }
         $this->assign('sdk',$sdk);
@@ -36,10 +38,11 @@ class MaterialSdk extends Base
 
     /**
      * 编辑Sdk
-     * @param id
      */
-    public function edit(){
-        if(request()->isAjax()){
+    public function edit()
+    {
+        if(request()->isAjax())
+        {
             $data = input('post.');
             $sdk_info = explode(',', rtrim($data['sdk_info'],','));
             $sdk = $this->Sdk->getSdkByWhere(array('sdk_id'=>$data['id']));
@@ -49,7 +52,8 @@ class MaterialSdk extends Base
                 $info[$value] = $sdk_info[$key];
             }
             $re = $this->Sdk->save(['sdk_info'=>json_encode($info)],['sdk_id'=>$data['id']]);
-            if($re || ($re===0)){
+            if($re || ($re===0))
+            {
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');

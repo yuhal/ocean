@@ -6,9 +6,10 @@ class SysColor extends Model{
 
     /**
      * 查询所有的颜色
-     * @param $where
+     * @param where
      */
-    public function getAllColorsByWhere($where=""){
+    public function getAllColorsByWhere($where="")
+    {
         return $this->where($where)->select();
     }
 }

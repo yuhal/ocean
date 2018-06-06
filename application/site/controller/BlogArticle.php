@@ -24,7 +24,8 @@ class BlogArticle extends Base
      * @param p
      * @param title
      */
-	public function index($p=1,$title=''){
+	public function index($p=1,$title='')
+    {
         $title = str_content_replace($title);
         $where = isset($title) ? "article_id>0 and article_title like '%{$title}%'" : "";
         $allart = $this->Article->getAllArticleByWhere($p,$where,$this->pageSize);
@@ -41,12 +42,15 @@ class BlogArticle extends Base
      * 创建文章
      * @param id
      */
-    public function create($id=''){
-        if(request()->isAjax()){
+    public function create($id='')
+    {
+        if(request()->isAjax())
+        {
             $article = input('post.article/a');
             $article['user_id'] = $this->UserInfo['id'];
             $article['create_time'] = $article['create_time'].' '.date("H:i:s");
-            if(array_key_exists('article_id',$article)){
+            if(array_key_exists('article_id',$article))
+            {
                 $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);         
                 $insertId = $re ? $article['article_id'] : '';
                 $ids = $this->ArticleDes->getIdByArticleId($insertId);
@@ -54,7 +58,8 @@ class BlogArticle extends Base
             }else{
                 $insertId = $this->Article->allowField(true)->insertGetId($article);
             }
-            if($insertId){
+            if($insertId)
+            {
                 $des = json_decode(input('post.des/a')[0],true);
                 foreach ($des as $key=>$value) {
                     $article_des[$key]['article_id'] = $insertId;
@@ -62,7 +67,8 @@ class BlogArticle extends Base
                     $article_des[$key]['text'] = $value['text'];
                 }
                 $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
-                if($re){
+                if($re)
+                {
                     $this->success('保存成功');
                 }    
             }else{
@@ -73,17 +79,21 @@ class BlogArticle extends Base
         $articletype = $this->ArticleType->getAllArticleTypeByWhere();
         $this->assign('articletype',$articletype);
         $this->assign('tags',$tags);
-        if(!empty($id)){
+        if(!empty($id))
+        {
             $where = "article_id={$id}";
             $content = $this->Article->getArticleByWhere($where);
-            if(empty($content)){
+            if(empty($content))
+            {
                 $this->redirect('/error');
             }
-            if(strstr($content['tag_ids'],',')){
+            if(strstr($content['tag_ids'],','))
+            {
                 $arr = explode(',',$content['tag_ids']);
                 $content['tag_ids']=$arr;
                 foreach ($tags as $key => $value) {
-                   if(in_array($value['id'],$content['tag_ids'])){
+                   if(in_array($value['id'],$content['tag_ids']))
+                   {
                         $value['check']=1;
                    }else{
                         $value['check']=0;

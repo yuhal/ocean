@@ -48,7 +48,8 @@ class Base extends Controller
         $this->Sdk = model('site/Sdk');
 
         //判断是否是手机登录
-        if(is_mobile_request()){
+        if(is_mobile_request())
+        {
             $this->length = 12;
         }else{
             $this->length = 6;
@@ -69,7 +70,8 @@ class Base extends Controller
      * @param id
      * @param status
      */
-    public function destorybyid($name,$id,$status=1){
+    public function destorybyid($name,$id,$status=1)
+    {
         if(strstr($name,'_')){
             $name = model_exchange($name);
         }
@@ -78,7 +80,8 @@ class Base extends Controller
         $re = $obj::destroy($id);
         if($re){
             //软删除文章分类后，同时软删除该分类下的文章
-            if($objName=='ArticleType'){
+            if($objName=='ArticleType')
+            {
                 $where = "type_id={$id}";
                 $Article = $this->Article;
                 $arr = $this->Article->getArticleIdsByWhere($where);
@@ -97,9 +100,11 @@ class Base extends Controller
      * @param name
      * @param id
      */
-    public function restorebyid($name,$id){
+    public function restorebyid($name,$id)
+    {
         $table = $name;
-        if(strstr($name,'_')){
+        if(strstr($name,'_'))
+        {
             $name = model_exchange($name);
         }
         $objName = ucfirst($name);
@@ -108,7 +113,8 @@ class Base extends Controller
         $re = Db::execute($sql);       
         if($re){
             //文章分类还原后，同时还原该分类下的文章
-            if($objName=='ArticleType'){
+            if($objName=='ArticleType')
+            {
                 $where = "type_id={$id}";
                 $Article = $this->Article;
                 $arr = $this->Article->getSortDelArticleIdsByWhere($where);
@@ -128,7 +134,8 @@ class Base extends Controller
      * @param i
      * @param data
      */
-    public function editide($i="",$data="&nbsp;"){
+    public function editide($i="",$data="&nbsp;")
+    {
         return view('page/editide',['i'=>$i,'data'=>$data]);
     }
 }

@@ -21,7 +21,8 @@ class BlogCategory extends Base
     /**
      * 文章分类列表
      */
-	public function index(){
+	public function index()
+    {
         $categories = $this->ArticleType->getAllArticleTypeByWhere();
         foreach ($categories as $key => $value) {
             $value['count'] = $this->Article->getAticleCountsByTypeId($value['id']);
@@ -34,11 +35,13 @@ class BlogCategory extends Base
      * 创建文章分类
      * @param id
      */
-    public function create($id=''){
+    public function create($id='')
+    {
         $colors = $this->SysColor->getAllColorsByWhere();
         $this->assign('colors',$colors);
         $this->assign('length',$this->length);
-        if(request()->isAjax()){
+        if(request()->isAjax())
+        {
             $categories = object_to_array(json_decode(input('post.categories/a')[0]));
             $category = [];
             foreach ($categories as $key=>$value) {
@@ -50,16 +53,19 @@ class BlogCategory extends Base
                 $category[$key]['intro'] = $value['intro'];
             }
             $re = $this->ArticleType->allowField(true)->saveAll($category);
-            if($re){
+            if($re)
+            {
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');
             }       
         }
-        if(!empty($id)){
+        if(!empty($id))
+        {
             $obj = $this->ArticleType;
             $content = $obj::get($id);
-            if(empty($content)){
+            if(empty($content))
+            {
                 $this->redirect('/error');
             }
             $this->assign('content',$content);

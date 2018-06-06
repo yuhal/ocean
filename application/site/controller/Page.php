@@ -14,7 +14,8 @@ class Page extends Base
 	/**
      * error页面
      */
-    public function pageerror($msg=404){
+    public function pageerror($msg=404)
+    {
     	return view('error',['msg'=>$msg]);
     }
 }

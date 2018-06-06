@@ -11,7 +11,8 @@ namespace app\site\controller;
 
 class Email extends Base
 {
-    public function index(){
+    public function index()
+    {
     	 return $this->fetch();
     }
 }
