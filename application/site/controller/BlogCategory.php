@@ -7,19 +7,20 @@
  */
 
 namespace app\site\controller;
-use think\Request;
 
 class BlogCategory extends Base
 {
     /**
-     * Index constructor.
-     * @param Request|null $request
+     * 初始化操作
      */
-    public function __construct(Request $request = null)
+    public function __construct()
     {
-        parent::__construct($request);
+        parent::__construct();
     }
 
+    /**
+     * 文章分类列表
+     */
 	public function index(){
         $categories = $this->ArticleType->getAllArticleTypeByWhere();
         foreach ($categories as $key => $value) {
@@ -29,11 +30,15 @@ class BlogCategory extends Base
 	    return $this->fetch();
 	}
 
-    public function create(Request $request,$id=''){
+    /**
+     * 创建文章分类
+     * @param id
+     */
+    public function create($id=''){
         $colors = $this->SysColor->getAllColorsByWhere();
         $this->assign('colors',$colors);
         $this->assign('length',$this->length);
-        if($request->isAjax()){
+        if(request()->isAjax()){
             $categories = object_to_array(json_decode(input('post.categories/a')[0]));
             $category = [];
             foreach ($categories as $key=>$value) {

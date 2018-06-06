@@ -7,24 +7,24 @@
  */
 
 namespace app\site\controller;
-use think\Request;
 use think\Image;
 
 class MaterialPicture extends Base
 {
-
     /**
-     * Index constructor.
-     * @param Request|null $request
+     * 初始化操作
      */
-    public function __construct(Request $request = null)
+    public function __construct()
     {
-        parent::__construct($request);
+        parent::__construct();
         $data = $this->Sdk->getSdkByWhere(array('sdk_name'=>'qiniu_sdk'));
         config('sdk.qiniu_sdk',$data['sdk_info']);
         $this->qiniu_sdk = config('sdk.qiniu_sdk');
     }
 
+    /**
+     * 图片列表
+     */
 	public function index(){
         $groups = $this->PictureGroup->getAllGroupsByWhere();
         $pictures = $this->Picture->getAllPicturesByWhere();
@@ -36,8 +36,11 @@ class MaterialPicture extends Base
 	    return $this->fetch();
 	}
 
-    public function edit(Request $request){
-        if($request->isAjax()){
+    /**
+     * 编辑图片
+     */
+    public function edit(){
+        if(request()->isAjax()){
             $data = input('post.');
             $title = $data['title'];
             $group_id = $data['group_id'];
@@ -54,8 +57,11 @@ class MaterialPicture extends Base
         $this->redirect('/error');
     }
     
-    public function create(Request $request){
-        if($request->isAjax()){
+    /**
+     * 创建图片
+     */
+    public function create(){
+        if(request()->isAjax()){
             $name = array_keys($_FILES)[0];
             $file = play_file($_FILES['file'],$name);
             $ids = array();

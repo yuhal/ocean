@@ -12,16 +12,18 @@ use think\Image;
 
 class MaterialSdk extends Base
 {
-
     /**
-     * Index constructor.
-     * @param Request|null $request
+     * 初始化操作
      */
-    public function __construct(Request $request = null)
+    public function __construct()
     {
-        parent::__construct($request);
+        parent::__construct();
     }
 
+    /**
+     * Sdk配置
+     * @param id
+     */
 	public function index($id){
         $sdk = $this->Sdk->getSdkByWhere(array('sdk_id'=>$id));
         if(empty($sdk)){
@@ -32,8 +34,12 @@ class MaterialSdk extends Base
 	    return $this->fetch();
 	}
 
-    public function edit(Request $request){
-        if($request->isAjax()){
+    /**
+     * 编辑Sdk
+     * @param id
+     */
+    public function edit(){
+        if(request()->isAjax()){
             $data = input('post.');
             $sdk_info = explode(',', rtrim($data['sdk_info'],','));
             $sdk = $this->Sdk->getSdkByWhere(array('sdk_id'=>$data['id']));

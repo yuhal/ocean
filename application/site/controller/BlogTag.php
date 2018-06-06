@@ -7,20 +7,20 @@
  */
 
 namespace app\site\controller;
-use think\Request;
 
 class BlogTag extends Base
 {
-
     /**
-     * Index constructor.
-     * @param Request|null $request
+     * 初始化操作
      */
-    public function __construct(Request $request = null)
+    public function __construct()
     {
-        parent::__construct($request);
+        parent::__construct();
     }
 
+    /**
+     * 文章标签列表
+     */
 	public function index(){
         $tags = $this->ArticleTags->getAllTagsByWhere();
         foreach ($tags as $key => $value) {
@@ -30,8 +30,12 @@ class BlogTag extends Base
 	    return $this->fetch();
 	}
 
-    public function create(Request $request,$id=''){
-        if($request->isAjax()){
+    /**
+     * 创建文章标签
+     * @param id
+     */
+    public function create($id=''){
+        if(request()->isAjax()){
             $tags = object_to_array(json_decode(input('post.tags/a')[0]));
             $tag = [];
             foreach ($tags as $key=>$value) {

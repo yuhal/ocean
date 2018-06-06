@@ -15,12 +15,9 @@ use Endroid\QrCode\QrCode;
 
 class Login extends Controller
 {
-
-    private $Qauth_Qc;
-    private $user;
-    private $Sign;
-    private $username;
-
+    /**
+     * 初始化操作
+     */
     public function __construct()
     {
         parent::__construct();  

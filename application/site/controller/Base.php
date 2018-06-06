@@ -17,16 +17,19 @@ header('content-type:text/html; charset=utf-8');
 
 class Base extends Controller
 {
+    /**
+     * 使用中间件
+     */
     use Middle;
-    public $UserInfo;
-    public $Article;
-    public $length;
 
+    /**
+     * 初始化操作
+     */
     public function __construct()
     {   	
     	parent::__construct();
 
-        // 验证登录
+        //验证登录
         $user_id = session('user_id');
         $this->UserInfo = $this->isLogin($user_id);
         if(!$this->UserInfo){
@@ -50,8 +53,8 @@ class Base extends Controller
         }else{
             $this->length = 6;
         }
-
         $this->assign('length',$this->length); 
+
         //加载左边栏
         $left_side['sdk'] = $this->Sdk->getsdk();
         $this->assign('left_side',$left_side); 
@@ -60,6 +63,12 @@ class Base extends Controller
 
     }
 
+    /**
+     * 全局删除
+     * @param name
+     * @param id
+     * @param status
+     */
     public function destorybyid($name,$id,$status=1){
         if(strstr($name,'_')){
             $name = model_exchange($name);
@@ -83,6 +92,11 @@ class Base extends Controller
         }
     }
 
+    /**
+     * 全局还原
+     * @param name
+     * @param id
+     */
     public function restorebyid($name,$id){
         $table = $name;
         if(strstr($name,'_')){
@@ -109,6 +123,11 @@ class Base extends Controller
         }
     }
 
+    /**
+     * 富文本编辑器调用
+     * @param i
+     * @param data
+     */
     public function editide($i="",$data="&nbsp;"){
         return view('page/editide',['i'=>$i,'data'=>$data]);
     }

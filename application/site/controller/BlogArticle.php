@@ -7,28 +7,29 @@
  */
 
 namespace app\site\controller;
-use think\Request;
 
 class BlogArticle extends Base
 {
-    public $pageSize;
-
     /**
-     * Index constructor.
-     * @param Request|null $request
+     * 初始化操作
      */
-    public function __construct(Request $request = null)
+    public function __construct()
     {
-        parent::__construct($request);
+        parent::__construct();
         $this->pageSize = config('paginate.list_rows');
     }
 
+    /**
+     * 文章列表
+     * @param p
+     * @param title
+     */
 	public function index($p=1,$title=''){
         $title = str_content_replace($title);
         $where = isset($title) ? "article_id>0 and article_title like '%{$title}%'" : "";
         $allart = $this->Article->getAllArticleByWhere($p,$where,$this->pageSize);
         $count= $this->Article->getAllArticleCountByWhere($where);
-        $page = ceil($count/$this->pageSize);//总页数
+        $page = ceil($count/$this->pageSize);
         $this->assign('allart',$allart);
         $this->assign('p',$p);
         $this->assign('page',$page);
@@ -36,8 +37,12 @@ class BlogArticle extends Base
 	    return $this->fetch();
 	}
 
+    /**
+     * 创建文章
+     * @param id
+     */
     public function create($id=''){
-        if(Request::instance()->isAjax()){
+        if(request()->isAjax()){
             $article = input('post.article/a');
             $article['user_id'] = $this->UserInfo['id'];
             $article['create_time'] = $article['create_time'].' '.date("H:i:s");
