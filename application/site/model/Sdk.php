@@ -24,7 +24,7 @@ class Sdk extends Model{
      */
     public function getsdk()
     {
-        return $this->where('sdk_status',1)->where('user_id',session('id'))->field('sdk_id,sdk_name')->select();   
+        return $this->where('sdk_status',1)->where('user_id',session('user_id'))->field('sdk_id,sdk_name')->select();   
     }
 
     /**
@@ -33,7 +33,7 @@ class Sdk extends Model{
      */
     public function getSdkByWhere($where)
     {
-        $data = $this->where($where)->where('user_id',session('id'))->find();
+        $data = $this->where($where)->where('user_id',session('user_id'))->find();
         if($data) $data['sdk_info'] = json_decode($data['sdk_info'],true);
         return $data;
     }
