@@ -124,6 +124,7 @@
                         <div id="clear-btn" class="input-field col s2">
                         </div>
                         <div id="sub-btn" class="input-field col s8">
+                          <input type="hidden" name="article_id" value="">
                           <button onclick="checksubmit(1)" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
                           </button>
                         </div>
@@ -154,6 +155,7 @@
       function checksubmit(i){
           var article_title = createarticle.article_title.value;
           var create_time = createarticle.create_time.value;
+          var create_id = createarticle.article_id.value;
           var note = createarticle.note.value;
           var obj = document.getElementsByName("tag");  
           check_val = [];
@@ -200,6 +202,7 @@
              data: {
               "article":
                 {
+                 'article_id':article_id,
                  'article_title':article_title,
                  'type_id':type_id,
                  'tag_ids':check_val.join(),        
@@ -211,6 +214,7 @@
              dataType: "json",
              success: function(data){
                 Materialize.toast(data.msg,2000,'',function(){
+                  createarticle.article_id.value=data.data.article_id;
                 })
              }
           });       

@@ -49,7 +49,7 @@ class BlogArticle extends Base
             $article = input('post.article/a');
             $article['user_id'] = $this->UserInfo['id'];
             $article['create_time'] = $article['create_time'].' '.date("H:i:s");
-            if(array_key_exists('article_id',$article))
+            if($article['article_id'])
             {
                 $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);         
                 $insertId = $re ? $article['article_id'] : '';
@@ -69,7 +69,7 @@ class BlogArticle extends Base
                 $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
                 if($re)
                 {
-                    $this->success('保存成功');
+                    $this->success('保存成功',"",['article_id'=>$insertId]);
                 }    
             }else{
                 $this->error('保存失败');
