@@ -48,13 +48,18 @@ class BlogArticle extends Base
         {
             $article = input('post.article/a');
             $article['user_id'] = $this->UserInfo['id'];
-            $article['create_time'] = $article['create_time'].' '.date("H:i:s");
+            $article['create_time'] = $article['create_time'].' '.date("H:i");
             if($article['article_id'])
             {
-                $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);         
-                $insertId = $re ? $article['article_id'] : '';
-                $ids = $this->ArticleDes->getIdByArticleId($insertId);
+                $ids = $this->ArticleDes->getIdByArticleId($article['article_id']);
                 $this->destorybyid('ArticleDes',$ids,2);
+                $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);   
+                if($re || ($re===0))
+                {
+                    $insertId = $article['article_id'];    
+                }else{
+                    $insertId = '';    
+                } 
             }else{
                 $insertId = $this->Article->allowField(true)->insertGetId($article);
             }
@@ -67,8 +72,8 @@ class BlogArticle extends Base
                     $article_des[$key]['text'] = $value['text'];
                 }
                 $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
-                if($re)
-                {
+                if($re || ($re===0))
+                {   
                     $this->success('保存成功',"",['article_id'=>$insertId]);
                 }    
             }else{

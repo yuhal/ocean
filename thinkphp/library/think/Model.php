@@ -96,7 +96,7 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
     // 更新时间字段
     protected $updateTime = 'update_time';
     // 时间字段取出后的默认时间格式
-    protected $dateFormat = 'Y-m-d H:i:s';
+    protected $dateFormat = 'Y-m-d H:i';
     // 字段类型或者格式转换
     protected $type = [];
     // 是否为更新数据

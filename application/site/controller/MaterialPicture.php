@@ -90,7 +90,7 @@ class MaterialPicture extends Base
                        $data[$k]['title']=$title;
                        $data[$k]['group_id']=0;
                        $data[$k]['path']=$this->qiniu_sdk['url'].$title;
-                       $data[$k]['create_time']=date('Y-m-d H:i:s');
+                       $data[$k]['create_time']=date('Y-m-d H:i');
                        $count ++;
                    }
                 }

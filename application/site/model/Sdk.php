@@ -16,7 +16,7 @@ class Sdk extends Model{
      * 数据类型转换
      */
     protected $type = [
-        'create_time'  =>  'datetime:Y/m/d H:i:s',
+        'create_time'  =>  'datetime:Y/m/d H:i',
     ];
 
     /**
