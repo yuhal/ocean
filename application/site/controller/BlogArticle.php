@@ -47,6 +47,8 @@ class BlogArticle extends Base
         if(request()->isAjax())
         {
             $article = input('post.article/a');
+            $article['article_title'] = strtolower($article['article_title']);
+            $article['note'] = strtolower($article['note']);
             $article['user_id'] = $this->UserInfo['id'];
             $article['create_time'] = $article['create_time'].' '.date("H:i");
             if($article['article_id'])
@@ -68,8 +70,8 @@ class BlogArticle extends Base
                 $des = json_decode(input('post.des/a')[0],true);
                 foreach ($des as $key=>$value) {
                     $article_des[$key]['article_id'] = $insertId;
-                    $article_des[$key]['name'] = $value['name'];
-                    $article_des[$key]['text'] = $value['text'];
+                    $article_des[$key]['name'] = strtolower($value['name']);
+                    $article_des[$key]['text'] = strtolower($value['text']);
                 }
                 $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
                 if($re || ($re===0))
