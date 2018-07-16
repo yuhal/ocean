@@ -245,8 +245,8 @@ return [
     'qq'        =>   [
         "appid"=>"101436834",
         "appkey"=>"5f00a00cfa7ba1e43b6f2abd3b20100c",
-        "callback"=>"http://sea.yuhal.com/connect",
-       // "callback"=>"http://sea.yuhal.com/Connect2.1/example/oauth/callback.php",
+        "callback"=>"http://ocean.yuhal.com/connect",
+       // "callback"=>"http://ocean.yuhal.com/Connect2.1/example/oauth/callback.php",
         "scope"=>"get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr",
         "errorReport"=>true,
         "storageType"=>"file",
@@ -260,7 +260,7 @@ return [
     'sign'          =>[
         'appkey' => '792718738',
         'appsecret' => '91d8024cc7efb9ea70c2762d9cb7bbe9',
-        'callback'  =>  'http://sea.yuhal.com/signconnect'
+        'callback'  =>  'http://ocean.yuhal.com/signconnect'
     ],
 
     //分页配置
@@ -273,7 +273,7 @@ return [
     'wechat'        =>[
         'appid' =>  'wxdccd7f02c452e6ce',
         'appsecret' =>  '2eec27998a38ed13589e91414473e425',
-        'callback'=>'http://sea.yuhal.com/wxconnect',
+        'callback'=>'http://ocean.yuhal.com/wxconnect',
         'openid'    =>  'opq8Y1SXvx-2JtJyBCVO-0sWNK0s'
     ],
 
