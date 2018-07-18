@@ -71,7 +71,7 @@ class BlogArticle extends Base
                 foreach ($des as $key=>$value) {
                     $article_des[$key]['article_id'] = $insertId;
                     $article_des[$key]['name'] = strtolower($value['name']);
-                    $article_des[$key]['text'] = strtolower($value['text']);
+                    $article_des[$key]['text'] = $value['text'];
                 }
                 $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
                 if($re || ($re===0))

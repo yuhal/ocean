@@ -77,7 +77,7 @@ class MaterialPicture extends Base
                 foreach ($file[$name] as $k=>$v){
                    $ext = get_extension($v['name']);
                    $title = uniqid().'.'.strtolower($ext);
-                   $savefile= '/var/www/sea/runtime/temp/'.$title; 
+                   $savefile= '/var/www/ocean/runtime/temp/'.$title; 
                    move_uploaded_file($v['tmp_name'],$savefile);
                    try {
                     $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
