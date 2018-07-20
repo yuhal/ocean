@@ -54,7 +54,9 @@ class BlogArticle extends Base
             if($article['article_id'])
             {
                 $ids = $this->ArticleDes->getIdByArticleId($article['article_id']);
-                $this->destorybyid('ArticleDes',$ids,2);
+                if($ids){
+                    $this->destorybyid('ArticleDes',$ids,2);    
+                }
                 $re = $this->Article->allowField(true)->save($article,['article_id'=>$article['article_id']]);   
                 if($re || ($re===0))
                 {
@@ -71,9 +73,16 @@ class BlogArticle extends Base
                 foreach ($des as $key=>$value) {
                     $article_des[$key]['article_id'] = $insertId;
                     $article_des[$key]['name'] = strtolower($value['name']);
-                    $article_des[$key]['text'] = $value['text'];
+                    $text = (new MaterialPicture)->uploadContentImg($value['text']);
+                    if($text){
+                        $article_des[$key]['text'] = $text;
+                    }else{
+                        $article_des[$key]['text'] = $value['text'];
+                    }
                 }
-                $re = $this->ArticleDes->allowField(true)->saveAll($article_des);
+                if($article_des){
+                    $re = $this->ArticleDes->allowField(true)->saveAll($article_des);    
+                }
                 if($re || ($re===0))
                 {   
                     $this->success('保存成功',"",['article_id'=>$insertId]);

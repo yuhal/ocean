@@ -106,5 +106,81 @@ class MaterialPicture extends Base
         }
         $this->redirect('/error');
     }
-  
+
+    /**
+     * 在富文本编辑器中 获得并上传图片 返回文本
+     */
+    function uploadContentImg($content){
+        $ext = 'gif|jpg|jpeg|bmp|png';
+        $preg = "/(href|src)=([\"|']?)([^ \"'>]+\.($ext))\\2/i";
+        preg_match_all($preg, $content, $match);
+        $img = array();
+        $count = 0;
+        $upload_list = $match[3];
+        foreach ($upload_list as $key => $value) {
+            $img_data = @file_get_contents($value);
+            $ext = get_extension($value);
+            $title = uniqid().$key.'.'.strtolower($ext);
+            $savefile= '/var/www/ocean/runtime/temp/'.$title; 
+            file_put_contents($savefile,$img_data);
+            try {
+                $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+                $upload = $Qiniu->upload($title,$savefile);
+            }catch(\Exception $e){
+                $this->error($e->getMessage());
+            }
+            if($upload)
+            {
+               $data[$key]['title']=$title;
+               $data[$key]['group_id']=0;
+               $data[$key]['path']=$this->qiniu_sdk['url'].$title;
+               $data[$key]['create_time']=date('Y-m-d H:i');
+               $count ++;
+            }
+        }
+        if(count($upload_list)==$count && $count>0)
+        {
+            $this->Picture->insertAll($data); 
+            return $this->putContentImg($content,$data);
+        }else{
+            return '';
+        }
+    }
+
+    /**
+     * 替换文本中的图片路径
+     */
+    function putContentImg($content,$put_list){
+        $ext = 'gif|jpg|jpeg|bmp|png';
+        $preg = "/(href|src)=([\"|']?)([^ \"'>]+\.($ext))\\2/i";
+        preg_match_all($preg, $content, $match);
+        $img = array();
+        $count = 0;
+        $put_list = array_column($put_list, 'path');
+        $content = $this->get_img_thumb_url($content,'replace_src');
+        $count = substr_count($content,'replace_src');
+        $arr = explode('replace_src', $content);
+        foreach ($arr as $key => $value) {
+            foreach ($put_list as $k => $v) {
+                if($key==$k){
+                    $arr[$key] = $value.$v;
+                }
+            }
+        }
+        $text_content = implode($arr);
+        return $text_content;
+    }
+
+    /**
+    * 图片地址替换成压缩URL
+    * @param string $content 内容
+    * @param string $suffix 后缀
+    */
+    function get_img_thumb_url($content,$suffix)
+    {
+        $pregRule = '/src=".*?"/';
+        $content = preg_replace($pregRule,'src="'.$suffix.'"',$content);
+        return $content;
+    }
+      
 }
