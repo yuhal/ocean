@@ -42,7 +42,7 @@
                         </div> 
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-image-color-lens prefix"></i>
-                          <select id="color" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="margin-left: 40px;width:88%">
+                          <select id="color1" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="margin-left: 40px;width:88%">
                             <option value="" disabled selected>选择分类颜色</option>
                             {volist name="colors" id="v"}
                             <option class="<{$v.name}> <{$v.style}>" value="<{$v.value}>"><{$v.value}></option>
@@ -139,7 +139,7 @@
           var length = <{$length}>;
           var colorhtml = $("#color"+i).html();
           var html ="";
-          html += "<div class='row' id='block"+a+"'><div class='input-field col s"+length+"'><i class='mdi-action-loyalty prefix'></i><input id='value"+a+"' type='text' length='16' maxlength='16'><label for='value'>分类名称"+a+"</label></div><div class='input-field col s<{$length}>'><i class='mdi-image-color-lens prefix'></i><select id='color"+a+"' class='browser-default' style='margin-left: 40px;width:88%'><option value='' disabled selected>选择分类颜色</option>"+colorhtml+"</select></div> <div class='input-field col s12'><i class='mdi-action-assignment prefix'></i><input id='intro"+a+"' type='text' length='18' maxlength='18'><label for='intro'>分类简介"+a+"</label></div> </div><div class='divider' id='line"+a+"'></div>"; 
+          html += "<div class='row' id='block"+a+"'><div class='input-field col s"+length+"'><i class='mdi-action-class prefix'></i><input id='value"+a+"' type='text' length='16' maxlength='16'><label for='value'>分类名称"+a+"</label></div><div class='input-field col s<{$length}>'><i class='mdi-image-color-lens prefix'></i><select id='color"+a+"' class='browser-default' style='margin-left: 40px;width:88%'><option value='' disabled selected>选择分类颜色</option>"+colorhtml+"</select></div> <div class='input-field col s12'><i class='mdi-action-assignment prefix'></i><input id='intro"+a+"' type='text' length='18' maxlength='18'><label for='intro'>分类简介"+a+"</label></div> </div><div class='divider' id='line"+a+"'></div>"; 
           $("#list").append(html);
           $("#add-btn").html("<a onclick='addlist("+a+")' title='添加目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-av-playlist-add'></i></a>");
           $("#clear-btn").html("<a onclick='clearlist("+a+")' title='删除目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-content-clear'></i></a>");
