@@ -13,6 +13,18 @@ class Index extends Base
 {
     public function index()
     {
-    	 return $this->fetch();
+    	return $this->fetch();
+    }
+
+    public function userdata()
+    {
+    	return $this->fetch();
+    }
+
+    public function setup()
+    {
+    	$setup_list = $this->SysSetup->getAllSetupName();
+    	$this->assign('setup_list',$setup_list);
+    	return $this->fetch();
     }
 }

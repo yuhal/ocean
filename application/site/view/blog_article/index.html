@@ -38,8 +38,10 @@
                                                 <tr>
                                                     <th>文章标题</th>
                                                     <th data-field="id">文章类型</th>
+                                                    {if is_mobile_request()==false}
                                                     <th data-field="name">发布时间</th>
                                                     <th data-field="price">发布者</th>
+                                                    {/if}
                                                     <th data-field="price"></th>
                                                     <th data-field="price"></th>
                                                 </tr>
@@ -48,16 +50,12 @@
                                                 {volist name="allart" id="v"}
                                                 <tr>
                                                     <td>
-                                                        <strong>
-                                                            <{$v.article_title}>
-                                                        </strong>
+                                                        <strong><{$v.article_title}></strong>
                                                     </td>
-                                                    <td>
-                                                        <a style="color: <{$v.color}>">
-                                                            <i class="mdi-action-class"></i>
-                                                        </a><{$v.value}>
-                                                    </td>
+                                                    {if is_mobile_request()==false}
+                                                    <td><{$v.value}></td>
                                                     <td><{$v.create_time}></td>
+                                                    {/if}
                                                     <td>@HaI</td>
                                                     <td>
                                                         <i title="编辑" onclick="location='create/<{$v.article_id}>'" class="mdi-image-edit"></i>

@@ -1,0 +1,89 @@
+{extend name="base"/}
+{block name="title"}设置 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+{/block}
+{block name="body"}{/block}
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTENT -->
+      <section id="content">
+
+        <!--start container-->
+        <div class="container">  
+            <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card-panel">
+                <div class="row">
+                  <div id="list">    
+                    <div class="row" id="block1">
+                      {volist name="setup_list" id="v"}
+                          {if $v.type=='text'}
+                            <div class="input-field col s12">
+                              <input name="<{$v.name}>" type="text" value="">
+                              <label><{$v.comment}></label>
+                            </div>
+                          {elseif $v.type=='file'} 
+                            <div class="file-field input-field col s10">
+                              <input id="uploadfilename" class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value=""/>
+                              <div class="btn">
+                                <span>选择图片</span>
+                                <input name="<{$v.name}>" type="file" multiple="multiple"/>
+                              </div>
+                            </div>  
+                          {/if}
+                      {/volist}
+                    </div>
+                    <div id="line1" class="divider"></div>
+                  </div>
+                  <div class="row">
+                      <br/>
+                      <div id="sub-btn" class="input-field col s8">
+                        <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
+                        </button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <!--end container-->
+  </section>
+  <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+    <!-- END FOOTER -->
+<script type="text/javascript">
+</script>
+{/block}
+
+
+
+
+

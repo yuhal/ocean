@@ -37,8 +37,9 @@
                                   <li class="collection-item avatar">
                                     <i class="mdi-action-loyalty circle"></i>
                                     <span class="title"><{$v.value}></span>
-                                    <p><{$v.intro}>
-                                      <br> <{$v.update_time}> <span class="new badge"><{$v.count}></span>
+                                    <p>
+                                      {if is_mobile_request()==false} <{$v.intro}> {/if}
+                                      <br><{$v.update_time}> <span class="new badge"><{$v.count}></span>
                                     </p>
                                     
                                     <a style="color:black" class="secondary-content">

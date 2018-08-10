@@ -74,6 +74,10 @@ return [
         //修改图片页面
         'material_picture/edit'         => 'site/material_picture/edit',
     /*********pub*********/
+        //资料修改页面
+        'userdata'       =>  'site/index/userdata',   
+        //设置页面
+        'setup'          =>  'site/index/setup',   
         //软删除,name,id
         'destory/:name/:id'         => ['site/base/destorybyid', ['method' => 'post']],
         //还原，id

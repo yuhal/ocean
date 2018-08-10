@@ -46,6 +46,7 @@ class Base extends Controller
         $this->Picture = model('site/Picture');    
         $this->PictureGroup = model('site/PictureGroup'); 
         $this->Sdk = model('site/Sdk');
+        $this->SysSetup = model('site/SysSetup');
 
         //判断是否是手机登录
         if(is_mobile_request())

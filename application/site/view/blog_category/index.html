@@ -37,7 +37,8 @@
                                   <li class="collection-item avatar">
                                     <i style="background:<{$v.color}>" class="mdi-action-class circle"></i>
                                     <span class="title"><{$v.value}></span>
-                                    <p><{$v.intro|mb_substr=0,16,'utf-8'}>
+                                    <p>
+                                      {if is_mobile_request()==false} <{$v.intro|mb_substr=0,16,'utf-8'}> {/if}
                                       <br> <{$v.update_time}> <span class="new badge"><{$v.count}></span>
                                     </p>
                                     
