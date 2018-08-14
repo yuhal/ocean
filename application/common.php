@@ -34,6 +34,22 @@ function getAccessToken($url,$type){
     }        
 }
 
+function qiniu_upload($file){
+    $ext = get_extension($file['name']);
+    $title = uniqid().'.'.strtolower($ext);
+    $savefile= '/var/www/ocean/runtime/temp/'.$title; 
+    move_uploaded_file($file['tmp_name'],$savefile);
+    try {
+        var_dump('<pre>',config('sdk.qiniu_sdk'));exit;
+        $Qiniu = new \qiniu\QiniuSdk(config('sdk.qiniu_sdk'));
+        $Qiniu->upload($title,$savefile);
+        return $title;
+    }catch(\Exception $e){
+        echo $e->getMessage();exit;
+    }
+    
+}
+
 function parse_data($url,$data=''){
     if(!empty($data)){
         $res=http_request($url,$data);
