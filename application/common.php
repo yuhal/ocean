@@ -34,20 +34,89 @@ function getAccessToken($url,$type){
     }        
 }
 
+/** 
+ * 七牛云上传文件 
+ * 
+ * @param array $file 图片信息 
+ * @return false|array 
+ */
 function qiniu_upload($file){
+    $qiniu_sdk = config('sdk.qiniu_sdk');
     $ext = get_extension($file['name']);
     $title = uniqid().'.'.strtolower($ext);
     $savefile= '/var/www/ocean/runtime/temp/'.$title; 
     move_uploaded_file($file['tmp_name'],$savefile);
     try {
-        var_dump('<pre>',config('sdk.qiniu_sdk'));exit;
-        $Qiniu = new \qiniu\QiniuSdk(config('sdk.qiniu_sdk'));
+        $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
         $Qiniu->upload($title,$savefile);
-        return $title;
+        return $qiniu_sdk['url'].$title;
     }catch(\Exception $e){
-        echo $e->getMessage();exit;
+        return false;
     }
     
+}
+
+/** 
+ * 获取远程文件大小 
+ * 
+ * @param string $url 远程文件的链接 
+ * @return false|array 
+ */
+function getFileSize($url)   
+{   
+    $url = parse_url($url);   
+    if($fp = @fsockopen($url['host'],empty($url['port'])?80:$url['port'],$error))   
+    {   
+        fputs($fp,"GET ".(empty($url['path'])?'/':$url['path'])." HTTP/1.1\r\n");   
+        fputs($fp,"Host:$url[host]\r\n\r\n");   
+        while(!feof($fp))   
+        {   
+            $tmp = fgets($fp);   
+            if(trim($tmp) == '')   
+            {   
+                break;   
+            }  
+            elseif(preg_match('/Content-Length:(.*)/si',$tmp,$arr))   
+            {   
+                return formatSizeUnits(trim($arr[1]));   
+            }   
+        }   
+        return null;   
+    }   
+    else   
+    {   
+        return null;   
+    }   
+}
+
+function formatSizeUnits($bytes)
+{
+    if ($bytes >= 1073741824)
+    {
+        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+    }
+    elseif ($bytes >= 1048576)
+    {
+        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+    }
+    elseif ($bytes >= 1024)
+    {
+        $bytes = number_format($bytes / 1024, 2) . ' KB';
+    }
+    elseif ($bytes > 1)
+    {
+        $bytes = $bytes . ' bytes';
+    }
+    elseif ($bytes == 1)
+    {
+        $bytes = $bytes . ' byte';
+    }
+    else
+    {
+        $bytes = '0 bytes';
+    }
+
+    return $bytes;
 }
 
 function parse_data($url,$data=''){

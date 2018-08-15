@@ -62,9 +62,16 @@ class Login extends Controller
         $re = $this->user->checkLogin($data_p);
         if(!empty($re))
         {
-            $session_data['avatar'] = $re->avatar;
             $session_data['id'] = $re->id;
             $session_data['nick_name'] = $re->nick_name;
+            $session_data['phone'] = $re->phone;
+            $session_data['domain'] = $re->domain;
+            $session_data['avatar'] = $re->avatar;
+            $session_data['sign'] = $re->sign;
+            $session_data['introduce'] = $re->introduce;
+            $session_data['nick_name'] = $re->nick_name;
+            $session_data['contact'] = $re->contact;
+            $session_data['setup'] = $re->setup;
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
             $this->success('登录成功','');

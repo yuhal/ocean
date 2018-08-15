@@ -17,8 +17,6 @@ class MaterialPicture extends Base
     public function __construct()
     {
         parent::__construct();
-        $data = $this->Sdk->getSdkByWhere(array('sdk_name'=>'qiniu_sdk'));
-        config('sdk.qiniu_sdk',$data['sdk_info']);
         $this->qiniu_sdk = config('sdk.qiniu_sdk');
     }
 

@@ -33,18 +33,24 @@
                   <div class="row">   
                     <div class="row">
                       {if is_mobile_request()==false}
-                        {volist name="setup_list" id="v"}
+                        {volist name="setup_list" id="v" key="key"}
                             {if $v.type=='text'}
                               <div class="input-field col s6">
-                                <input name="<{$v.name}>" type="text" value="">
+                                <input name="<{$v.name}>" type="text" value="<{$v.value}>">
                                 <label><{$v.comment}></label>
                               </div>
                             {elseif $v.type=='file'} 
-                              <div class="file-field input-field col s6">
-                                <input class="file-path validate" placeholder="&nbsp;&nbsp;&nbsp;上传<{$v.comment}>" type="text" value=""/>
+                              <div class="file-field input-field col s4">
+                                <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
+                                <div class="col s3 m4 l3">
+                                  <img class="materialboxed" width="100" src="<{$v.value}>">
+                                </div>
+                                <div class="col s7 m4 l7">
+                                  <p>图片大小：<{$v.size}></p>
+                                </div>
                                 <div class="btn">
-                                  <span>选择图片</span>
-                                  <input name="<{$v.name}>" type="file" multiple="multiple"/>
+                                  <span>FILE</span>
+                                  <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
                                 </div>
                               </div>  
                             {/if}
@@ -53,15 +59,21 @@
                         {volist name="setup_list" id="v"}
                             {if $v.type=='text'}
                               <div class="input-field col s12">
-                                <input name="<{$v.name}>" type="text" value="">
+                                <input name="<{$v.name}>" type="text" value="<{$v.value}>">
                                 <label><{$v.comment}></label>
                               </div>
                             {elseif $v.type=='file'} 
                               <div class="file-field input-field col s12">
-                                <input class="file-path validate" placeholder="&nbsp;&nbsp;&nbsp;上传<{$v.comment}>" type="text" value=""/>
+                                <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
+                                <div class="col s3 m4 l3">
+                                  <img class="materialboxed" width="50" src="<{$v.value}>">
+                                </div>
+                                <div class="col s7 m4 l7">
+                                  <p>图片大小：<{$v.size}></p>
+                                </div>
                                 <div class="btn">
-                                  <span>选择图片</span>
-                                  <input name="<{$v.name}>" type="file" multiple="multiple"/>
+                                  <span>FILE</span>
+                                  <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
                                 </div>
                               </div>  
                             {/if}
@@ -114,6 +126,83 @@
           })
        }
     });  
+  }
+  function putfile(obj){
+    var file = obj.files[0];
+    var filesize = formatSizeUnits(file.size);
+    if (window.FileReader) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      //监听文件读取结束后事件
+      reader.onloadend = function (e) {
+        showXY(obj,e.target.result,file.fileName);
+      };
+    }
+  }
+  function formatSizeUnits(bytes){
+    if (bytes >= 1073741824)
+    {
+        bytes = number_format(bytes / 1073741824, 2) + ' GB';
+    }
+    else if (bytes >= 1048576)
+    {
+        bytes = number_format(bytes / 1048576, 2) + ' MB';
+    }
+    else if (bytes >= 1024)
+    {
+        bytes = number_format(bytes / 1024, 2) + ' KB';
+    }
+    else if (bytes > 1)
+    {
+        bytes = bytes + ' bytes';
+    }
+    else if (bytes == 1)
+    {
+        bytes = bytes + ' byte';
+    }
+    else
+    {
+        bytes = '0 bytes';
+    }
+    return bytes;
+  }
+  /**
+   * number_format
+   * @param number 传进来的数,
+   * @param bit 保留的小数位,默认保留两位小数,
+   * @param sign 为整数位间隔符号,默认为空格
+   * @param gapnum 为整数位每几位间隔,默认为3位一隔
+   * @type arguments的作用：arguments[0] == number(之一)
+  */
+  function number_format(number,bit,sign,gapnum){
+      //设置接收参数的默认值
+      var bit    = arguments[1] ? arguments[1] : 2 ;
+      var sign   = arguments[2] ? arguments[2] : ' ' ;
+      var gapnum = arguments[3] ? arguments[3] : 3 ;
+      var str    = '' ;
+
+      number     = number.toFixed(bit);//格式化
+      realnum    = number.split('.')[0];//整数位(使用小数点分割整数和小数部分)
+      decimal    = number.split('.')[1];//小数位
+      realnumarr = realnum.split('');//将整数位逐位放进数组 ["1", "2", "3", "4", "5", "6"]
+      
+      //把整数部分从右往左拼接，每bit位添加一个sign符号
+      for(var i=1;i<=realnumarr.length;i++){
+          str = realnumarr[realnumarr.length-i] + str ;
+          if(i%gapnum == 0){
+              str = sign+str;//每隔gapnum位前面加指定符号
+          }
+      }
+      
+      //当遇到 gapnum 的倍数的时候，会出现比如 ",123",这种情况，所以要去掉最前面的 sign
+      str = (realnum.length%gapnum==0) ? str.substr(1) : str;
+      //重新拼接实数部分和小数位
+      realnum = str+'.'+decimal;
+      return realnum;
+  }
+  //预览图片
+  function showXY(obj,source){
+    $(obj).parents('.file-field').find(".materialboxed").attr("src", source);
   }
 </script>
 {/block}

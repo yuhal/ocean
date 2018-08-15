@@ -38,6 +38,7 @@ class Base extends Controller
         $this->assign('user_info',$this->UserInfo); 
 
         //初始化model
+        $this->User = model('site/User'); 
         $this->Article = model('site/Article');     
         $this->ArticleType = model('site/ArticleType'); 
         $this->ArticleDes = model('site/ArticleDes');     
@@ -56,6 +57,10 @@ class Base extends Controller
             $this->length = 6;
         }
         $this->assign('length',$this->length); 
+
+        //设置config
+        $data = $this->Sdk->getSdkByWhere(array('sdk_name'=>'qiniu_sdk'));
+        config('sdk.qiniu_sdk',$data['sdk_info']);
 
         //加载左边栏
         $left_side['sdk'] = $this->Sdk->getsdk();
