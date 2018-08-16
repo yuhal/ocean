@@ -58,4 +58,33 @@ class User extends Model{
     {
         return $this->where("phone",$username)->value('avatar');
     }
+
+    /**
+     * 设置用户参数
+     * @param id
+     */
+    public function UserSetUp($id){
+        $SysSetupModel = model('site/SysSetup');
+        $regions = array_column($SysSetupModel->getAllSetupRegion(), 'region');
+        $UpdateData = [];
+        $i = 0;
+        foreach ($regions as $key => $value) {
+            $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$value]);
+            $setname = $value.'setup';
+            foreach ($SysSetupRe as $k => $v) {
+                $UpdateData[$setname][$v['name']] = $v['value'];
+            }
+            if($UpdateData[$setname]){
+                $re = $this->where("id",$id)->update(array($setname=>json_encode($UpdateData[$setname])));
+                if($re){
+                    $i++;
+                }
+            }
+        }
+        if($i==count($regions)){
+            return json_encode($UpdateData['insetup']);
+        }else{
+            return false;
+        }
+    }
 }

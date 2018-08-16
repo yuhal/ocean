@@ -21,7 +21,7 @@ class Login extends Controller
     public function __construct()
     {
         parent::__construct();  
-        $this->user = model('site/User');
+        $this->User = model('site/User');
         $this->Qauth_Qc = new Qc();
         $this->Sign = new SaeTOAuthV2(config('sign.appkey'),config('sign.appsecret'));
     }
@@ -59,9 +59,16 @@ class Login extends Controller
     public function login()
     {
         $data_p = input('post.');
-        $re = $this->user->checkLogin($data_p);
+        $re = $this->User->checkLogin($data_p);
         if(!empty($re))
         {
+            if(empty($re->insetup)){
+                //设置用户参数
+                $re->insetup = $this->User->UserSetUp($re->id);
+                if(!$re->insetup){
+                    $this->error('系统异常');        
+                }
+            }
             $session_data['id'] = $re->id;
             $session_data['nick_name'] = $re->nick_name;
             $session_data['phone'] = $re->phone;
@@ -71,7 +78,11 @@ class Login extends Controller
             $session_data['introduce'] = $re->introduce;
             $session_data['nick_name'] = $re->nick_name;
             $session_data['contact'] = $re->contact;
-            $session_data['setup'] = $re->setup;
+            $session_data['insetup'] = $re->insetup;
+            $session_data['outsetup'] = $re->outsetup;
+            foreach (json_decode($re->insetup) as $key => $value) {
+                $session_data[$key] = $value;
+            }    
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
             $this->success('登录成功','');
@@ -91,7 +102,7 @@ class Login extends Controller
         $arr = $qc->get_user_info();
         $session_data['avatar'] = $arr['figureurl_2'];
         $session_data['nick_name'] = $arr['nickname'];
-        $session_data['id'] = $this->user->saveUserInfo($session_data); 
+        $session_data['id'] = $this->User->saveUserInfo($session_data); 
         if($session_data['id']){
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
@@ -118,7 +129,7 @@ class Login extends Controller
         $user_message = $client->show_user_by_id($token['uid']);//根据ID获取用户等基本信息 
         $session_data['avatar'] = $user_message['profile_image_url'];
         $session_data['nick_name'] = $user_message['screen_name'];
-        $session_data['id'] = $this->user->saveUserInfo($session_data); 
+        $session_data['id'] = $this->User->saveUserInfo($session_data); 
         if($session_data['id'])
         {
             session('user_info_'.$session_data['id'],$session_data);
@@ -148,7 +159,7 @@ class Login extends Controller
      */
     public function showavatar($username)
     {
-        $avatar = $this->user->getAvatarByusername($username);
+        $avatar = $this->User->getAvatarByusername($username);
         if($avatar)
         {
             $this->success($avatar);
@@ -165,7 +176,7 @@ class Login extends Controller
         $data_p = input('post.');
         $true_code = cache('code_'.$data_p['phone']);
         if($data_p['vcode']==$true_code){
-            $this->user->savepassword($data_p);
+            $this->User->savepassword($data_p);
             $this->success('保存成功');
         }
         $this->error('验证码错误或者已过期');

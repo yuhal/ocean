@@ -1,4 +1,26 @@
  <!-- START LEFT SIDEBAR NAV-->
+<style type="text/css">
+    ul.side-nav.fixed li.user-details {
+        background: url(<{$user_info.visitingcard}>) no-repeat center center;
+        background-image: url(<{$user_info.visitingcard}>);
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
+        background-repeat-x: no-repeat;
+        background-repeat-y: no-repeat;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color: initial;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        /* overflow: hidden; */
+        margin-bottom: 15px;
+        padding: 15px 0px 0px 15px;
+    }
+</style>
 <aside id="left-sidebar-nav">
     <ul id="slide-out" class="side-nav fixed leftside-navigation">
         <li class="user-details cyan darken-2">
@@ -10,7 +32,7 @@
                     <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="/userdata"><i class="mdi-action-face-unlock"></i> 资料</a>
                         </li>
-                        <li><a href="/setup"><i class="mdi-action-settings"></i> 设置</a>
+                        <li><a href="/setup/in"><i class="mdi-action-settings"></i> 设置</a>
                         </li>
                         <li><a href="/logout"><i class="mdi-hardware-keyboard-tab"></i> 退出</a>
                         </li>

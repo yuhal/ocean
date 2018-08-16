@@ -64,6 +64,7 @@ class Base extends Controller
 
         //加载左边栏
         $left_side['sdk'] = $this->Sdk->getsdk();
+        $left_side['setup'] = $this->SysSetup->getAllSetupRegion();
         $this->assign('left_side',$left_side); 
         $this->assign('uniqid',uniqid()); 
         $this->assign('action',Request::instance()->action());

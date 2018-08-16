@@ -21,9 +21,12 @@ class Index extends Base
     	return $this->fetch();
     }
 
-    public function setup()
+    public function setup($region)
     {
-        $user_setup = json_decode($this->UserInfo['setup'],true);
+        $region = trim($region);
+        $setname = $region.'setup';
+        $UserSetup = json_decode($this->UserInfo[$setname],true);
+        $SysSetupRe = $this->SysSetup->getAllSetupName(['region'=>$region]);
         if(request()->isAjax() && $this->UserInfo['id'])
         {
             $setup = input('post.');
@@ -39,35 +42,65 @@ class Index extends Base
                 }    
             }
             if(empty($setup)){
-                $setup = $this->UserInfo['setup'];    
+                $setup = $this->UserInfo[$setname];    
             }else{
-                $setup = json_encode($setup);
+                $UpdateData = array();
+                if(empty($UserSetup)){
+                    $UserSetup = array();
+                    foreach ($SysSetupRe as $key => $value) {
+                        $UserSetup[$value['name']] = $value['value'];
+                    }
+                }   
+                foreach ($UserSetup as $key => $value) {
+                    $UpdateData[$key] = $value;
+                    foreach ($setup as $k => $v) {
+                        if($key==$k){
+                            $UpdateData[$key] = $v;
+                        }
+                    }
+                }     
+                $UpdateData = json_encode($UpdateData);
             }
-            $re = $this->User->where('id',$this->UserInfo['id'])->update(array('setup'=>$setup));
+            $setname = $region.'setup';
+            $re = $this->User->where('id',$this->UserInfo['id'])->update(array($setname=>$UpdateData));
             if($re || ($re===0))
             {
                 //更改session信息
-                $session_data['setup'] = $setup;
-                session('user_info_'.$this->UserInfo['id'].'.setup',$session_data['setup']);
+                session('user_info_'.$this->UserInfo['id'].'.'.$setname,$setup);
                 $this->success('保存成功');    
             }else{
                 $this->error('保存失败');
             }
         }
-    	$setup_list = $this->SysSetup->getAllSetupName();
-        foreach ($setup_list as $key => $value) {
-            if($user_setup){
-                foreach ($user_setup as $k => $v) {
-                    if($value['type']=='file'){
-                        $setup_list[$key]['size'] = getFileSize($v);
-                    }
-                    if($value['name']==$k){
-                        $setup_list[$key]['value'] = $v;
+        if($SysSetupRe){
+            $SysSetup = array();
+            foreach ($SysSetupRe as $key => $value) {
+                $SysSetup[$key] = $value;
+                if($value['type']=='file'){
+                    $SysSetup[$key]['size'] = getFileSize($value['value']);
+                }
+                if($UserSetup){
+                    foreach ($UserSetup as $k => $v) {
+                        if($value['name']==$k){
+                            if($value['type']=='file'){
+                                $SysSetup[$key]['size'] = getFileSize($v);
+                            }
+                            $SysSetup[$key]['value'] = $v;
+                        }
                     }
                 }
-            }
+            }  
         }
-    	$this->assign('setup_list',$setup_list);
+        //判断是否是手机登录
+        if(is_mobile_request())
+        {
+            $this->length = 12;
+        }else{
+            $this->length = 4;
+        }
+        $this->assign('length',$this->length); 
+        $this->assign('action',$region);
+    	$this->assign('SysSetup',$SysSetup);
     	return $this->fetch();
     }
 }

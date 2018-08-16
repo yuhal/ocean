@@ -24,6 +24,27 @@
             <!-- START CONTENT -->
       <section id="content">
 
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+              <div class="row">
+                  <div class="col s12 m12 l12">
+                      <h5 class="breadcrumbs-title">设置</h5>
+                      <ol class="breadcrumb">
+                        {volist name="left_side.setup" id="v"}
+                          {if $v.region==$action}
+                          <li class="active"><{$v.comment}></li>
+                          {else}
+                          <li><a href="/setup/<{$v.region}>"><{$v.comment}></a></li>
+                          {/if}
+                        {/volist}                                  
+                      </ol>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
         <!--start container-->
         <div class="container">  
             <div class="row">
@@ -32,58 +53,37 @@
                 <form id="postForm" method="post" enctype="multipart/form-data">
                   <div class="row">   
                     <div class="row">
-                      {if is_mobile_request()==false}
-                        {volist name="setup_list" id="v" key="key"}
-                            {if $v.type=='text'}
-                              <div class="input-field col s6">
-                                <input name="<{$v.name}>" type="text" value="<{$v.value}>">
-                                <label><{$v.comment}></label>
-                              </div>
-                            {elseif $v.type=='file'} 
-                              <div class="file-field input-field col s4">
-                                <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
-                                <div class="col s3 m4 l3">
-                                  <img class="materialboxed" width="100" src="<{$v.value}>">
-                                </div>
-                                <div class="col s7 m4 l7">
-                                  <p>图片大小：<{$v.size}></p>
-                                </div>
-                                <div class="btn">
-                                  <span>FILE</span>
-                                  <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
-                                </div>
-                              </div>  
+                      {volist name="SysSetup" id="v" key="key"}
+                        {if $v.type=='text'}
+                          <div class="input-field col s12">
+                            <input name="<{$v.name}>" type="text" value="<{$v.value}>">
+                            {if !$v.value}
+                            <label><{$v.comment}></label>
                             {/if}
-                        {/volist}
-                      {else}
-                        {volist name="setup_list" id="v"}
-                            {if $v.type=='text'}
-                              <div class="input-field col s12">
-                                <input name="<{$v.name}>" type="text" value="<{$v.value}>">
-                                <label><{$v.comment}></label>
-                              </div>
-                            {elseif $v.type=='file'} 
-                              <div class="file-field input-field col s12">
-                                <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
-                                <div class="col s3 m4 l3">
-                                  <img class="materialboxed" width="50" src="<{$v.value}>">
-                                </div>
-                                <div class="col s7 m4 l7">
-                                  <p>图片大小：<{$v.size}></p>
-                                </div>
-                                <div class="btn">
-                                  <span>FILE</span>
-                                  <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
-                                </div>
-                              </div>  
+                          </div>
+                        {elseif $v.type=='file'} 
+                          <div class="file-field input-field col s<{$length}>">
+                            <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
+                            <div class="col s4 m4 l4">
+                              <img class="materialboxed" width="100" alt="<{$v.comment}>" title="<{$v.comment}>" src="<{$v.value}>">
+                            </div>
+                            {if $v.type=='file'}
+                            <div class="col s8 m4 l8">
+                              <p>图片大小：<{$v.size}></p>
+                            </div>
                             {/if}
-                        {/volist}
-                      {/if}
+                            <div class="btn">
+                              <span><{$v.comment}></span>
+                              <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
+                            </div>
+                          </div>  
+                        {/if}
+                      {/volist}
                     </div>
                     <div class="divider"></div>
                     <div class="row">
                         <br/>
-                        <div id="sub-btn" class="input-field col s8">
+                        <div id="sub-btn" class="input-field col s<{$length}>">
                           <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
                           </button>
                         </div>
@@ -115,7 +115,7 @@
     var formData = new FormData($( "#postForm" )[0]);
     $.ajax({
        type: "POST",
-       url: "/setup",
+       url: "/setup/<{$action}>",
        data: formData,  
        async: false,  
        cache: false,  
@@ -135,7 +135,7 @@
       reader.readAsDataURL(file);
       //监听文件读取结束后事件
       reader.onloadend = function (e) {
-        showXY(obj,e.target.result,file.fileName);
+        showXY(filesize,obj,e.target.result,file.fileName);
       };
     }
   }
@@ -201,8 +201,9 @@
       return realnum;
   }
   //预览图片
-  function showXY(obj,source){
+  function showXY(filesize,obj,source){
     $(obj).parents('.file-field').find(".materialboxed").attr("src", source);
+    $(obj).parents('.file-field').find("p").text("图片大小："+ filesize);
   }
 </script>
 {/block}

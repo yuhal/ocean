@@ -119,6 +119,23 @@ function formatSizeUnits($bytes)
     return $bytes;
 }
 
+/** 
+ * 首字母大写转换
+ * 
+ * @param array $arr  
+ * @return false|str 
+ */
+function arrtoucfirst($arr){
+    if(is_array($arr)){
+        $str = '';
+        foreach ($arr as $value) {
+            $str .= ucfirst($value);
+        }    
+        return $str;
+    }
+    return false;
+}
+
 function parse_data($url,$data=''){
     if(!empty($data)){
         $res=http_request($url,$data);
@@ -167,8 +184,14 @@ function getQrcode($url){
     exit;
 }
 
+//文本去除'_=+'
 function str_content_replace($str){
     return str_replace(array("_","=","+"),'',trim(htmlspecialchars($str)));
+}
+
+//文本去空
+function str_content_replace2($str){
+    return preg_replace('# #', '', $str);
 }
 
 function is_mobile_request()  

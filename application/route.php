@@ -77,7 +77,7 @@ return [
         //资料修改页面
         'userdata'       =>  'site/index/userdata',   
         //设置页面
-        'setup'          =>  'site/index/setup',   
+        'setup/:region'          =>  'site/index/setup',   
         //软删除,name,id
         'destory/:name/:id'         => ['site/base/destorybyid', ['method' => 'post']],
         //还原，id
