@@ -24,47 +24,60 @@
             <!-- START CONTENT -->
       <section id="content">
 
-        {include file="material_sdk/breadcrumbs"}
+        {include file="index/breadcrumbs"}
 
         <!--start container-->
         <div class="container">  
             <div class="row">
             <div class="col s12 m12 l12">
               <div class="card-panel">
-                <div class="row">
-                  <div id="list">    
-                    <div class="row" id="block1">
-                      <div class="input-field col s12">
-                        <input name="sdk_info" type="text" value="">
-                        <label>999</label>
-                      </div> 
-                      <div class="input-field col s12">
-                        <input name="sdk_info" type="text" value="">
-                        <label>999</label>
-                      </div> 
-                      <div class="input-field col s12">
-                        <input name="sdk_info" type="text" value="">
-                        <label>999</label>
-                      </div> 
-                      <div class="input-field col s12">
-                        <input name="sdk_info" type="text" value="">
-                        <label>999</label>
-                      </div> 
-                      <div class="input-field col s12">
-                        <input name="sdk_info" type="text" value="">
-                        <label>999</label>
-                      </div> 
+                <form id="postForm" method="post" enctype="multipart/form-data">
+                  <div class="row">   
+                    <div class="row">
+                          <div class="file-field input-field col s<{$length}>">
+                            <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.avatar}>"/>
+                            <div class="col s5 m4 l5">
+                              <img class="materialboxed circle responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.avatar}>">
+                            </div>
+                            <div class="col s5 m4 l7">
+                              <p class="width">图片宽度：<{$avatar.width}></p>
+                              <p class="height">图片高度：<{$avatar.height}></p>
+                              <p class="size">图片大小：<{$avatar.size}></p>
+                            </div>
+                            <div class="btn">
+                              <span>头像</span>
+                              <input onchange="putfile(this)" name="avatar" type="file" multiple="multiple"/>
+                            </div>
+                          </div>
+                          <div class="input-field col s<{$length}>">
+                            <input name="nick_name" type="text" value="<{$user_info.nick_name}>" length="10" maxlength="10">
+                            <label {if $user_info.nick_name} class="active" {/if}>昵称</label>
+                          </div>
+                          <div class="input-field col s<{$length}>">
+                            <input name="sign" type="text" value="<{$user_info.sign}>" length="50" maxlength="50">
+                            <label {if $user_info.sign} class="active" {/if}>个性签名</label>
+                          </div>
+                          <div class="input-field col s<{$length}>">
+                            <textarea name="introduce" class="materialize-textarea" maxlength="255" length="255"><{$user_info.introduce}></textarea>
+                            <label {if $user_info.introduce} class="active" {/if} >个人介绍</label>
+                          </div>
+                          {foreach name="contact" item="v" key="key"}
+                          <div class="input-field col s<{$length}>">
+                            <input name="contact[<{$key}>]" type="text" value="<{$v}>">
+                            <label {if $v } class="active" {/if}><{$key}></label>
+                          </div>
+                          {/foreach}
                     </div>
-                    <div id="line1" class="divider"></div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <br/>
+                        <div id="sub-btn" class="input-field col s<{$length}>">
+                          <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
+                          </button>
+                        </div>
+                    </div>
                   </div>
-                  <div class="row">
-                      <br/>
-                      <div id="sub-btn" class="input-field col s8">
-                        <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
-                        </button>
-                      </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -87,21 +100,17 @@
     <!-- END FOOTER -->
 <script type="text/javascript">
   function checksubmit(){
-    var sdk_info = '';
-    $("input[name='sdk_info']").each(function(){
-        sdk_info += $(this).val()+',';
-    })
+    var formData = new FormData($( "#postForm" )[0]);
     $.ajax({
        type: "POST",
-       url: "/material_sdk/edit",
-       data: {
-        "sdk_info":sdk_info,
-        "id":"<{$sdk.sdk_id}>"
-       },
-       dataType: "json",
+       url: "/userdata",
+       data: formData,  
+       async: false,  
+       cache: false,  
+       contentType: false,  
+       processData: false,  
        success: function(data){
-          Materialize.toast(data.msg,1000,'',function(){
-          })
+          Materialize.toast(data.msg,1000,'',function(){})
        }
     });  
   }

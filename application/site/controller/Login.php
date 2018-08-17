@@ -59,28 +59,22 @@ class Login extends Controller
     public function login()
     {
         $data_p = input('post.');
+        $data_p['id'] = $this->User->where("phone",$data_p['username'])->value('id');
+        if(!$data_p['id']){
+            $this->error('不存在该账号');
+        }
         $re = $this->User->checkLogin($data_p);
         if(!empty($re))
         {
-            if(empty($re->insetup)){
+            if(empty($re['insetup'])){
                 //设置用户参数
-                $re->insetup = $this->User->UserSetUp($re->id);
-                if(!$re->insetup){
+                $re['insetup'] = $this->User->UserSetUp($re['id'],'in');
+                if(!$re['insetup']){
                     $this->error('系统异常');        
                 }
             }
-            $session_data['id'] = $re->id;
-            $session_data['nick_name'] = $re->nick_name;
-            $session_data['phone'] = $re->phone;
-            $session_data['domain'] = $re->domain;
-            $session_data['avatar'] = $re->avatar;
-            $session_data['sign'] = $re->sign;
-            $session_data['introduce'] = $re->introduce;
-            $session_data['nick_name'] = $re->nick_name;
-            $session_data['contact'] = $re->contact;
-            $session_data['insetup'] = $re->insetup;
-            $session_data['outsetup'] = $re->outsetup;
-            foreach (json_decode($re->insetup) as $key => $value) {
+            $session_data = $re;
+            foreach (json_decode($re['insetup']) as $key => $value) {
                 $session_data[$key] = $value;
             }    
             session('user_info_'.$session_data['id'],$session_data);
@@ -154,15 +148,15 @@ class Login extends Controller
     }
 
     /**
-     * 显示登录用户头像
+     * 显示登录用户信息
      * @param $username
      */
-    public function showavatar($username)
+    public function showuserinfo($username)
     {
-        $avatar = $this->User->getAvatarByusername($username);
-        if($avatar)
+        $re = $this->User->where("phone",$username)->field('avatar,nick_name')->find();
+        if($re)
         {
-            $this->success($avatar);
+            $this->success(['avatar'=>$re['avatar'],'nick_name'=>$re['nick_name']]);
         }else{
             $this->error(10040);
         }

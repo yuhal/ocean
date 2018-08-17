@@ -1,5 +1,5 @@
 {extend name="base"/}
-{block name="title"}设置 | {__block__}{/block}
+{block name="title"}资料 | {__block__}{/block}
 {block name="css"} 
 <link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
 <link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -24,26 +24,7 @@
             <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
-              <div class="row">
-                  <div class="col s12 m12 l12">
-                      <h5 class="breadcrumbs-title">设置</h5>
-                      <ol class="breadcrumb">
-                        {volist name="left_side.setup" id="v"}
-                          {if $v.region==$action}
-                          <li class="active"><{$v.comment}></li>
-                          {else}
-                          <li><a href="/setup/<{$v.region}>"><{$v.comment}></a></li>
-                          {/if}
-                        {/volist}                                  
-                      </ol>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <!--breadcrumbs end-->
+        {include file="index/breadcrumbs"}
 
         <!--start container-->
         <div class="container">  
@@ -53,32 +34,14 @@
                 <form id="postForm" method="post" enctype="multipart/form-data">
                   <div class="row">   
                     <div class="row">
-                      {volist name="SysSetup" id="v" key="key"}
-                        {if $v.type=='text'}
-                          <div class="input-field col s12">
-                            <input name="<{$v.name}>" type="text" value="<{$v.value}>">
-                            <label {if $v.value} class="active" {/if}><{$v.comment}></label>
+                          <div class="input-field col s<{$length}>">
+                            <input name="phone" type="text" value="<{$user_info.phone}>" length="11" maxlength="11">
+                            <label {if $user_info.phone} class="active" {/if}>手机号（登录时使用）</label>
                           </div>
-                        {elseif $v.type=='file'} 
-                          <div class="file-field input-field col s<{$length}>">
-                            <input disabled class="file-path validate" placeholder="上传<{$v.comment}>" type="text" value="<{$v.value}>"/>
-                            <div class="col s5 m4 l5">
-                              <img class="materialboxed" width="115" alt="<{$v.comment}>" title="<{$v.comment}>" src="<{$v.value}>">
-                            </div>
-                            {if $v.type=='file'}
-                            <div class="col x7 m4 l7">
-                              <p class="width">图片宽度：<{$v.width}></p>
-                              <p class="height">图片高度：<{$v.height}></p>
-                              <p class="size">图片大小：<{$v.size}></p>
-                            </div>
-                            {/if}
-                            <div class="btn">
-                              <span><{$v.comment}></span>
-                              <input onchange="putfile(this)" name="<{$v.name}>" type="file" multiple="multiple"/>
-                            </div>
-                          </div>  
-                        {/if}
-                      {/volist}
+                          <div class="input-field col s<{$length}>">
+                            <input name="email" type="text" value="<{$user_info.email}>" length="50" maxlength="50">
+                            <label {if $user_info.email} class="active" {/if}>邮箱（找回密码时使用）</label>
+                          </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
@@ -115,7 +78,7 @@
     var formData = new FormData($( "#postForm" )[0]);
     $.ajax({
        type: "POST",
-       url: "/setup/<{$action}>",
+       url: "/binddata",
        data: formData,  
        async: false,  
        cache: false,  

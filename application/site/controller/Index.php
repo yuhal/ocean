@@ -18,7 +18,108 @@ class Index extends Base
 
     public function userdata()
     {
+        $contact = json_decode($this->UserInfo['contact'],true);
+        if(request()->isAjax())
+        {
+            $updateData = input('post.');
+            if(@$_FILES['avatar']['name']){
+                $updateData['avatar'] = qiniu_upload($_FILES['avatar']);    
+            }
+            $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
+            if($re || ($re===0))
+            {
+                //更改session信息
+                foreach ($updateData as $key => $value) {
+                    if($key=='contact'){
+                        session('user_info_'.$this->UserInfo['id'].'.'.$key,json_encode($value));    
+                    }else{
+                        session('user_info_'.$this->UserInfo['id'].'.'.$key,$value);
+                    }
+                }
+                $this->success('保存成功');    
+            }else{
+                $this->error('保存失败');
+            }  
+        }
+        $avatar = myGetImageSize($this->UserInfo['avatar']);
+        $this->assign('avatar',$avatar);
+        $this->assign('contact',$contact);
     	return $this->fetch();
+    }
+
+    public function binddata()
+    {
+        if(request()->isAjax())
+        {
+            $updateData = input('post.');
+            if($updateData['phone'] && !preg_match("/^1[34578]\d{9}$/", $updateData['phone'])){
+                $this->error('手机格式错误');
+            }
+            if ($updateData['email'] && !filter_var($updateData['email'], FILTER_VALIDATE_EMAIL)) {
+                $this->error('邮箱格式错误');  
+            }
+            $unique = $this->User->checkUnique($updateData,$this->UserInfo['id']);
+            if($unique){
+                switch ($unique) {
+                    case 'phone':
+                        $this->error('该手机已被其他用户绑定');
+                        break;
+                    case 'email':
+                        $this->error('该邮箱已被其他用户绑定');
+                        break;
+                }
+            }
+            $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
+            if($re || ($re===0))
+            {
+                //更改session信息
+                foreach ($updateData as $key => $value) {
+                    session('user_info_'.$this->UserInfo['id'].'.'.$key,$value);
+                }
+                $this->success('保存成功');    
+            }else{
+                $this->error('保存失败');
+            }  
+        }
+        return $this->fetch();
+    }
+
+    public function changepwd(){
+        if(request()->isAjax())
+        {
+            $updateData = input('post.');
+            $setPwdData['id'] = $this->UserInfo['id'];
+            $setPwdData['phone'] = $this->UserInfo['phone'];
+            $setPwdData['pwd'] = $updateData['oldpwd'];
+            $updateData['oldpwd'] = $this->User->setPwd($setPwdData);
+            if(!$this->User->checkPwd($updateData['oldpwd'],$this->UserInfo['id'])){
+                $this->error('旧密码输入有误');    
+            }
+            if(!$updateData['newpwd']){
+                $this->error('请设置新密码');
+            }
+            if($updateData['newpwd'] && !preg_match("/^[._a-zA-Z0-9]{6,12}$/",$updateData['newpwd'])){
+                $this->error('密码需要6位以上的数字和字母组合');
+            }
+            if(!$updateData['checkpwd']){
+                $this->error('请再次确认新密码');
+            }
+            if($updateData['newpwd'] != $updateData['checkpwd']){
+                $this->error('两次输入密码不一致');
+            }
+            $setPwdData['pwd'] = $updateData['newpwd'];
+            $updateData['newpwd'] = $this->User->setPwd($setPwdData);
+            $re = $this->User->where('id',$this->UserInfo['id'])->update(array('pwd'=>$updateData['newpwd']));
+            if($re || ($re===0))
+            {
+                //更改session信息
+                session('user_info_'.$this->UserInfo['id'].'.pwd',$updateData['newpwd']);
+                $this->success('修改成功');    
+            }else{
+                $this->error('修改失败');
+            }  
+        }
+        return $this->fetch();
     }
 
     public function setup($region)
@@ -27,7 +128,7 @@ class Index extends Base
         $setname = $region.'setup';
         $UserSetup = json_decode($this->UserInfo[$setname],true);
         $SysSetupRe = $this->SysSetup->getAllSetupName(['region'=>$region]);
-        if(request()->isAjax() && $this->UserInfo['id'])
+        if(request()->isAjax())
         {
             $setup = input('post.');
             $files = array_keys($_FILES);
@@ -77,13 +178,19 @@ class Index extends Base
             foreach ($SysSetupRe as $key => $value) {
                 $SysSetup[$key] = $value;
                 if($value['type']=='file'){
-                    $SysSetup[$key]['size'] = getFileSize($value['value']);
+                    $imageSize = myGetImageSize($value['value']);
+                    $SysSetup[$key]['size'] = $imageSize['size'];
+                    $SysSetup[$key]['width'] = $imageSize['width'];
+                    $SysSetup[$key]['height'] = $imageSize['height'];
                 }
                 if($UserSetup){
                     foreach ($UserSetup as $k => $v) {
                         if($value['name']==$k){
                             if($value['type']=='file'){
-                                $SysSetup[$key]['size'] = getFileSize($v);
+                                $imageSize = myGetImageSize($value['value']);
+                                $SysSetup[$key]['size'] = $imageSize['size'];
+                                $SysSetup[$key]['width'] = $imageSize['width'];
+                                $SysSetup[$key]['height'] = $imageSize['height'];
                             }
                             $SysSetup[$key]['value'] = $v;
                         }

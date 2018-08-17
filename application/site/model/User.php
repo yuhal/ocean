@@ -38,7 +38,50 @@ class User extends Model{
      */
     public function checkLogin($login_info)
     {
-        return $this->where("phone",$login_info['username'])->where("pwd",$login_info['password'])->find();
+        $setPwdData['id'] = $login_info['id'];
+        $setPwdData['phone'] = $login_info['username'];
+        $setPwdData['pwd'] = $login_info['password'];
+        $pwd = $this->setPwd($setPwdData);
+        if($pwd){
+            return $this->where("id",$login_info['id'])->where("pwd",$pwd)->find();    
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * 加密密码
+     * @param login_info
+     */
+    public function setPwd($userInfo)
+    {
+        if(array_key_exists('id', $userInfo) && array_key_exists('phone', $userInfo) && array_key_exists('pwd', $userInfo)){
+            return md5(md5(json_encode($userInfo)));    
+        }
+        return false;
+    }
+
+    /**
+     * 检测密码是否正确
+     * @param login_info
+     */
+    public function checkPwd($pwd,$id)
+    {
+        return $this->where("id",$id)->where("pwd",$pwd)->find();
+    }
+
+    /**
+     * 检测用户信息不重复
+     * @param login_info
+     */
+    public function checkUnique($userInfo,$id)
+    {
+        foreach ($userInfo as $key => $value) {
+            if($this->where($key,$value)->where('id','<>',$id)->find()){
+                return $key;
+            }
+        }
+        return false;
     }
 
     /**
@@ -51,38 +94,21 @@ class User extends Model{
     }
 
     /**
-     * 得到用户头像
-     * @param username
-     */
-    public function getAvatarByusername($username)
-    {
-        return $this->where("phone",$username)->value('avatar');
-    }
-
-    /**
      * 设置用户参数
      * @param id
      */
-    public function UserSetUp($id){
+    public function UserSetUp($id,$region){
         $SysSetupModel = model('site/SysSetup');
-        $regions = array_column($SysSetupModel->getAllSetupRegion(), 'region');
-        $UpdateData = [];
-        $i = 0;
-        foreach ($regions as $key => $value) {
-            $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$value]);
-            $setname = $value.'setup';
-            foreach ($SysSetupRe as $k => $v) {
-                $UpdateData[$setname][$v['name']] = $v['value'];
-            }
-            if($UpdateData[$setname]){
-                $re = $this->where("id",$id)->update(array($setname=>json_encode($UpdateData[$setname])));
-                if($re){
-                    $i++;
-                }
-            }
+        $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$region]);
+        foreach ($SysSetupRe as $k => $v) {
+            $UpdateData[$v['name']] = $v['value'];
         }
-        if($i==count($regions)){
-            return json_encode($UpdateData['insetup']);
+        if($UpdateData){
+            $setname = $region.'setup';
+            $re = $this->where("id",$id)->update(array($setname=>json_encode($UpdateData)));
+        }
+        if($re){
+            return json_encode($UpdateData);
         }else{
             return false;
         }

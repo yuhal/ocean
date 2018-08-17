@@ -31,8 +31,8 @@ return [
         'signlogin'      =>  'site/login/signlogin',
         //微博登录回调
         'signconnect'    =>  'site/login/signcallback',
-        //显示用户头像
-        'showavatar/:username'  =>  ['site/login/showavatar',['method','post']],
+        //显示用户信息
+        'showuserinfo/:username'  =>  ['site/login/showuserinfo',['method','post']],
         //帐号登录
         'dologin'        =>  ['site/login/login',['method','post']],
         //手机验证码页面
@@ -74,8 +74,12 @@ return [
         //修改图片页面
         'material_picture/edit'         => 'site/material_picture/edit',
     /*********pub*********/
-        //资料修改页面
+        //个人信息页面
         'userdata'       =>  'site/index/userdata',   
+        //绑定信息页面
+        'binddata'       =>  'site/index/binddata', 
+        //更改密码页面
+        'changepwd'       =>  'site/index/changepwd',  
         //设置页面
         'setup/:region'          =>  'site/index/setup',   
         //软删除,name,id

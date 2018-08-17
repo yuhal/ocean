@@ -7,13 +7,13 @@
       <div class="row">
         <div class="input-field col s12 center">
           <img id="avatar" src="__STATIC__/images/default-user.png" class="circle responsive-img valign profile-image-login">
-          <p class="center login-form-text">管理中心</p>
+          <p class="center login-form-text" id="nick_name">materialize</p>
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix"></i>
-          <input name="username" id="username" maxlength="11" type="text" onmouseover="showavatar(this);" required/>
+          <input name="username" id="username" maxlength="11" type="text" onFocus="showuserinfo();" onBlur="showuserinfo();" required/>
           <label for="username" class="center-align">输入手机号</label>
         </div>
       </div>
@@ -76,18 +76,19 @@ function login(){
   }); 
 }
 
-//显示用户头像
-function showavatar(a){
+//显示用户信息
+function showuserinfo(){
   var username = document.getElementById("username").value;
   if(username.length==11){
     $.ajax({
        type: "POST",
-       url: "showavatar/"+username,
+       url: "showuserinfo/"+username,
        data: {},
        dataType: "json",
        success: function(data){
         if(data.code==1){
-          document.getElementById("avatar").src=data.msg;
+          document.getElementById("avatar").src=data.msg.avatar;
+          $("#nick_name").text(data.msg.nick_name);
         }else{
           document.getElementById("avatar").src="__STATIC__/images/default-user.png";
         }
