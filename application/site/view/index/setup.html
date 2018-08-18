@@ -1,5 +1,11 @@
 {extend name="base"/}
-{block name="title"}设置 | {__block__}{/block}
+  {block name="title"}
+    {volist name="left_side.setup" id="v"}
+      {if $v.region==$action}
+      <{$v.comment}>
+      {/if}
+    {/volist} | {__block__}
+  {/block}
 {block name="css"} 
 <link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
 <link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
