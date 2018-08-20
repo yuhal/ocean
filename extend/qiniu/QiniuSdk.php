@@ -22,4 +22,15 @@ class QiniuSdk{
 	  	$token = $auth->uploadToken($bucket);
 	  	return $uploadMgr->putFile($token,$file,$filepath);
 	}
+
+	public function uptoken(){
+		// 构建 UploadManager 对象
+	  	$uploadMgr = new UploadManager();
+	  	$auth = new Auth($this->sdk_info['accessKey'],$this->sdk_info['secretKey']);
+	  	$bucket = $this->sdk_info['bucket'];
+	  	// 生成上传Token
+	  	$token = $auth->uploadToken($bucket);
+		$token = substr($token,1);
+	  	return json_encode(array("UpToken"=>$token));
+	}
 }

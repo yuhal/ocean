@@ -7,12 +7,10 @@
  */
 
 namespace app\site\controller;
-
-
 class Index extends Base
 {
     public function index()
-    {
+    {   
     	return $this->fetch();
     }
 
@@ -167,7 +165,7 @@ class Index extends Base
             if($re || ($re===0))
             {
                 //更改session信息
-                session('user_info_'.$this->UserInfo['id'].'.'.$setname,$setup);
+                session('user_info_'.$this->UserInfo['id'].'.'.$setname,$UpdateData);
                 $this->success('保存成功');    
             }else{
                 $this->error('保存失败');

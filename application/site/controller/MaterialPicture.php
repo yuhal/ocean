@@ -180,5 +180,7 @@ class MaterialPicture extends Base
         $content = preg_replace($pregRule,'src="'.$suffix.'"',$content);
         return $content;
     }
+
+
       
 }

@@ -96,4 +96,5 @@ return [
         'qrcode'         =>  'site/qrc/view',   
         //error页面
         'error/[:msg]'   =>  'site/page/pageerror', 
+        'api/uptoken'   =>  'site/login/uptoken', 
 ];

@@ -12,7 +12,13 @@ use oauth\qq\init\QC;
 use oauth\sign\init\SaeTOAuthV2;
 use oauth\sign\init\SaeTClientV2;
 use Endroid\QrCode\QrCode;
-
+header("Content-type:text/html;charset=utf-8");
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods:GET,POST");
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+//主要为跨域CORS配置的两大基本信息,Origin和headers
+ini_set('allow_url_include', 'On');
+ini_set('allow_url_fopen', 'On');
 class Login extends Controller
 {
     /**
@@ -22,8 +28,15 @@ class Login extends Controller
     {
         parent::__construct();  
         $this->User = model('site/User');
+        $this->Sdk = model('site/Sdk');
         $this->Qauth_Qc = new Qc();
         $this->Sign = new SaeTOAuthV2(config('sign.appkey'),config('sign.appsecret'));
+    }
+
+    public function uptoken(){
+        $data = $this->Sdk->getSdkByWhere(array('sdk_name'=>'qiniu_sdk'));
+        $Qiniu = new \qiniu\QiniuSdk($data);
+        return $Qiniu->uptoken();
     }
 
     /**
