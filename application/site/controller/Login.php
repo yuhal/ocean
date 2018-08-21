@@ -34,7 +34,7 @@ class Login extends Controller
     }
 
     public function uptoken(){
-        $data = $this->Sdk->getSdkByWhere(array('sdk_name'=>'qiniu_sdk'));
+        $data = json_decode($this->Sdk->where(array('sdk_name'=>'qiniu_sdk'))->value('sdk_info'),true);
         $Qiniu = new \qiniu\QiniuSdk($data);
         return $Qiniu->uptoken();
     }
