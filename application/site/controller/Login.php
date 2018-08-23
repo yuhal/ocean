@@ -79,10 +79,19 @@ class Login extends Controller
         $re = $this->User->checkLogin($data_p);
         if(!empty($re))
         {
+            $userConfig = config('user');
             if(empty($re['insetup'])){
-                //设置用户参数
-                $re['insetup'] = $this->User->UserSetUp($re['id'],'in');
+                //设置后台系统参数
+                $re['insetup'] = $this->User->UserSetUp($re['id'],'insetup',1);
                 if(!$re['insetup']){
+                    $this->error('系统异常');        
+                }
+            }
+            if(empty($re['advert'])){
+                //设置广告位
+                $advert = json_encode($userConfig['advert']);
+                $re['advert'] = $this->User->UserSetUp($re['id'],'advert',$advert,false);
+                if(!$re['advert']){
                     $this->error('系统异常');        
                 }
             }

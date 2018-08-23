@@ -286,7 +286,19 @@ return [
             'url'       =>  '',
         ],    
     ],
-    
+
+    //user参数配置
+    'user'       =>[
+        'contact' =>  [
+            'github' =>  '',
+            'weibo' =>  '',
+        ],
+        'advert' =>  [
+            'linkurl' =>  '',
+            'imageurl' =>  '',
+        ],  
+    ],
+
     //配置404页面
     'http_exception_template'    =>  [
         404 =>  APP_PATH.'404.html',

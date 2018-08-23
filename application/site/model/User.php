@@ -96,19 +96,29 @@ class User extends Model{
     /**
      * 设置用户参数
      * @param id
+     * @param setName
+     * @param setValue
+     * @param isSysSetup
+     * @param isJson
      */
-    public function UserSetUp($id,$region){
-        $SysSetupModel = model('site/SysSetup');
-        $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$region]);
-        foreach ($SysSetupRe as $k => $v) {
-            $UpdateData[$v['name']] = $v['value'];
-        }
-        if($UpdateData){
-            $setname = $region.'setup';
-            $re = $this->where("id",$id)->update(array($setname=>json_encode($UpdateData)));
+    public function UserSetUp($id,$setName,$setValue='',$isSysSetup=true,$isJson=true){
+        if($isSysSetup){
+            $SysSetupModel = model('site/SysSetup');
+            $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$region]);
+            foreach ($SysSetupRe as $k => $v) {
+                $UpdateData[$v['name']] = $v['value'];
+            }
+            $re = $this->where("id",$id)->update(array($setName=>json_encode($UpdateData)));
+        }else{
+            $UpdateData[$setName] = $setValue;
+            $re = $this->where("id",$id)->update($UpdateData); 
         }
         if($re){
-            return json_encode($UpdateData);
+            if($isJson){
+                return json_encode($UpdateData);   
+            }else{
+                return $UpdateData;
+            }
         }else{
             return false;
         }

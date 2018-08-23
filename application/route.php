@@ -61,6 +61,10 @@ return [
         'blog_category/index'           => 'site/blog_category/index',
         //添加/修改分类页面
         'blog_category/create/[:id]'    => 'site/blog_category/create',
+        //广告位页面
+        'blog_advert/index'             => 'site/blog_advert/index',
+        //最新资讯页面
+        'blog_information/index'        => 'site/blog_information/index',
     /*********sdk*********/
         //sdk页面
         'material_sdk/index/:id'        => 'site/material_sdk/index',

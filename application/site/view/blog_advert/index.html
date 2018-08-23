@@ -1,0 +1,117 @@
+{extend name="base"/}
+{block name="title"}广告位 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+{/block}
+{block name="body"}{/block}
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTENT -->
+      <section id="content">
+      	<!--breadcrumbs start-->
+		<div id="breadcrumbs-wrapper" class=" grey lighten-3">
+			<div class="container">
+			    <div class="row">
+			        <div class="col s12 m12 l12">
+			            <h5 class="breadcrumbs-title">广告位</h5>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!--breadcrumbs end-->
+        <!--start container-->
+        <div class="container">  
+            <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card-panel">
+                <form id="postForm" method="post" enctype="multipart/form-data">
+                  <div class="row">   
+                    <div class="row">
+                          <div class="file-field input-field col s<{$length}>">
+                            <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$advert.imageurl}>"/>
+                            <div class="col s5 m4 l5">
+                              <img class="materialboxed circle responsive-img valign profile-image" width="115" alt="" title="" src="<{$advert.imageurl}>">
+                            </div>
+                            <div class="col s5 m4 l7">
+                              <p class="width">{if isset($advert.image.width)} 图片宽度：<{$advert.image.width}> {/if}</p>
+                              <p class="height">{if isset($advert.image.height)} 图片高度：<{$advert.image.height}> {/if}</p>
+                              <p class="size">{if isset($advert.image.size)} 图片大小：<{$advert.image.size}> {/if}</p>
+                            </div>
+                            <div class="btn">
+                              <span>广告图</span>
+                              <input onchange="putfile(this)" name="file" type="file" multiple="multiple"/>
+                            </div>
+                          </div>
+                          <div class="input-field col s<{$length}>">
+                            <input name="linkurl" type="text" value="<{$advert.linkurl}>" >
+                            <label {if $advert.linkurl} class="active" {/if}>链接地址</label>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <br/>
+                        <div id="sub-btn" class="input-field col s<{$length}>">
+                          <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button">Submit<i class="mdi-content-send right"></i>
+                          </button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <!--end container-->
+  </section>
+  <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+    <!-- END FOOTER -->
+<script type="text/javascript">
+  function checksubmit(){
+    var formData = new FormData($( "#postForm" )[0]);
+    $.ajax({
+       type: "POST",
+       url: "/blog_advert/index",
+       data: formData,  
+       async: false,  
+       cache: false,  
+       contentType: false,  
+       processData: false,  
+       success: function(data){
+          Materialize.toast(data.msg,1000,'',function(){})
+       }
+    });  
+  }
+</script>
+{/block}
+
+
+
+
+
