@@ -49,6 +49,21 @@
                               <input onchange="putfile(this)" name="avatar" type="file" multiple="multiple"/>
                             </div>
                           </div>
+                          <div class="file-field input-field col s<{$length}>">
+                            <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.wxqrcode}>"/>
+                            <div class="col s5 m4 l5">
+                              <img class="materialboxed responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.wxqrcode}>">
+                            </div>
+                            <div class="col s5 m4 l7">
+                              <p class="width">图片宽度：<{$wxqrcode.width}></p>
+                              <p class="height">图片高度：<{$wxqrcode.height}></p>
+                              <p class="size">图片大小：<{$wxqrcode.size}></p>
+                            </div>
+                            <div class="btn">
+                              <span>公众号</span>
+                              <input onchange="putfile(this)" name="wxqrcode" type="file" multiple="multiple"/>
+                            </div>
+                          </div>
                           <div class="input-field col s<{$length}>">
                             <input name="nick_name" type="text" value="<{$user_info.nick_name}>" length="10" maxlength="10">
                             <label {if $user_info.nick_name} class="active" {/if}>昵称</label>

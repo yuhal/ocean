@@ -23,6 +23,10 @@ class Index extends Base
             if(@$_FILES['avatar']['name']){
                 $updateData['avatar'] = qiniu_upload($_FILES['avatar']);    
             }
+            if(@$_FILES['wxqrcode']['name']){
+                $updateData['wxqrcode'] = qiniu_upload($_FILES['wxqrcode']);    
+            }
+
             $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
             if($re || ($re===0))
             {
@@ -40,7 +44,11 @@ class Index extends Base
             }  
         }
         $avatar = myGetImageSize($this->UserInfo['avatar']);
+        //var_dump('<pre>',$this->UserInfo);exit;
+        $wxqrcode = myGetImageSize($this->UserInfo['wxqrcode']);
+
         $this->assign('avatar',$avatar);
+        $this->assign('wxqrcode',$wxqrcode);
         $this->assign('contact',$contact);
     	return $this->fetch();
     }
