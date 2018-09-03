@@ -37,10 +37,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>文章标题</th>
-                                                    <th data-field="id">文章类型</th>
                                                     {if is_mobile_request()==false}
+                                                    <th data-field="id">文章类型</th>
                                                     <th data-field="name">发布时间</th>
-                                                    <th data-field="price">发布者</th>
                                                     {/if}
                                                     <th data-field="price"></th>
                                                     <th data-field="price"></th>
@@ -49,14 +48,15 @@
                                             <tbody>
                                                 {volist name="allart" id="v"}
                                                 <tr>
-                                                    <td>
+                                                    <td onclick="location='http://www.yuhal.com/article/<{$v.article_id}>'">
                                                         <strong><{$v.article_title}></strong>
                                                     </td>
                                                     {if is_mobile_request()==false}
-                                                    <td><{$v.value}></td>
+                                                    <td>
+                                                        <font color="<{$v.color}>"><{$v.value}></font>
+                                                    </td>
                                                     <td><{$v.create_time}></td>
                                                     {/if}
-                                                    <td>@HaI</td>
                                                     <td>
                                                         <i title="编辑" onclick="location='create/<{$v.article_id}>'" class="mdi-image-edit"></i>
                                                     </td>
@@ -75,76 +75,30 @@
                                 </div>
                                 <ul class="pagination" style="float: right;">
                                     {if $p==1}
-                                        <li class="disabled">
-                                        <a><i class="mdi-hardware-keyboard-arrow-left"></i></a>
-                                        </li> 
+                                    <li class="disabled">
+                                    <a><i class="mdi-hardware-keyboard-arrow-left"></i></a>
+                                    </li> 
                                     {else}
-                                        <li class="waves-effect">
-                                        <a href="/blog_article/index/<{$p-1}>"><i class="mdi-hardware-keyboard-arrow-left"></i></a>
-                                        </li> 
-                                    {/if}    
-                                    {if $p<=4}
-                                        {for start="1" end="$p+3"}
-                                            {if $i<$page}
-                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
-                                            </li>
-                                            {/if}   
-                                        {/for} 
-                                        {if $p>1}
-                                            <li class="disabled"><a>...</a></li> 
-                                        {/if}
-                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
+                                    <li class="waves-effect">
+                                    <a href="/blog_article/index/<{$p-1}>"><i class="mdi-hardware-keyboard-arrow-left"></i></a>
+                                    </li> 
+                                    {/if} 
+
+                                    {for start="1" end="$page+1"}
+                                        <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
+                                            <a href="/blog_article/index/<{$i}>"><{$i}></a>
                                         </li>
-                                    {elseif $p>$page-4}
-                                        <li {if $p==1} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/1">1</a>
-                                        </li>
-                                        <li class="disabled"><a>...</a></li> 
-                                        {for start="$p-2" end="$page+1"}
-                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
-                                            </li> 
-                                        {/for}                                 
-                                    {elseif $p-3>1}                    
-                                        <li {if $p==1} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/1">1</a>
-                                        </li>
-                                        <li class="disabled"><a>...</a></li> 
-                                        {for start="$p-2" end="$p+3"}
-                                            {if $i<$page}
-                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
-                                            </li>
-                                            {/if}   
-                                        {/for}
-                                        <li class="disabled"><a>...</a></li> 
-                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
-                                        </li>
-                                    {elseif $p+3<$page}
-                                        {for start="$p-2" end="$p+3"}
-                                            {if $i<$page}
-                                            <li {if $p==$i} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$i}>"><{$i}></a>
-                                            </li>
-                                            {/if}   
-                                        {/for}   
-                                        <li class="disabled"><a>...</a></li>  
-                                        <li {if $p==$page} class="active" {else} class="waves-effect" {/if}>
-                                                <a href="/blog_article/index/<{$page}>"><{$page}></a>
-                                        </li>
-                                    {/if}                               
+                                    {/for}
+
                                     {if $p==$page}
-                                        <li class="disabled">
-                                        <a><i class="mdi-hardware-keyboard-arrow-right"></i></a>
-                                        </li>                           
-                                    {else/}
-                                        <li class="waves-effect">
-                                        <a href="/blog_article/index/<{$p+1}>"><i class="mdi-hardware-keyboard-arrow-right"></i></a>
-                                        </li>
-                                    {/if}
+                                    <li class="disabled">
+                                    <a><i class="mdi-hardware-keyboard-arrow-right"></i></a>
+                                    </li>                           
+                                    {else}
+                                    <li class="waves-effect">
+                                    <a href="/blog_article/index/<{$p+1}>"><i class="mdi-hardware-keyboard-arrow-right"></i></a>
+                                    </li>
+                                    {/if}  
                                </ul>
                             </div>
                         </div>                     

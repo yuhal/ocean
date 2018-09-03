@@ -39,7 +39,7 @@ class BlogTag extends Base
     {
         if(request()->isAjax())
         {
-            $tags = object_to_array(json_decode(input('post.tags/a')[0]));
+            $tags = json_decode(input('post.tags/a')[0],true);
             $tag = [];
             foreach ($tags as $key=>$value) {
                 if(array_key_exists('id',$value)){
@@ -56,6 +56,8 @@ class BlogTag extends Base
                 $this->error('保存失败');
             } 
         }
+        $articleType = $this->ArticleType->getAllArticleType();
+        $this->assign('articleType',$articleType);
         if(!empty($id))
         {
             $obj = $this->ArticleTags;

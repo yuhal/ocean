@@ -36,13 +36,22 @@
                     <div id="list">    
                       <div class="row" id="block1">
                         <div class="input-field col s12">
+                          <i class="mdi-action-class prefix"></i>
+                          <select class="browser-default" style="margin-left: 40px;width:88%">
+                            <option disabled selected>选择标签所属分类</option>
+                            {volist name="articleType" id="v"}
+                            <option value="<{$v.id}>"><{$v.value}></option>
+                            {/volist}
+                          </select>
+                        </div>
+                        <div class="input-field col s12">
                           <i class="mdi-action-loyalty prefix"></i>
                           <input id="value1" type="text" length="16" maxlength="16">
                           <label for="value1">标签名称1</label>
                         </div> 
                         <div class="input-field col s12">
                           <i class="mdi-action-assignment prefix"></i>
-                          <textarea name="intro1" class="materialize-textarea" maxlength="255" length="255"></textarea>
+                          <textarea id="intro1" class="materialize-textarea" maxlength="255" length="255"></textarea>
                           <label for="intro1">标签简介1</label>
                         </div> 
                       </div>
@@ -94,14 +103,11 @@
                 Materialize.toast('标签名称'+a+'不能为空', 1000);
                 return false;
             }else if(checks(value)){
-                Materialize.toast('不能含有特殊字符', 1000);
+                Materialize.toast('标签名称不能含有特殊字符', 1000);
                 return false;
             }
-            if(intro==""){
-                Materialize.toast('标签简介'+a+'不能为空', 1000);
-                return false;
-            }else if(checks(intro)){
-                Materialize.toast('不能含有特殊字符', 1000);
+            if(intro && checks(intro)){
+                Materialize.toast('标签简介不能含有特殊字符', 1000);
                 return false;
             }
             tags += '{"value":"'+value+'","intro":"'+intro+'"},';

@@ -48,4 +48,16 @@ class ArticleType extends Model{
         ->order('id desc')
         ->select();
     }
+
+    /**
+     * 查询所有的分类
+     * @param where
+     */
+    public function getAllArticleType($where="")
+    {
+        return $this->where($where)
+        ->field('id,value')
+        ->order('id desc')
+        ->select();
+    }
 }

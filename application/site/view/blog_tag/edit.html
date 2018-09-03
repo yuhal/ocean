@@ -41,7 +41,7 @@
                         </div> 
                         <div class="input-field col s12">
                           <i class="mdi-action-assignment prefix"></i>
-                          <textarea name="intro" class="materialize-textarea" maxlength="255" length="255"><{$content.intro}></textarea>
+                          <textarea id="intro" class="materialize-textarea" maxlength="255" length="255"><{$content.intro}></textarea>
                           <label for="intro" class="active">标签简介</label>
                         </div> 
                       </div>
@@ -86,11 +86,8 @@
               Materialize.toast('不能含有特殊字符', 1000);
               return false;
           }
-          if(intro==""){
-              Materialize.toast('标签简介不能为空', 1000);
-              return false;
-          }else if(checks(intro)){
-              Materialize.toast('不能含有特殊字符', 1000);
+          if(intro && checks(intro)){
+              Materialize.toast('标签简介不能含有特殊字符', 1000);
               return false;
           }
           var tags = '[{"id":"'+id+'","value":"'+value+'","intro":"'+intro+'"}]';

@@ -28,8 +28,11 @@ class BlogArticle extends Base
     {
         $title = str_content_replace($title);
         $where = isset($title) ? "article_id>0 and article_title like '%{$title}%'" : "";
-        $allart = $this->Article->getAllArticleByWhere($p,$where,$this->pageSize);
         $count= $this->Article->getAllArticleCountByWhere($where);
+        if((is_mobile_request()==true) && ($count>100)){
+            $this->pageSize = ceil($count/9);
+        }
+        $allart = $this->Article->getAllArticleByWhere($p,$where,$this->pageSize);
         $page = ceil($count/$this->pageSize);
         $this->assign('allart',$allart);
         $this->assign('p',$p);
