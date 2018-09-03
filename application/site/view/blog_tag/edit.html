@@ -34,12 +34,21 @@
                 <div class="row">
                   <form class="col s12">   
                       <div class="row" >
-                        <div class="input-field col s12">
+                        <div class="input-field col s<{$length}>">
+                          <i class="mdi-action-class prefix"></i>
+                          <select id="type_id" class="browser-default" style="margin-left: 40px;width:88%">
+                            <option disabled>选择标签所属分类</option>
+                            {volist name="articleType" id="v"}
+                            <option {if $content.type_id==$v.id} selected {/if} value="<{$v.id}>"><{$v.value}></option>
+                            {/volist}
+                          </select>
+                        </div>
+                        <div class="input-field col s<{$length}>">
                           <i class="mdi-action-loyalty prefix"></i>
                           <input id="value" type="text" length="16" maxlength="16" value="<{$content.value}>">
                           <label for="value" class="active">标签名称</label>
                         </div> 
-                        <div class="input-field col s12">
+                        <div class="input-field col s<{$length}>">
                           <i class="mdi-action-assignment prefix"></i>
                           <textarea id="intro" class="materialize-textarea" maxlength="255" length="255"><{$content.intro}></textarea>
                           <label for="intro" class="active">标签简介</label>
@@ -77,8 +86,13 @@
 
     <script type="text/javascript">
       function checksubmit(id){
+          var type_id = document.getElementById('type_id').value;
           var value = document.getElementById('value').value;
           var intro = document.getElementById('intro').value; 
+          if(type_id==""){
+              Materialize.toast('请选择选择标签所属分类', 1000);
+              return false;
+          }
           if(value==""){
               Materialize.toast('标签名称不能为空', 1000);
               return false;
@@ -90,7 +104,7 @@
               Materialize.toast('标签简介不能含有特殊字符', 1000);
               return false;
           }
-          var tags = '[{"id":"'+id+'","value":"'+value+'","intro":"'+intro+'"}]';
+          var tags = '[{"id":"'+id+'","value":"'+value+'","intro":"'+intro+'","type_id":"'+type_id+'"}]';
           $.ajax({
              type: "POST",
              url: "/blog_tag/create",

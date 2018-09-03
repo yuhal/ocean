@@ -47,6 +47,7 @@ class BlogTag extends Base
                 }
                 $tag[$key]['value'] = $value['value'];
                 $tag[$key]['intro'] = $value['intro'];
+                $tag[$key]['type_id'] = $value['type_id'];
             }
             $re = $this->ArticleTags->allowField(true)->saveAll($tag);
             if($re)
