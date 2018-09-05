@@ -394,3 +394,16 @@ function checkuc($file){
     }
     return true;
 }
+
+function arraySort($arr, $keys, $type = 'asc') {
+    $keysvalue = $new_array = array();
+    foreach ($arr as $k => $v){
+        $keysvalue[$k] = $v[$keys];
+    }
+    $type == 'asc' ? asort($keysvalue) : arsort($keysvalue);
+    reset($keysvalue);
+    foreach ($keysvalue as $k => $v) {
+       $new_array[$k] = $arr[$k];
+    }
+    return $new_array;
+}

@@ -25,8 +25,10 @@ class BlogCategory extends Base
     {
         $categories = $this->ArticleType->getAllArticleTypeByWhere();
         foreach ($categories as $key => $value) {
-            $value['count'] = $this->Article->getAticleCountsByTypeId($value['id']);
+            $value['tags'] = $this->ArticleTags->getAllTagsByWhere(['type_id'=>$value['id']]);
+            $value['tagcount'] = count($value['tags']);
         }
+        $categories = arraySort($categories,'tagcount','desc');
         $this->assign('categories',$categories);
 	    return $this->fetch();
 	}
