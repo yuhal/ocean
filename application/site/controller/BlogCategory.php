@@ -19,7 +19,7 @@ class BlogCategory extends Base
     }
 
     /**
-     * 文章分类列表
+     * 分类&标签列表
      */
 	public function index()
     {
@@ -37,9 +37,9 @@ class BlogCategory extends Base
      * 创建文章分类
      * @param id
      */
-    public function create($id='')
+    public function article_type($id='')
     {
-        $colors = $this->SysColor->getAllColorsByWhere();
+        $colors = $this->SysColor::select();
         $this->assign('colors',$colors);
         $this->assign('length',$this->length);
         if(request()->isAjax())
@@ -71,7 +71,49 @@ class BlogCategory extends Base
                 $this->redirect('/error');
             }
             $this->assign('content',$content);
-            return $this->fetch('edit');
+            return $this->fetch('edit_article_type');
+        }
+        return $this->fetch();
+    }
+
+    /**
+     * 创建文章标签
+     * @param id
+     */
+    public function article_tag($id='')
+    {
+        if(request()->isAjax())
+        {
+            $tags = json_decode(input('post.tags/a')[0],true);
+            $tag = [];
+            foreach ($tags as $key=>$value) {
+                if(array_key_exists('id',$value)){
+                $tag[$key]['id'] = $value['id'];    
+                }
+                $tag[$key]['value'] = $value['value'];
+                $tag[$key]['intro'] = $value['intro'];
+                $tag[$key]['type_id'] = $value['type_id'];
+            }
+            $re = $this->ArticleTags->allowField(true)->saveAll($tag);
+            if($re)
+            {
+                $this->success('保存成功');
+            }else{
+                $this->error('保存失败');
+            } 
+        }
+        $articleType = $this->ArticleType->getAllArticleType();
+        $this->assign('articleType',$articleType);
+        if(!empty($id))
+        {
+            $obj = $this->ArticleTags;
+            $content = $obj::get($id);
+            if(empty($content))
+            {
+                $this->redirect('/error');
+            }
+            $this->assign('content',$content);
+            return $this->fetch('edit_article_tag');
         }
         return $this->fetch();
     }

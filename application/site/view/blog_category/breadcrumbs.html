@@ -3,14 +3,20 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col s12 m12 l12">
-	            <h5 class="breadcrumbs-title">分类</h5>
+	            <h5 class="breadcrumbs-title">分类&标签</h5>
 	            <ol class="breadcrumb">
 	            	{if $action=="index"}
-	                <li class="active">分类列表</li>
-	                <li><a href="/blog_category/create">创建分类</a></li> 
-	                {else}
-	                <li><a href="/blog_category/index">分类列表</a></li>
+	                <li class="active">分类&标签</li>
+	                <li><a href="/blog_category/article_type">创建分类</a></li> 
+	                <li><a href="/blog_category/article_tag">创建标签</a></li> 
+	                {elseif $action=="article_type"}
+	                <li><a href="/blog_category/index">分类&标签</a></li>
 	                <li class="active">创建分类</li> 
+	                <li><a href="/blog_category/article_tag">创建标签</a></li> 
+	                {elseif $action=="article_tag"}
+	                <li><a href="/blog_category/index">分类&标签</a></li>
+	                <li><a href="/blog_category/article_type">创建分类</a></li> 
+	                <li class="active">创建标签</li> 
 	                {/if}                               
 	            </ol>
 	        </div>
@@ -19,7 +25,7 @@
 </div>
 <script type="text/javascript">
 	function change_color(color){
-    	$("#color").css("background-color",color);
+    	$("#color1").css("background-color",color);
   	}
 </script>
 <!--breadcrumbs end-->

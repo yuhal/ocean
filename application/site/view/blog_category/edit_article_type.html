@@ -37,21 +37,21 @@
                       <div class="row" id="block1">
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-action-class prefix"></i>
-                          <input id="value" type="text" length="16" maxlength="16" value="<{$content.value}>">
+                          <input id="value1" type="text" length="16" maxlength="16" value="<{$content.value}>">
                           <label for="value" class="active">分类名称</label>
                         </div> 
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-image-color-lens prefix"></i>
-                          <select id="color" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="background-color:<{$content.color}>; margin-left: 40px;width:88%">
+                          <select id="color1" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="background-color:<{$content.color}>; margin-left: 40px;width:88%">
                             <option value="" disabled>选择分类颜色</option>
                             {volist name="colors" id="v"}
-                            <option {if $content.color==$v.value} selected {/if} class="<{$v.name}> <{$v.style}>" value="<{$v.value}>"><{$v.value}></option>
+                            <option {if $content.color==$v.color} selected {/if} class="<{$v.color}>" value="<{$v.color}>"><{$v.name}></option>
                             {/volist}
                           </select>
                         </div>
                         <div class="input-field col s12">
                           <i class="mdi-action-assignment prefix"></i>
-                          <input id="intro" type="text" length="18" maxlength="18" value="<{$content.intro}>">
+                          <input id="intro1" type="text" length="18" maxlength="18" value="<{$content.intro}>">
                           <label for="intro" class="active">分类简介</label>
                         </div> 
                       </div>
@@ -87,9 +87,9 @@
 
     <script type="text/javascript">
       function checksubmit(id){
-          var value = document.getElementById('value').value;
-          var color = document.getElementById('color').value;
-          var intro = document.getElementById('intro').value; 
+          var value = document.getElementById('value1').value;
+          var color = document.getElementById('color1').value;
+          var intro = document.getElementById('intro1').value; 
           if(value==""){
               Materialize.toast('分类名称不能为空', 1000);
               return false;

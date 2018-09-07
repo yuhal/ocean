@@ -53,14 +53,12 @@ return [
         'blog_article/index/[:p]'   => 'site/blog_article/index',
         //添加/修改文章页面
         'blog_article/create/[:id]' => 'site/blog_article/create',
-        //标签列表页面
-        'blog_tag/index'            => 'site/blog_tag/index',
-        //添加/修改标签页面
-        'blog_tag/create/[:id]'     => 'site/blog_tag/create',
-        //分类列表页面
+        //分类&标签列表页面
         'blog_category/index'           => 'site/blog_category/index',
+        //添加/修改标签页面
+        'blog_category/article_tag/[:id]'     => 'site/blog_category/article_tag',
         //添加/修改分类页面
-        'blog_category/create/[:id]'    => 'site/blog_category/create',
+        'blog_category/article_type/[:id]'    => 'site/blog_category/article_type',
         //广告位页面
         'blog_advert/index'             => 'site/blog_advert/index',
         //最新资讯页面

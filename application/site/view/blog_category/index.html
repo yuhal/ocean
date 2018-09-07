@@ -31,45 +31,45 @@
                         <!--Creating Responsive Layouts-->
                         <div id="badge-example">
                             <div class="row">
-                              {volist name="categories" id="cate"}   
+                              {volist name="categories" id="article_type"}   
                               <div class="col s12 m8 l<{$length}>">
                                 <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
                                   <li class="">
                                     <div class="collapsible-header">
-                                        <i style="color:<{$cate.color}>" class="mdi-action-class"></i> <{$cate.value}>
+                                        <i style="color:<{$article_type.color}>" class="mdi-action-class"></i> <{$article_type.value}>
                                         <a style="color:black" class="secondary-content">
-                                            <i onclick="location='/blog_category/create/<{$cate.id}>'" title="编辑" class="mdi-image-edit"></i>
-                                            {if $cate.delete_time}
-                                            <i onclick="dispatchById('article_type','restore','<{$cate.id}>')" title="还原" class="mdi-action-settings-backup-restore"></i>
+                                            <i onclick="location='/blog_category/article_type/<{$article_type.id}>'" title="编辑" class="mdi-image-edit"></i>
+                                            {if $article_type.delete_time}
+                                            <i onclick="dispatchById('article_type','restore','<{$article_type.id}>')" title="还原" class="mdi-action-settings-backup-restore"></i>
                                             {else}
-                                            <i onclick="dispatchById('article_type','destory','<{$cate.id}>')" title="删除" class="mdi-action-delete"></i>
+                                            <i onclick="dispatchById('article_type','destory','<{$article_type.id}>')" title="删除" class="mdi-action-delete"></i>
                                             {/if}
                                         </a>
                                     </div>
                                     <div class="collapsible-body" style="display: none;">
                                       <p>
-                                        {if $cate.update_time}<i class="mdi-action-query-builder tiny"></i> <{$cate.update_time}><br/>{/if}
-                                        <{$cate.intro}>
+                                        {if $article_type.update_time}<i class="mdi-action-query-builder tiny"></i> <{$article_type.update_time}><br/>{/if}
+                                        <{$article_type.intro}>
                                       </p>
                                     </div>
                                   </li>  
-                                  {volist name="cate.tags" id="tag"} 
+                                  {volist name="article_type.tags" id="article_tag"} 
                                   <li class="">
                                     <div class="collapsible-header">
-                                        <i style="color:<{$cate.color}>" class="mdi-action-loyalty"></i> <{$tag.value}>
+                                        <i style="color:<{$article_type.color}>" class="mdi-action-loyalty"></i> <{$article_tag.value}>
                                         <a style="color:black" class="secondary-content">
-                                            <i onclick="location='/blog_tag/create/<{$tag.id}>'" title="编辑" class="mdi-image-edit"></i>
-                                            {if $tag.delete_time}
-                                            <i onclick="dispatchById('article_tags','restore','<{$tag.id}>')" title="还原" class="mdi-action-settings-backup-restore"></i>
+                                            <i onclick="location='/blog_category/article_tag/<{$article_tag.id}>'" title="编辑" class="mdi-image-edit"></i>
+                                            {if $article_tag.delete_time}
+                                            <i onclick="dispatchById('article_tags','restore','<{$article_tag.id}>')" title="还原" class="mdi-action-settings-backup-restore"></i>
                                             {else}
-                                            <i onclick="dispatchById('article_tags','destory','<{$tag.id}>')" title="删除" class="mdi-action-delete"></i>
+                                            <i onclick="dispatchById('article_tags','destory','<{$article_tag.id}>')" title="删除" class="mdi-action-delete"></i>
                                             {/if}
                                         </a>
                                     </div>
                                     <div class="collapsible-body" style="display: none;">
                                       <p>
-                                        {if $cate.update_time}<i class="mdi-action-query-builder tiny"></i> <{$tag.update_time}><br/>{/if}
-                                        <{$tag.intro}>
+                                        {if $article_type.update_time}<i class="mdi-action-query-builder tiny"></i> <{$article_tag.update_time}><br/>{/if}
+                                        <{$article_tag.intro}>
                                       </p>
                                     </div>
                                   </li>
