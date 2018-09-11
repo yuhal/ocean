@@ -36,22 +36,22 @@
                     <div id="list">    
                       <div class="row" id="block1">
                         <div class="input-field col s<{$length}>">
-                          <i class="mdi-action-class prefix"></i>
-                          <input id="value1" type="text" length="16" maxlength="16" value="<{$content.value}>">
-                          <label for="value" class="active">分类名称</label>
-                        </div> 
-                        <div class="input-field col s<{$length}>">
                           <i class="mdi-image-color-lens prefix"></i>
                           <select id="color1" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="background-color:<{$content.color}>; margin-left: 40px;width:88%">
-                            <option value="" disabled>选择分类颜色</option>
+                            <option disabled>选择分类颜色</option>
                             {volist name="colors" id="v"}
                             <option {if $content.color==$v.color} selected {/if} class="<{$v.color}>" value="<{$v.color}>"><{$v.name}></option>
                             {/volist}
                           </select>
                         </div>
-                        <div class="input-field col s12">
+                        <div class="input-field col s<{$length}>">
+                          <i class="mdi-action-class prefix"></i>
+                          <input id="value1" type="text" length="16" maxlength="16" value="<{$content.value}>">
+                          <label for="value" class="active">分类名称</label>
+                        </div> 
+                        <div class="input-field col s<{$length}>">
                           <i class="mdi-action-assignment prefix"></i>
-                          <input id="intro1" type="text" length="18" maxlength="18" value="<{$content.intro}>">
+                          <textarea id="intro1" class="materialize-textarea" maxlength="255" length="255"><{$content.intro}></textarea>
                           <label for="intro" class="active">分类简介</label>
                         </div> 
                       </div>
@@ -111,7 +111,7 @@
           var categories = '[{"id":"'+id+'","value":"'+value+'","color":"'+color+'","intro":"'+intro+'"}]'; 
           $.ajax({
              type: "POST",
-             url: "/blog_category/create",
+             url: "/blog_category/article_type",
              data: {
               "categories":categories
              },

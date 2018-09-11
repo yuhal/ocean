@@ -44,7 +44,7 @@ class BlogCategory extends Base
         $this->assign('length',$this->length);
         if(request()->isAjax())
         {
-            $categories = object_to_array(json_decode(input('post.categories/a')[0]));
+            $categories = json_decode(input('post.categories/a')[0],true);
             $category = [];
             foreach ($categories as $key=>$value) {
                 if(array_key_exists('id',$value)){
@@ -77,6 +77,23 @@ class BlogCategory extends Base
     }
 
     /**
+     * 获取单个文章分类信息
+     * @param id
+     */
+    public function get_article_type($id){
+        if(request()->isAjax())
+        {
+            $re = $this->ArticleType::get($id);
+            if($re)
+            {
+                $this->success('查询成功','',$re);
+            }else{
+                $this->error('查询失败');
+            }     
+        }
+    }
+
+    /**
      * 创建文章标签
      * @param id
      */
@@ -102,7 +119,7 @@ class BlogCategory extends Base
                 $this->error('保存失败');
             } 
         }
-        $articleType = $this->ArticleType->getAllArticleType();
+        $articleType = $this->ArticleType->getAllArticleTypeByWhere();
         $this->assign('articleType',$articleType);
         if(!empty($id))
         {

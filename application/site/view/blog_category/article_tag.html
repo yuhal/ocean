@@ -24,7 +24,7 @@
             <!-- START CONTENT -->
       <section id="content">
 
-        {include file="blog_tag/breadcrumbs"}
+        {include file="blog_category/breadcrumbs"}
 
         <!--start container-->
         <div class="container">  
@@ -37,8 +37,8 @@
                       <div class="row" id="block1">
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-action-class prefix"></i>
-                          <select id="type_id1" class="browser-default" style="margin-left: 40px;width:88%">
-                            <option disabled>选择标签所属分类</option>
+                          <select id="type_id1" onchange="change_color2(this.options[this.options.selectedIndex].value,1)" class="browser-default" style="margin-left: 40px;width:88%">
+                            <option disabled selected>选择标签所属分类</option>
                             {volist name="articleType" id="v"}
                             <option value="<{$v.id}>"><{$v.value}></option>
                             {/volist}
@@ -119,7 +119,7 @@
           tags=tags.substr(0,tags.length-1)+']';  
           $.ajax({
              type: "POST",
-             url: "/blog_tag/create",
+             url: "/blog_category/article_tag",
              data: {
               "tags":tags
              },
@@ -135,7 +135,7 @@
           var a = i+1;
           var html ="";
           var length = "<{$length}>";
-          var articleTypeHtml_1 = "<div class='input-field col s"+length+"'><i class='mdi-action-class prefix'></i><select id='type_id"+a+"' class='browser-default' style='margin-left: 40px;width:88%'>";
+          var articleTypeHtml_1 = "<div class='input-field col s"+length+"'><i class='mdi-action-class prefix'></i><select id='type_id"+a+"' onchange='change_color2(this.options[this.options.selectedIndex].value,"+a+")' class='browser-default' style='margin-left: 40px;width:88%'>";
           var articleTypeHtml_2 = document.getElementById('type_id1').innerHTML;
           var articleTypeHtml_3 = "</select></div>";
           html += "<div class='row' id='block"+a+"'>"+articleTypeHtml_1+articleTypeHtml_2+articleTypeHtml_3+"<div class='input-field col s"+length+"'><i class='mdi-action-loyalty prefix'></i><input id='value"+a+"' type='text' length='16' maxlength='16'><label for='value'>标签名称"+a+"</label></div> <div class='input-field col s"+length+"'><i class='mdi-action-assignment prefix'></i><textarea id='intro"+a+"' class='materialize-textarea' maxlength='255' length='255'></textarea><label for='intro'>标签简介"+a+"</label></div> </div><div class='divider' id='line"+a+"'></div>"; 

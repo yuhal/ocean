@@ -24,8 +24,18 @@
 	</div>
 </div>
 <script type="text/javascript">
-	function change_color(color){
-    	$("#color1").css("background-color",color);
+	function change_color(color,i){
+    	$("#color"+i).css("background-color",color);
+  	}
+  	function change_color2(id,i){
+  		$.ajax({
+	     type: "POST",
+	     url: "/blog_category/get_article_type/"+id,
+	     dataType: "json",
+	     success: function(data){
+	        $("#type_id"+i).css("background-color",data.data.color); 
+	     }
+      	});  
   	}
 </script>
 <!--breadcrumbs end-->

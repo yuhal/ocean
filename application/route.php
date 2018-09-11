@@ -59,6 +59,8 @@ return [
         'blog_category/article_tag/[:id]'     => 'site/blog_category/article_tag',
         //添加/修改分类页面
         'blog_category/article_type/[:id]'    => 'site/blog_category/article_type',
+        //查询单个分类的信息
+        'blog_category/get_article_type/:id'  => 'site/blog_category/get_article_type',
         //广告位页面
         'blog_advert/index'             => 'site/blog_advert/index',
         //最新资讯页面

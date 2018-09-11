@@ -24,7 +24,7 @@
             <!-- START CONTENT -->
       <section id="content">
 
-        {include file="blog_tag/breadcrumbs"}
+        {include file="blog_category/breadcrumbs"}
 
         <!--start container-->
         <div class="container">  
@@ -36,7 +36,7 @@
                       <div class="row" >
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-action-class prefix"></i>
-                          <select id="type_id" class="browser-default" style="margin-left: 40px;width:88%">
+                          <select id="type_id" onchange="change_color2(this.options[this.options.selectedIndex].value,1)" class="browser-default" style="margin-left: 40px;width:88%">
                             <option disabled>选择标签所属分类</option>
                             {volist name="articleType" id="v"}
                             <option {if $content.type_id==$v.id} selected {/if} value="<{$v.id}>"><{$v.value}></option>
@@ -107,7 +107,7 @@
           var tags = '[{"id":"'+id+'","value":"'+value+'","intro":"'+intro+'","type_id":"'+type_id+'"}]';
           $.ajax({
              type: "POST",
-             url: "/blog_tag/create",
+             url: "/blog_category/article_tag",
              data: {
               "tags":tags
              },
