@@ -37,7 +37,7 @@
                       <div class="row" id="block1">
                         <div class="input-field col s<{$length}>">
                           <i class="mdi-image-color-lens prefix"></i>
-                          <select id="color1" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="background-color:<{$content.color}>; margin-left: 40px;width:88%">
+                          <select id="color1" onchange="change_color(this.options[this.options.selectedIndex].value)" class="browser-default" style="background-color: <{$content.color}>; margin-left: 40px;width:88%">
                             <option disabled>选择分类颜色</option>
                             {volist name="colors" id="v"}
                             <option {if $content.color==$v.color} selected {/if} class="<{$v.color}>" value="<{$v.color}>"><{$v.name}></option>
@@ -101,10 +101,7 @@
               Materialize.toast('选择一个分类颜色', 1000);
               return false;
           }
-          if(intro==""){
-              Materialize.toast('分类简介不能为空', 1000);
-              return false;
-          }else if(checks(intro)){
+          if(checks(intro) && intro!=""){
               Materialize.toast('不能含有特殊字符', 1000);
               return false;
           }

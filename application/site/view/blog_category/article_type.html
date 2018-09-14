@@ -110,10 +110,7 @@
                 Materialize.toast('选择一个分类颜色', 1000);
                 return false;
             }
-            if(intro==""){
-                Materialize.toast('分类简介'+a+'不能为空', 1000);
-                return false;
-            }else if(checks(intro)){
+            if(checks(intro) && intro!=""){
                 Materialize.toast('不能含有特殊字符', 1000);
                 return false;
             }

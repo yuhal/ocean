@@ -277,7 +277,7 @@ return [
         'openid'    =>  'opq8Y1SXvx-2JtJyBCVO-0sWNK0s'
     ],
 
-    //七牛云sdk
+    //sdk
     'sdk'       =>[
         'qiniu_sdk' =>  [
             'accessKey' =>  '',
