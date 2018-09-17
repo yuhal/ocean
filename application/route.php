@@ -61,6 +61,8 @@ return [
         'blog_category/article_type/[:id]'    => 'site/blog_category/article_type',
         //查询单个分类的信息
         'blog_category/get_article_type/:id'  => 'site/blog_category/get_article_type',
+        //修改最新资讯
+        'blog_information/create/[:id]'    => 'site/blog_information/create',
         //广告位页面
         'blog_advert/index'             => 'site/blog_advert/index',
         //最新资讯页面
@@ -87,7 +89,7 @@ return [
         //设置页面
         'setup/:region'          =>  'site/index/setup',   
         //软删除,name,id
-        'destory/:name/:id'         => ['site/base/destorybyid', ['method' => 'post']],
+        'destory/:name/:id/[:force]'=> ['site/base/destorybyid', ['method' => 'post']],
         //还原，id
         'restore/:name/:id'         => ['site/base/restorebyid', ['method' => 'post']],
         //副文本编辑器页面

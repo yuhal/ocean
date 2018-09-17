@@ -407,6 +407,15 @@ function GetTableColumn($table,$field,$filter){
     return array_column($column, $field);
 }
 
+/**
+ * 清空某个表的数据
+ * @return $this
+ */
+function TrunCateTable($table){
+    global $mysql;
+    $mysql->doSql("TRUNCATE {$table}");
+}
+
 function curl_post($curlHttp, $postdata) {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $curlHttp);

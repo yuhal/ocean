@@ -62,17 +62,17 @@ Scripts
 <script type="text/javascript" src="__STATIC__/js/plugins.js"></script>
 {/block}
 <script type="text/javascript">
-function dispatchById(name,method,id){
-        $.ajax({
-             type: "POST",
-             url: '../'+method+'/'+name+'/'+id,
-             dataType: "json",
-             success: function(data){
-               Materialize.toast(data.msg,1000,'',function(){
-                 if(data.code==1)  history.go(0); 
-               }) 
-             }
-        });
+function dispatchById(name,method,id,force=''){
+    $.ajax({
+         type: "POST",
+         url: '../'+method+'/'+name+'/'+id+'/'+force,
+         dataType: "json",
+         success: function(data){
+           Materialize.toast(data.msg,1000,'',function(){
+             if(data.code==1)  history.go(0); 
+           }) 
+         }
+    });
 }
 function htmlencode(s){  
     var div = document.createElement('div');  

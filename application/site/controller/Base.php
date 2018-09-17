@@ -48,6 +48,7 @@ class Base extends Controller
         $this->PictureGroup = model('site/PictureGroup'); 
         $this->Sdk = model('site/Sdk');
         $this->SysSetup = model('site/SysSetup');
+        $this->Information = model('site/Information');
 
         //判断是否是手机登录
         if(is_mobile_request())
@@ -75,16 +76,16 @@ class Base extends Controller
      * 全局删除
      * @param name
      * @param id
-     * @param status
+     * @param force
      */
-    public function destorybyid($name,$id,$status=1)
+    public function destorybyid($name,$id,$force=false)
     {
         if(strstr($name,'_')){
             $name = model_exchange($name);
         }
         $objName = ucfirst($name);
         $obj = $this->$objName;
-        $re = $obj::destroy($id);
+        $re = $obj::destroy($id,$force);
         if($re){
             //软删除文章分类后，同时软删除该分类下的文章
             if($objName=='ArticleType')
@@ -93,12 +94,12 @@ class Base extends Controller
                 $Article = $this->Article;
                 $arr = $this->Article->getArticleIdsByWhere($where);
                 foreach ($arr as $k=>$v) {
-                    $Article::destroy($v);
+                    $Article::destroy($v,$force);
                 }
             }
-            if($status==1) $this->success('删除成功');
+            $this->success('删除成功');
         }else{
-            if($status==1) $this->error('删除失败');
+            $this->error('删除失败');
         }
     }
 

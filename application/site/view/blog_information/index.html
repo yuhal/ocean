@@ -1,0 +1,94 @@
+{extend name="base"/}
+{block name="title"}最新资讯 | {__block__}{/block}
+{block name="css"} 
+<link href="__STATIC__/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="__STATIC__/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="__STATIC__/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">   
+<link href="__STATIC__/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+{/block}
+{block name="body"}{/block}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+{block name="main"}
+    {include file="page/header"}
+    <!-- //////////////////////////////////////////////////////////////////////////// -->  
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            {include file="page/left_side"}
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START CONTENT -->
+            <section id="content">
+
+                <!--start container-->
+                <div class="container">
+                        <div class="divider"></div>
+                        <!--Creating Responsive Layouts-->
+                        <div id="badge-example">
+                            <div class="row">
+                              <div class="col s12 m8 l<{$length}>">
+                                <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+                                  {volist name="informations" id="information"}   
+                                  <li class="">
+                                    <div class="collapsible-header">
+                                        <{$information.title|mb_substr=0,18,'utf-8'}>
+                                        <a style="color:black" class="secondary-content">
+                                            <i onclick="dispatchById('information','destory','<{$information.id}>',true)" title="删除" class="mdi-action-delete"></i>
+                                        </a>
+                                    </div>
+                                    <div class="collapsible-body" style="display: none;">
+                                      <p>
+                                        <textarea id="title<{$information.id}>" class="materialize-textarea" maxlength="255" length="255"><{$information.title}></textarea>
+                                        <i class="mdi-action-query-builder tiny"></i> <{$information.create_time}>
+                                        <i onclick="checksubmit(<{$information.id}>)"  class="mdi-action-done right"></i>
+                                      </p>
+                                    </div>
+                                  </li>  
+                                  {/volist}
+                                </ul>
+                              </div>
+                            </div>
+                        </div>                     
+                    </div> 
+                </div>
+                <!--end container-->
+
+            </section>
+            <!-- END CONTENT -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            {include file="page/right_side"}
+        </div>
+        <!-- END WRAPPER -->
+    </div>
+    <!-- END MAIN -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+    {include file="page/footer"}
+    </footer>
+    <!-- END FOOTER -->
+<script type="text/javascript">
+function checksubmit(id){
+  var title = $("#title"+id).val();
+  if(title==""){
+    Materialize.toast('标题不能为空', 1000);
+    return false;
+  }
+  $.ajax({
+     type: "POST",
+     url: "/blog_information/create/"+id,
+     data: {"title":title},
+     dataType: "json",
+     success: function(data){
+        Materialize.toast(data.msg,2000);
+     }
+  });       
+}
+</script>
+{/block}
+
+
+

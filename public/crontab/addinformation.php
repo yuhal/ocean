@@ -8,11 +8,13 @@ $getdata['type'] = 'top';
 $getdata['key'] = $sdk_info['key'];
 $re = json_decode(curl_get('http://v.juhe.cn/toutiao/index',$getdata),true);
 
+TrunCateTable('yh_information');
 $msg = "最新资讯更新失败！记录时间：".date('Y-m-d H:i:s');
 if($re['result']['data']){
 	$list = $re['result']['data'];
 	$i = 0;
 	foreach ($list as $key => $value) {
+		$information_data['id'] = $key+1;
 		$information_data['url'] = $value['url'];
 		$information_data['title'] = $value['title'];
 		if($mysql->insert('yh_information',$information_data)){

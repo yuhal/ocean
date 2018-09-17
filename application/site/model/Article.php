@@ -39,7 +39,7 @@ class Article extends Model{
      * @param where
      * @param pageSize
      */
-    public function getAllArticleByWhere($p,$where,$pageSize)
+    public function getAllArticleByWhere($p,$where)
     {
         $start = ($p-1)*$pageSize;
         $data = $this::withTrashed()->alias('a')

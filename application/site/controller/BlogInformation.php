@@ -19,12 +19,34 @@ class BlogInformation extends Base
     }
 
     /**
-     * 最新资讯
+     * 最新资讯列表
      * @param p
      * @param title
      */
 	public function index()
     {
+        $informations = $this->Information->getAllInformationByWhere();
+        $this->assign('informations',$informations);
 	    return $this->fetch();
 	}
+
+    /**
+     * 创建/修改最新资讯
+     * @param id
+     */
+    public function create($id='')
+    {
+        if(request()->isAjax())
+        {
+            $title = input('post.title');
+            $re = $this->Information->where('id',$id)->update(['title'=>$title]);
+            if($re || ($re===0))
+            {
+                $this->success('保存成功');
+            }else{
+                $this->error('保存失败');
+            } 
+        }
+        return $this->fetch();
+    }
 }
