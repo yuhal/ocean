@@ -45,7 +45,7 @@ class BlogCategory extends Base
         if(request()->isAjax())
         {
             $categories = json_decode(input('post.categories/a')[0],true);
-            $category = [];
+            $informations = [];
             foreach ($categories as $key=>$value) {
                 if(array_key_exists('id',$value)){
                 $category[$key]['id'] = $value['id'];    

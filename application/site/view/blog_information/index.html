@@ -23,6 +23,8 @@
       <!-- START CONTENT -->
             <section id="content">
 
+                {include file="blog_information/breadcrumbs"}
+
                 <!--start container-->
                 <div class="container">
                         <div class="divider"></div>
@@ -34,14 +36,14 @@
                                   {volist name="informations" id="information"}   
                                   <li class="">
                                     <div class="collapsible-header">
-                                        <{$information.title|mb_substr=0,18,'utf-8'}>
+                                        <{$information.title}>
                                         <a style="color:black" class="secondary-content">
                                             <i onclick="dispatchById('information','destory','<{$information.id}>',true)" title="删除" class="mdi-action-delete"></i>
                                         </a>
                                     </div>
                                     <div class="collapsible-body" style="display: none;">
                                       <p>
-                                        <textarea id="title<{$information.id}>" class="materialize-textarea" maxlength="255" length="255"><{$information.title}></textarea>
+                                        <textarea id="title<{$information.id}>" class="materialize-textarea" maxlength="255" length="255"><{$information.intro}></textarea>
                                         <i class="mdi-action-query-builder tiny"></i> <{$information.create_time}>
                                         <i onclick="checksubmit(<{$information.id}>)"  class="mdi-action-done right"></i>
                                       </p>
