@@ -34,19 +34,8 @@
             <!-- //////////////////////////////////////////////////////////////////////////// -->
       <!-- START CONTENT -->
             <section id="content">
-        
-            <!--breadcrumbs start-->
-            <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-              <div class="container">
-                <div class="row">
-                    <div class="col s12 m12 l12">
-                        <h5 class="breadcrumbs-title">图片</h5>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <!--breadcrumbs end-->
-            
+
+            {include file="material_picture/breadcrumbs"}
 
             <!--start container-->
             <div class="container">
@@ -71,7 +60,7 @@
               <div class="divider"></div>
               <div id="card-reveal" class="section">
                 <div class="row">
-                  {volist name="pictures" id="v"}
+                  {volist name="list" id="v"}
                   <div class="col s12 m8 l3">
                     <div class="card">
                       <div class="card-image waves-effect waves-block waves-light">
@@ -91,16 +80,16 @@
                           <form action="">
                             <div class="col s12 m8 l12">
                               <label>编辑图片名称</label>
-                              <input type="text" id="title<{$v.id}>" name="title<{$v.id}>" value="<{$v.title}>">
+                              <input type="text" id="title" name="title" value="<{$v.title}>">
                             </div>
                             <div class="col s12 m8 l12">
                                 <label>移动分组</label>
                                 <p>
-                                  <input name="group_id<{$v.id}>" type="radio" id="group" value="0" {if $v.group_id==0 || $v.group_id==''} checked {/if} >
-                                  <label for="group">未分组</label>
-                                  {volist name="groups" key="k" id="vo"}
-                                  <input name="group_id<{$v.id}>" type="radio" id="group<{$k}>" value="<{$vo.id}>" {if $v.group_id==$k} checked {/if} >
-                                  <label for="group<{$k}>"><{$vo.value}></label>
+                                  <input name="group_id" type="radio" id="group" value="0" {if $v.group_id==0 || $v.group_id==''} checked {/if} >
+                                  <label for="bucket">未分组</label>
+                                  {volist name="buckets" key="k" id="vo"}
+                                  <input name="group_id" type="radio" id="group<{$k}>" value="<{$vo.id}>" {if $v.group_id==$k} checked {/if} >
+                                  <label for="bucket<{$k}>"><{$vo.value}></label>
                                   {/volist}
                                 </p>
                             </div>
@@ -162,13 +151,13 @@ Scripts
             processData: false,  
             success: function (data) {  
               Materialize.toast(data.msg,1000,'',function(){
-                  history.go(0); 
+                  
               })
             },   
         });  
       }else{
         Materialize.toast('请选择需要上传的图片',2000,'',function(){
-            history.go(0); 
+            
         })
       }    
   }
@@ -191,7 +180,7 @@ Scripts
          dataType: "json",
          success: function(data){
             Materialize.toast(data.msg,2000,'',function(){
-                history.go(0); 
+                
             })
          }
       });       

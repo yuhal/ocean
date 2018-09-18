@@ -18,20 +18,29 @@ class MaterialPicture extends Base
     {
         parent::__construct();
         $this->qiniu_sdk = config('sdk.qiniu_sdk');
+        $this->buckets = ['yuhal-image','yuhal-picture','yuhal-photo',];
     }
 
     /**
      * 图片列表
      */
-	public function index()
+	public function index($group='image')
     {
-        $groups = $this->PictureGroup->getAllGroupsByWhere();
-        $pictures = $this->Picture->getAllPicturesByWhere();
-        foreach ($groups as $key => $value) {
-            $value['count'] = $this->Picture->getPictureCountsByGroupId($value['id']);
+        $this->qiniu_sdk['bucket'] = 'yuhal-'.$group;
+        $this->qiniu_sdk['url'] = $group.'.yuhal.com';
+        $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+        $re = current(current($Qiniu->listfile()));
+        if(is_array($re)){
+            $list = array();
+            foreach ($re as $key => $value) {
+                $list[$key]['title'] = $value['key'];
+                $list[$key]['path'] = $this->qiniu_sdk['url'].'/'.$value['key'];
+                $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
+            }    
         }
-        $this->assign('groups',$groups);
-        $this->assign('pictures',$pictures);
+        $this->assign('buckets',$this->buckets);
+        $this->assign('action',$group);
+        $this->assign('list',$list);
 	    return $this->fetch();
 	}
 
@@ -75,7 +84,7 @@ class MaterialPicture extends Base
                 foreach ($file[$name] as $k=>$v){
                    $ext = get_extension($v['name']);
                    $title = uniqid().'.'.strtolower($ext);
-                   $savefile= '/var/www/ocean/runtime/temp/'.$title; 
+                   $savefile= TEMP_PATH.$title; 
                    move_uploaded_file($v['tmp_name'],$savefile);
                    try {
                     $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
@@ -96,6 +105,7 @@ class MaterialPicture extends Base
             }
             if(count($file[$name])==$count)
             {
+                deldir(TEMP_PATH);
                 $this->success('保存成功');
             }else{
                 $this->error('保存失败');
@@ -119,7 +129,7 @@ class MaterialPicture extends Base
             $img_data = @file_get_contents($value);
             $ext = get_extension($value);
             $title = uniqid().$key.'.'.strtolower($ext);
-            $savefile= '/var/www/ocean/runtime/temp/'.$title; 
+            $savefile= TEMP_PATH.$title; 
             file_put_contents($savefile,$img_data);
             try {
                 $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
@@ -138,6 +148,7 @@ class MaterialPicture extends Base
         }
         if(count($upload_list)==$count && $count>0)
         {
+            deldir(TEMP_PATH);
             $this->Picture->insertAll($data); 
             return $this->putContentImg($content,$data);
         }else{

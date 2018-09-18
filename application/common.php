@@ -35,6 +35,35 @@ function getAccessToken($url,$type){
 }
 
 /** 
+ * 清空某个文件夹 
+ * 
+ * @param array $file 图片信息 
+ * @return false|array 
+ */
+function deldir($dir) {
+  //先删除目录下的文件：
+  $dh=opendir($dir);
+  while ($file=readdir($dh)) {
+    if($file!="." && $file!="..") {
+      $fullpath=$dir."/".$file;
+      if(!is_dir($fullpath)) {
+          unlink($fullpath);
+      } else {
+          deldir($fullpath);
+      }
+    }
+  }
+  closedir($dh);
+  //删除当前文件夹：
+  if(rmdir($dir)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+/** 
  * 七牛云上传文件 
  * 
  * @param array $file 图片信息 
@@ -44,12 +73,16 @@ function qiniu_upload($file){
     $qiniu_sdk = config('sdk.qiniu_sdk');
     $ext = get_extension($file['name']);
     $title = uniqid().'.'.strtolower($ext);
-    $savefile= '/var/www/ocean/runtime/temp/'.$title; 
+    $savefile= TEMP_PATH.$title; 
     move_uploaded_file($file['tmp_name'],$savefile);
     try {
         $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
-        $Qiniu->upload($title,$savefile);
-        return $qiniu_sdk['url'].$title;
+        if($Qiniu->upload($title,$savefile)){
+            deldir(TEMP_PATH);
+            return $qiniu_sdk['url'].$title;
+        }else{
+            return false; 
+        }
     }catch(\Exception $e){
         return false;
     }
