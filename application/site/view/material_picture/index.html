@@ -85,17 +85,15 @@
                             <div class="col s12 m8 l12">
                                 <label>移动分组</label>
                                 <p>
-                                  <input name="group_id" type="radio" id="group" value="0" {if $v.group_id==0 || $v.group_id==''} checked {/if} >
-                                  <label for="bucket">未分组</label>
                                   {volist name="buckets" key="k" id="vo"}
-                                  <input name="group_id" type="radio" id="group<{$k}>" value="<{$vo.id}>" {if $v.group_id==$k} checked {/if} >
-                                  <label for="bucket<{$k}>"><{$vo.value}></label>
+                                  <input name="bucket" type="radio" id="bucket<{$k}>" value="<{$vo}>" {if $v.bucket==$vo} checked {/if} >
+                                  <label for="bucket<{$k}>"><{$vo}></label>
                                   {/volist}
                                 </p>
                             </div>
                           </form>
                         </p>
-                        <i onclick="checksubmit(<{$v.id}>)" class="mdi-action-done right"></i>
+                        <i onclick="checksubmit(<{$v.key}>)" class="mdi-action-done right"></i>
                       </div>
                     </div>
                   </div>

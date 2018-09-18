@@ -74,7 +74,7 @@ return [
         'material_sdk/edit'             => 'site/material_sdk/edit',
     /*********素材*********/
         //图片页面
-        'material_picture/[:group]'   => 'site/material_picture/index',
+        'material_picture/:action'   => 'site/material_picture/index',
         //上传图片页面
         'material_picture/create'       => 'site/material_picture/create',
         //修改图片页面

@@ -24,22 +24,25 @@ class MaterialPicture extends Base
     /**
      * 图片列表
      */
-	public function index($group='image')
+	public function index($action)
     {
-        $this->qiniu_sdk['bucket'] = 'yuhal-'.$group;
-        $this->qiniu_sdk['url'] = $group.'.yuhal.com';
+        $bucket = current(explode('.',$this->UserInfo['domain'])).'-'.$action;
+        $this->qiniu_sdk['bucket'] = $bucket;
+        $this->qiniu_sdk['url'] = $action.'.'.$this->UserInfo['domain'];
         $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
-        $re = current(current($Qiniu->listfile()));
-        if(is_array($re)){
-            $list = array();
-            foreach ($re as $key => $value) {
-                $list[$key]['title'] = $value['key'];
-                $list[$key]['path'] = $this->qiniu_sdk['url'].'/'.$value['key'];
-                $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
-            }    
+        $re = $Qiniu->listfile();
+        if(!isset($re[0]['items'])){
+            return $this->fetch('page/error',['msg'=>'no such bucket']);
         }
+        $list = array_slice(current(current($re)),0,30);
+        foreach ($list as $key => $value) {
+            $list[$key]['bucket'] = $bucket;
+            $list[$key]['title'] = $value['key'];
+            $list[$key]['path'] = 'http://'.$this->qiniu_sdk['url'].'/'.$value['key'];
+            $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
+        }    
         $this->assign('buckets',$this->buckets);
-        $this->assign('action',$group);
+        $this->assign('action',$action);
         $this->assign('list',$list);
 	    return $this->fetch();
 	}
