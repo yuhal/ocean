@@ -41,6 +41,7 @@ class MaterialPicture extends Base
             $list[$key]['path'] = 'http://'.$this->qiniu_sdk['url'].'/'.$value['key'];
             $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
         }    
+        //var_dump('<pre>',$list);exit;
         $this->assign('buckets',$this->buckets);
         $this->assign('action',$action);
         $this->assign('list',$list);
@@ -55,18 +56,35 @@ class MaterialPicture extends Base
         if(request()->isAjax())
         {
             $data = input('post.');
-            $title = $data['title'];
-            $group_id = $data['group_id'];
-            $id = $data['id'];
-            $edit = ['title'=>$title,'group_id'=>$group_id];
-            $where = "title='{$title}' and group_id={$group_id}";
-            $re = $this->Picture->save($edit,['id'=>$id]);
-            if($re || ($re===0))
-            {
-                $this->success('保存成功');
+            //var_dump('<pre>',$data);exit;
+            $this->qiniu_sdk['bucket'] = $data['bucket'];
+            $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+            $re = $Qiniu->rename($data);
+            if($re){
+                $this->error('保存失败');   
             }else{
-                $this->error('保存失败');
-            }       
+                $this->error('保存成功');    
+            }     
+        }
+        $this->redirect('/error');
+    }
+
+    /**
+     * 删除图片
+     */
+    public function delete()
+    {
+        if(request()->isAjax())
+        {
+            $data = input('post.');
+            $this->qiniu_sdk['bucket'] = $data['bucket'];
+            $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+            $re = $Qiniu->delete($data);
+            if($re){
+                $this->error('删除失败');   
+            }else{
+                $this->error('删除成功');    
+            }     
         }
         $this->redirect('/error');
     }
@@ -78,6 +96,7 @@ class MaterialPicture extends Base
     {
         if(request()->isAjax())
         {
+            $this->qiniu_sdk['bucket'] = current(explode('.',$this->UserInfo['domain'])).'-'.input('post.bucket');
             $name = array_keys($_FILES)[0];
             $file = play_file($_FILES['file'],$name);
             $ids = array();
@@ -86,25 +105,15 @@ class MaterialPicture extends Base
             {
                 foreach ($file[$name] as $k=>$v){
                    $ext = get_extension($v['name']);
-                   $title = uniqid().'.'.strtolower($ext);
-                   $savefile= TEMP_PATH.$title; 
-                   move_uploaded_file($v['tmp_name'],$savefile);
-                   try {
-                    $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
-                    $upload = $Qiniu->upload($title,$savefile);
-                   }catch(\Exception $e){
-                    $this->error($e->getMessage());
-                   }
-                   if($upload)
-                   {
-                       $data[$k]['title']=$title;
-                       $data[$k]['group_id']=0;
-                       $data[$k]['path']=$this->qiniu_sdk['url'].$title;
-                       $data[$k]['create_time']=date('Y-m-d H:i');
-                       $count ++;
+                   $data['file'] = uniqid().'.'.strtolower($ext);
+                   $data['filepath']= TEMP_PATH.$data['file']; 
+                   move_uploaded_file($v['tmp_name'],$data['filepath']);
+                   $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+                   $upload = $Qiniu->putFile($data);
+                   if($upload){
+                    $count++;
                    }
                 }
-                $this->Picture->insertAll($data); 
             }
             if(count($file[$name])==$count)
             {

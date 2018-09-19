@@ -17,12 +17,6 @@ class QiniuSdk{
 		$this->bucketMgr = new BucketManager($this->Auth);
 	}
 
-	public function upload($file,$filepath){
-	  	// 生成上传Token
-	  	$token = $this->Auth->uploadToken($this->sdk_info['bucket']);
-	  	return $this->uploadMgr->putFile($token,$file,$filepath);
-	}
-
 	public function uptoken(){
 	  	// 生成上传Token
 	  	$token = $auth->uploadToken($this->sdk_info['bucket']);
@@ -40,4 +34,32 @@ class QiniuSdk{
 		}
 		exit;
 	}
+
+	public function __call($name, $arguments){
+		$arguments = current($arguments);
+		if(method_exists($this->bucketMgr, $name)){
+			switch ($name) {
+	    		case 'rename':
+	    			return $this->bucketMgr->rename($arguments['bucket'],$arguments['oldname'],$arguments['newname']);
+	    		break;
+	    		case 'delete':
+	    			return $this->bucketMgr->delete($arguments['bucket'],$arguments['oldname']);
+	    		break;
+	    	}	
+		}elseif(method_exists($this->uploadMgr, $name)){
+			switch ($name) {
+				case 'putFile':
+					$arguments['token'] = $this->Auth->uploadToken($this->sdk_info['bucket']);
+					$re = $this->uploadMgr->putFile($arguments['token'],$arguments['file'],$arguments['filepath']);
+					if(isset($re[0]['key'])){
+						return true;
+					}else{
+						return false;
+					}
+	    		break;
+	    	}
+		}else{
+			return 404;
+		}
+    }
 }
