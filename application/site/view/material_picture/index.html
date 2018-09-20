@@ -39,7 +39,7 @@
 
             <!--start container-->
             <div class="container">
-              <p class="caption">
+              <!-- <p class="caption">
                 <form id="postForm" action="" method="post" enctype="multipart/form-data" class="col s12">
                   <div class="row">
                     <div class="file-field input-field col s10">
@@ -56,50 +56,74 @@
                     </div>
                   </div>
                 </form>
-              </p>
-              <!--Card Reveal-->
-              <div class="divider"></div>
-              <div id="card-reveal" class="section">
-                <div class="row">
-                  {volist name="list" id="v"}
-                  <div class="col s12 m8 l3">
-                    <div class="card">
-                      <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="<{$v.path}>" alt="<{$v.title}>">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><{$v.title|mb_substr=0,13,'utf-8'}>
-                          <i class="mdi-image-edit right"></i>
-                        </span>
-                        <i onClick="Materialize.toast('<span>确认删除？</span><a class=&quot;btn light-blue &quot; href=javascript:checkdelete(&quot;<{$v.hash}>&quot;);>确认<a>', 1000)" class="mdi-action-delete right"></i>
-                      </div>
-                      <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">  
-                          <i class="mdi-navigation-close right"></i>
-                        </span>
-                        <p>
-                          <form action="">
-                            <div class="col s12 m8 l12">
-                              <label>编辑图片名称</label>
-                              <input type="hidden" id="oldname<{$v.hash}>" value="<{$v.title}>">
-                              <input type="text" id="newname<{$v.hash}>" value="<{$v.title}>">
-                            </div>
-                            <div class="col s12 m8 l12">
-                                <label>移动分组</label>
-                                <p>
-                                  {volist name="buckets" key="k" id="vo"}
-                                  <input name="bucket<{$v.hash}>" type="radio" id="bucket<{$k}><{$v.hash}>" value="<{$vo}>" {if $v.bucket==$vo} checked {/if} >
-                                  <label for="bucket<{$k}><{$v.hash}>"><{$vo}></label>
-                                  {/volist}
-                                </p>
-                            </div>
-                          </form>
-                        </p>
-                        <i onclick="checksubmit('<{$v.hash}>')" class="mdi-action-done right"></i>
+              </p> -->
+              <p><a class="waves-effect waves-light btn modal-trigger  light-blue" href="#modal2">上传图片</a></p>
+              <div id="modal2" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                  <div class="row">
+                    <div class="col s12 m8 l9">
+                      <div class="progress">
+                        <div class="indeterminate"></div>
                       </div>
                     </div>
                   </div>
-                  {/volist}
+                </div>
+                <div class="modal-footer">
+                  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">关闭</a>
+                  <a href="javascript:clp();" class="waves-effect waves-green btn-flat modal-action">选择图片</a>
+                  <input style="display: none;" type="file" id="file" />
+                </div>
+              </div>
+              <!--Card Reveal-->
+              <div class="divider"></div>
+              
+              <div id="card-reveal" class="section">
+                <div class="row">
+                  {if $list}
+                    {volist name="list" id="v"}
+                    <div class="col s12 m8 l3">
+                      <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="<{$v.path}>" alt="<{$v.title}>">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4"><{$v.title|mb_substr=0,13,'utf-8'}>
+                            <i class="mdi-image-edit right"></i>
+                          </span>
+                          <i onClick="Materialize.toast('<span>确认删除？</span><a class=&quot;btn light-blue &quot; href=javascript:checkdelete(&quot;<{$v.hash}>&quot;);>确认<a>', 1000)" class="mdi-action-delete right"></i>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">  
+                            <i class="mdi-navigation-close right"></i>
+                          </span>
+                          <p>
+                            <form action="">
+                              <div class="col s12 m8 l12">
+                                <label>编辑图片名称</label>
+                                <input type="hidden" id="oldname<{$v.hash}>" value="<{$v.title}>">
+                                <input type="text" id="newname<{$v.hash}>" value="<{$v.title}>">
+                              </div>
+                              <div class="col s12 m8 l12">
+                                  <label>移动分组</label>
+                                  <p>
+                                    {volist name="buckets" key="k" id="vo"}
+                                    <input name="bucket<{$v.hash}>" type="radio" id="bucket<{$k}><{$v.hash}>" value="<{$vo}>" {if $v.bucket==$vo} checked {/if} >
+                                    <label for="bucket<{$k}><{$v.hash}>"><{$vo}></label>
+                                    {/volist}
+                                  </p>
+                              </div>
+                            </form>
+                          </p>
+                          <i onclick="checksubmit('<{$v.hash}>')" class="mdi-action-done right"></i>
+                        </div>
+                      </div>
+                    </div>
+                    {/volist}
+                  {else}
+                    <div class="col s12 m8 l3">
+                      <label>暂无图片</label>
+                    </div>
+                  {/if}
                 </div>
               </div>
             </div>
@@ -137,6 +161,9 @@ Scripts
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="__STATIC__/js/plugins.js"></script>
 <script type="text/javascript">
+  function clp(){
+    return $("#file").click();
+  }
   function checkupload(){  
       var formData = new FormData($( "#postForm" )[0]);
       var uploadfilename = document.getElementById('uploadfilename').value;
@@ -182,6 +209,7 @@ Scripts
   function checksubmit(hash){
       var oldname = $('#oldname'+hash).val();
       var newname = $('#newname'+hash).val();
+      var from_bucket = '<{$action}>';
       var bucket = document.getElementsByName('bucket'+hash);
       for (var i=0;i<bucket.length;i++){ //遍历Radio 
         if(bucket[i].checked){ 
@@ -195,10 +223,12 @@ Scripts
       $.ajax({
          type: "POST",
          url: "/material_picture/edit",
-         data: {"oldname":oldname,"bucket":bucket,"newname":newname},
+         data: {"oldname":oldname,"to_bucket":bucket,"from_bucket":from_bucket,"newname":newname},
          dataType: "json",
          success: function(data){
-            Materialize.toast(data.msg,2000)
+            Materialize.toast(data.msg,2000,'',function(){
+              history.go(0); 
+            })
          }
       });       
   }

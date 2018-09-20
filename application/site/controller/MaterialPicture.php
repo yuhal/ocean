@@ -18,30 +18,39 @@ class MaterialPicture extends Base
     {
         parent::__construct();
         $this->qiniu_sdk = config('sdk.qiniu_sdk');
-        $this->buckets = ['yuhal-image','yuhal-picture','yuhal-photo',];
+        $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+        $buckets = current($Qiniu->buckets(['shared'=>$this->UserInfo['qiniu_account']]));
+        if(empty($buckets)){
+            $this->redirect('/page404');    
+        }else{
+            $this->buckets = $buckets;
+        }
     }
 
     /**
      * 图片列表
      */
-	public function index($action)
-    {
-        $bucket = current(explode('.',$this->UserInfo['domain'])).'-'.$action;
-        $this->qiniu_sdk['bucket'] = $bucket;
-        $this->qiniu_sdk['url'] = $action.'.'.$this->UserInfo['domain'];
+	public function index($action=null)
+    { 
+        $action = is_null($action) ? current($this->buckets) : $action; 
+        $this->qiniu_sdk['bucket'] = $action;
         $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
-        $re = $Qiniu->listfile();
+        $domain = current(current($Qiniu->domains()));
+        if(!$domain){
+            $this->redirect('/page404');        
+        }
+        $this->qiniu_sdk['url'] = $domain;
+        $re = $Qiniu->listFiles();
         if(!isset($re[0]['items'])){
-            return $this->fetch('page/error',['msg'=>'no such bucket']);
+            $this->redirect('/page404');
         }
         $list = array_slice(current(current($re)),0,30);
         foreach ($list as $key => $value) {
-            $list[$key]['bucket'] = $bucket;
+            $list[$key]['bucket'] = $action;
             $list[$key]['title'] = $value['key'];
             $list[$key]['path'] = 'http://'.$this->qiniu_sdk['url'].'/'.$value['key'];
             $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
         }    
-        //var_dump('<pre>',$list);exit;
         $this->assign('buckets',$this->buckets);
         $this->assign('action',$action);
         $this->assign('list',$list);
@@ -55,11 +64,22 @@ class MaterialPicture extends Base
     {
         if(request()->isAjax())
         {
-            $data = input('post.');
-            //var_dump('<pre>',$data);exit;
-            $this->qiniu_sdk['bucket'] = $data['bucket'];
             $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
-            $re = $Qiniu->rename($data);
+            $data = input('post.');
+            if($data['oldname']==$data['newname'] && $data['from_bucket']==$data['to_bucket']){
+                $this->error('保存成功');       
+            }elseif($data['oldname']!=$data['newname'] && $data['from_bucket']==$data['to_bucket']){
+                $this->qiniu_sdk['bucket'] = $data['from_bucket'];
+                $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+                $re = $Qiniu->rename($data);
+            }else{
+                $this->qiniu_sdk['bucket'] = $data['to_bucket'];
+                $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+                $data['from_key'] = $data['oldname'];
+                $data['to_key'] = $data['newname'];
+                unset($data['oldname'],$data['newname']);
+                $re = $Qiniu->move($data);
+            }
             if($re){
                 $this->error('保存失败');   
             }else{
@@ -96,7 +116,7 @@ class MaterialPicture extends Base
     {
         if(request()->isAjax())
         {
-            $this->qiniu_sdk['bucket'] = current(explode('.',$this->UserInfo['domain'])).'-'.input('post.bucket');
+            $this->qiniu_sdk['bucket'] = input('post.bucket');
             $name = array_keys($_FILES)[0];
             $file = play_file($_FILES['file'],$name);
             $ids = array();

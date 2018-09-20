@@ -12,10 +12,18 @@ namespace app\site\controller;
 class Page extends Base
 {
 	/**
-     * error页面
+     * 404页面
      */
-    public function pageerror($msg=404)
+    public function page404()
     {
-    	return view('error',['msg'=>$msg]);
+    	return view('page404');
+    }
+
+    /**
+     * 500页面
+     */
+    public function page500()
+    {
+    	return view('page500');
     }
 }

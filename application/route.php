@@ -74,7 +74,7 @@ return [
         'material_sdk/edit'             => 'site/material_sdk/edit',
     /*********素材*********/
         //图片页面
-        'material_picture/:action'      => 'site/material_picture/index',
+        'material_picture/[:action]'      => 'site/material_picture/index',
         //上传图片页面
         'material_picture/create'       => 'site/material_picture/create',
         //修改图片页面
@@ -102,7 +102,9 @@ return [
         '__MISS__'       =>  'site/page/pageerror', 
         //二维码页面
         'qrcode'         =>  'site/qrc/view',   
-        //error页面
-        'error/[:msg]'   =>  'site/page/pageerror', 
-        'api/uptoken'   =>  'site/login/uptoken', 
+        //404页面
+        'page404'        =>  'site/page/page404', 
+        //500页面
+        'page500'        =>  'site/page/page500', 
+        'api/uptoken'    =>  'site/login/uptoken', 
 ];

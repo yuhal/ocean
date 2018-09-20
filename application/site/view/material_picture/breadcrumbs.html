@@ -5,19 +5,13 @@
 	        <div class="col s12 m12 l12">
 	            <h5 class="breadcrumbs-title">图片</h5>
 	            <ol class="breadcrumb">
-	            	{if $action=="image"}
-	                <li class="active">image</li>
-	                <li><a href="picture">picture</a></li>
-	                <li><a href="photo">photo</a></li> 
-	                {elseif $action=="picture"}
-	                <li><a href="image">image</a></li>
-	                <li class="active">picture</li> 
-	                <li><a href="photo">photo</a></li> 
-	                {elseif $action=="photo"}
-	                <li><a href="image">image</a></li>
-	                <li><a href="picture">picture</a></li> 
-	                <li class="active">photo</li> 
-	                {/if}                               
+	            	{volist name="buckets" id="v"}
+		            	{if $action==$v}
+		            	<li class="active"><{$v}></li>
+		            	{else}
+		            	<li><a href="/material_picture/<{$v}>"><{$v}></a></li>
+		            	{/if}
+	            	{/volist}                           
 	            </ol>
 	        </div>
 	    </div>
