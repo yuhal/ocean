@@ -38,12 +38,14 @@ class BlogAdvert extends Base
             }
             foreach ($userAdvert as $k => $v) {
                 foreach ($advert as $key => $value) {
-                    if($k!=$key){
+                    if($k!=$key && $v){
                         $advert[$k] = $v;
                     }
                 }
             }
+            
             $updateData['advert'] = json_encode($advert);
+
             $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
             if($re || ($re===0))
             {

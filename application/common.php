@@ -10,8 +10,7 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
-//use Endroid\QrCode\QrCode;
-//use qiniu\sdk\Qiniusdk;
+
 
 function getAccessToken($url,$type){
     $res=@file_get_contents('access_token.json');
@@ -63,23 +62,33 @@ function deldir($dir) {
 }
 
 
+
 /** 
  * 七牛云上传文件 
  * 
  * @param array $file 图片信息 
+ * @param bucket 仓库名
  * @return false|array 
  */
 function qiniu_upload($file){
+    $UserInfo =  session('user_info_'.session('user_id'));
     $qiniu_sdk = config('sdk.qiniu_sdk');
     $ext = get_extension($file['name']);
-    $title = uniqid().'.'.strtolower($ext);
-    $savefile= TEMP_PATH.$title; 
-    move_uploaded_file($file['tmp_name'],$savefile);
+    $data['file'] = uniqid().'.'.strtolower($ext);
+    $data['filepath']= TEMP_PATH.$data['file']; 
+    move_uploaded_file($file['tmp_name'],$data['filepath']);
     try {
         $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
-        if($Qiniu->upload($title,$savefile)){
-            deldir(TEMP_PATH);
-            return $qiniu_sdk['url'].$title;
+        $buckets = current($Qiniu->buckets(['shared'=>$UserInfo['qiniu_account']]));
+        foreach ($buckets as $key => $value) {
+            if(strstr($value, 'image')){
+                $qiniu_sdk['bucket'] = $value;
+            }
+        }
+        $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
+        $domain = current(current($Qiniu->domains()));
+        if($Qiniu->putFile($data)){
+            return 'http://'.$domain.'/'.$data['file'];
         }else{
             return false; 
         }

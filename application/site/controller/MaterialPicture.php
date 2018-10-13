@@ -189,6 +189,23 @@ class MaterialPicture extends Base
     }
 
     /**
+     * 上传图片
+     */    
+    function uploadImg($file){
+       $ext = get_extension($file['name']);
+       $data['file'] = uniqid().'.'.strtolower($ext);
+       $data['filepath']= TEMP_PATH.$data['file']; 
+       move_uploaded_file($v['tmp_name'],$data['filepath']);
+       $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
+       $upload = $Qiniu->putFile($data);
+       if($upload){
+        return $this->qiniu_sdk['url'].$title;
+       }else{
+        return false;
+       }
+    }
+
+    /**
      * 替换文本中的图片路径
      */
     function putContentImg($content,$put_list){

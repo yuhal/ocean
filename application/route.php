@@ -65,6 +65,8 @@ return [
         'blog_information/create/[:id]'    => 'site/blog_information/create',
         //广告位页面
         'blog_advert/index'             => 'site/blog_advert/index',
+        //保存广告位
+        'blog_advert_save'              => 'site/blog_advert/index',
         //最新资讯页面
         'blog_information/index'        => 'site/blog_information/index',
     /*********sdk*********/
