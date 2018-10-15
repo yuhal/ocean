@@ -90,7 +90,7 @@ class Login extends Controller
             if(empty($re['advert'])){
                 //设置广告位
                 $advert = json_encode($userConfig['advert']);
-                $re['advert'] = $this->User->UserSetUp($re['id'],'advert',$advert,false);
+                $re['advert'] = current($this->User->UserSetUp($re['id'],'advert',$advert,false,false));
                 if(!$re['advert']){
                     $this->error('系统异常');        
                 }
