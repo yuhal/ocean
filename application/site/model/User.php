@@ -104,7 +104,7 @@ class User extends Model{
     public function UserSetUp($id,$setName,$setValue='',$isSysSetup=true,$isJson=true){
         if($isSysSetup){
             $SysSetupModel = model('site/SysSetup');
-            $SysSetupRe = $SysSetupModel->getAllSetupName(['region'=>$region]);
+            $SysSetupRe = $SysSetupModel->getAllSetupName();
             foreach ($SysSetupRe as $k => $v) {
                 $UpdateData[$v['name']] = $v['value'];
             }

@@ -80,6 +80,22 @@ class Login extends Controller
         if(!empty($re))
         {
             $userConfig = config('user');
+            if(empty($re['avatar'])){
+                //设置用户头像
+                $avatar = $userConfig['avatar'];
+                $re['avatar'] = current($this->User->UserSetUp($re['id'],'avatar',$avatar,false,false));
+                if(!$re['avatar']){
+                    $this->error('系统异常');        
+                }   
+            }
+            if(empty($re['wxqrcode'])){
+                //设置微信二维码
+                $wxqrcode = $userConfig['wxqrcode'];
+                $re['wxqrcode'] = current($this->User->UserSetUp($re['id'],'wxqrcode',$wxqrcode,false,false));
+                if(!$re['wxqrcode']){
+                    $this->error('系统异常');        
+                }   
+            }
             if(empty($re['insetup'])){
                 //设置后台系统参数
                 $re['insetup'] = $this->User->UserSetUp($re['id'],'insetup',1);

@@ -284,8 +284,10 @@ return [
         ],    
     ],
 
-    //user参数配置
+    //user默认参数配置
     'user'       =>[
+        'avatar'      =>  'http://ocean.yuhal.com/static/images/default-user.png', 
+        'wxqrcode'    =>  'http://ocean.yuhal.com/static/images/default-user.png', 
         'contact' =>  [
             'github' =>  '',
             'weibo' =>  '',

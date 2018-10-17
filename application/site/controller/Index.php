@@ -43,9 +43,12 @@ class Index extends Base
                 $this->error('保存失败');
             }  
         }
-        $avatar = myGetImageSize($this->UserInfo['avatar']);
-        //var_dump('<pre>',$this->UserInfo);exit;
-        $wxqrcode = myGetImageSize($this->UserInfo['wxqrcode']);
+        if(!empty($this->UserInfo['avatar'])){
+            $avatar = myGetImageSize($this->UserInfo['avatar']);    
+        }
+        if(!empty($this->UserInfo['wxqrcode'])){
+            $wxqrcode = myGetImageSize($this->UserInfo['wxqrcode']);    
+        }
 
         $this->assign('avatar',$avatar);
         $this->assign('wxqrcode',$wxqrcode);
