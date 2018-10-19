@@ -286,15 +286,23 @@ return [
 
     //user默认参数配置
     'user'       =>[
-        'avatar'      =>  'http://ocean.yuhal.com/static/images/default-user.png', 
-        'wxqrcode'    =>  'http://ocean.yuhal.com/static/images/default-user.png', 
+        //头像
+        'avatar'      =>  'http://118.31.23.98/ocean/static/images/default-user.png', 
+        //微信二维码
+        'wxqrcode'    =>  'http://118.31.23.98/ocean/static/images/default-1.jpg', 
+        //联系方式
         'contact' =>  [
+            //github链接地址
             'github' =>  '',
+            //微博链接地址
             'weibo' =>  '',
         ],
+        //广告位
         'advert' =>  [
+            //链接地址
             'linkurl' =>  '',
-            'imageurl' =>  '',
+            //图片地址
+            'imageurl' => '', 
         ],  
     ],
 
