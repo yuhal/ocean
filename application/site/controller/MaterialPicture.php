@@ -150,38 +150,36 @@ class MaterialPicture extends Base
     /**
      * 在富文本编辑器中 获得并上传图片 返回文本
      */
-    function uploadContentImg($content){
+    function uploadContentImg($content,$article_id){
         $ext = 'gif|jpg|jpeg|bmp|png';
         $preg = "/(href|src)=([\"|']?)([^ \"'>]+\.($ext))\\2/i";
         preg_match_all($preg, $content, $match);
         $img = array();
         $count = 0;
         $upload_list = $match[3];
+        $article_info = $this->Article::get($article_id);
         foreach ($upload_list as $key => $value) {
             $img_data = @file_get_contents($value);
             $ext = get_extension($value);
-            $title = uniqid().$key.'.'.strtolower($ext);
-            $savefile= TEMP_PATH.$title; 
-            file_put_contents($savefile,$img_data);
-            try {
-                $Qiniu = new \qiniu\QiniuSdk($this->qiniu_sdk);
-                $upload = $Qiniu->upload($title,$savefile);
-            }catch(\Exception $e){
-                $this->error($e->getMessage());
+            $title = $article_info['uniqid'].'-'.$key.'.'.strtolower($ext);
+            $imagepath = 'public/acticle/image/'.$article_id.'/';
+            $savepath = ROOT_PATH.$imagepath;
+            if(!is_dir($savepath)){
+                mkdir($savepath,0777);
             }
+            $savefile = $savepath.$title; 
+            $upload = file_put_contents($savefile,$img_data);
             if($upload)
             {
-               $data[$key]['title']=$title;
-               $data[$key]['group_id']=0;
-               $data[$key]['path']=$this->qiniu_sdk['url'].$title;
-               $data[$key]['create_time']=date('Y-m-d H:i');
+               $data[$key]['title'] = $title;
+               $data[$key]['group_id'] = 0;
+               $data[$key]['path'] = 'http://118.31.23.98/ocean/'.$imagepath.$title;
+               $data[$key]['create_time'] = date('Y-m-d H:i');
                $count ++;
             }
         }
         if(count($upload_list)==$count && $count>0)
         {
-            deldir(TEMP_PATH);
-            $this->Picture->insertAll($data); 
             return $this->putContentImg($content,$data);
         }else{
             return '';
@@ -237,8 +235,12 @@ class MaterialPicture extends Base
     function get_img_thumb_url($content,$suffix)
     {
         $pregRule = '/src=".*?"/';
-        $content = preg_replace($pregRule,'src="'.$suffix.'"',$content);
-        return $content;
+        $replace_content = preg_replace($pregRule,'src="'.$suffix.'"',$content);
+        if($replace_content==$content){
+            $pregRule = "/src='.*?'/";
+            $replace_content = preg_replace($pregRule,'src="'.$suffix.'"',$content);
+        }
+        return $replace_content;
     }
 
 

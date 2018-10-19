@@ -76,7 +76,7 @@ class BlogArticle extends Base
                 foreach ($des as $key=>$value) {
                     $article_des[$key]['article_id'] = $insertId;
                     $article_des[$key]['name'] = strtolower($value['name']);
-                    $text = (new MaterialPicture)->uploadContentImg($value['text']);
+                    $text = (new MaterialPicture)->uploadContentImg($value['text'],$insertId);
                     if($text){
                         $article_des[$key]['text'] = $text;
                     }else{

@@ -101,4 +101,13 @@ class Article extends Model{
     {
         return $this->where('type_id',$id)->count();
     }
+
+    /**
+     * 查询某个文章的uniqid
+     * @param where 
+     */
+    public function getUniqidIdByWhere($where="")
+    {
+        return $this->where($where)->column('article_id');
+    }
 }
