@@ -61,6 +61,8 @@ return [
         'blog_category/article_type/[:id]'    => 'site/blog_category/article_type',
         //查询单个分类的信息
         'blog_category/get_article_type/:id'  => 'site/blog_category/get_article_type',
+        //查询单个分类下的标签
+        'blog_category/getAllTagsByType/:id'  => 'site/blog_category/getAllTagsByType',
         //修改最新资讯
         'blog_information/create/[:id]'    => 'site/blog_information/create',
         //广告位页面

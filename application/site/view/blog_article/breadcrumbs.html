@@ -22,15 +22,33 @@
 		i = i?i:1;
     	$("#color"+i).css("background-color",color);
   	}
-  	function change_color2(id){
+  	function getAllTagsByType(type_id){
   		$.ajax({
 	     type: "POST",
-	     url: "/blog_category/get_article_type/"+id,
+	     url: "/blog_category/get_article_type/"+type_id,
 	     dataType: "json",
 	     success: function(data){
 	        $("#type_id").css("background-color",data.data.color); 
 	     }
-      	});  
-  	}
+	    }); 	
+	      $.ajax({
+	         type: "POST",
+	         url: "/blog_category/getAllTagsByType/"+type_id,
+	         data: {},
+	         dataType: "json",
+	         success: function(data){
+	         	var list = data.data;
+	            var html = '';
+                $.each(list, function(list, info){
+                    html += '<div class="input-field col s<{$length}>"><table><tbody>';
+                    $.each(info, function(info, v1){
+                    	html +='<tr><td><input name="tag" type="checkbox" id="tag'+v1.id+'" value="'+v1.id+'"><label for="tag'+v1.id+'">'+v1.value+'</label></td></tr>';	
+                    });
+                    html +='</tbody></table></div>';
+                });
+                $('#tagdiv').html(html);
+	         }
+	      });
+    }
 </script>
 <!--breadcrumbs end-->

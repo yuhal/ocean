@@ -94,6 +94,35 @@ class BlogCategory extends Base
     }
 
     /**
+     * 获取单个文章分类下的标签
+     * @param id
+     */
+    public function getAllTagsByType($id){
+        if(request()->isAjax())
+        {
+            $re_tags = $this->ArticleTags->getAllTagsByWhere(['type_id'=>$id]);
+            $tags_count = count($re_tags);
+            $re = [];
+            if(is_mobile_request()){
+                $this->pageSize = 2;
+            }else{
+                $this->pageSize = 12;
+            }
+            $maxCount = ceil($tags_count/$this->pageSize);
+            for ($i=0; $i <= $this->pageSize ; $i++) { 
+                $start = $i*$maxCount;
+                $re[$i] = array_slice($re_tags,$start,$maxCount);
+            }
+            if($re)
+            {
+                $this->success('查询成功','',$re);
+            }else{
+                $this->error('查询失败');
+            }     
+        }
+    }
+
+    /**
      * 创建文章标签
      * @param id
      */

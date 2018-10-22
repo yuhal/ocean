@@ -25,15 +25,4 @@ class ArticleTags extends Model{
         ->order('id desc')
         ->select();
     }
-
-    /**
-     * 查询所有的标签
-     * @param where
-     */
-    public function getAllTagsByWhere($where="")
-    {
-        return $this::withTrashed()->where($where)
-        ->order('id desc')
-        ->select();
-    }
 }

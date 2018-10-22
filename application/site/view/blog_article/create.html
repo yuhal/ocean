@@ -65,29 +65,16 @@
                       <br/>
                       <br/>
                       <div class="input-field col s12">
-                        <select id="type_id" onchange="change_color2(this.options[this.options.selectedIndex].value)" class="browser-default">
+                        <select id="type_id" onchange="getAllTagsByType(this.options[this.options.selectedIndex].value)" class="browser-default">
                           <option value="" disabled selected>文章分类</option>
                           {volist name="articletype" id="v"}
                           <option class="<{$v.color}>" value="<{$v.id}>"><{$v.value}></option>
                           {/volist}
                         </select>
                       </div>
-                      {volist name="$tags" id="v"}
-                        <div class="input-field col s<{$length}>">
-                          <table>
-                            <tbody>
-                              {volist name="$v" id="v1"}
-                                <tr>
-                                  <td>
-                                    <input name="tag" type="checkbox" id="tag<{$v1.id}>" value="<{$v1.id}>">
-                                    <label for="tag<{$v1.id}>"><{$v1.value}></label>
-                                  </td>
-                                </tr>
-                              {/volist}
-                            </tbody>
-                          </table>
-                        </div>
-                      {/volist}
+                      <div class="row" id="tagdiv">
+                        
+                      </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row" id="list">
