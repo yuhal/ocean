@@ -60,49 +60,34 @@
                     {/if}
                     <div class="row">
                       <div class="input-field col s12">
-                        <textarea name="note" class="materialize-textarea" maxlength="255" length="255"></textarea>
-                        <label for="note">文章摘要</label>
-                      </div> 
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s6">
-                          <table>
-                          <thead>
-                            <tr>
-                              <th data-field="id"><i class="mdi-action-loyalty"></i>文章标签</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {volist name="$tags" id="v"}
-                            <tr>
-                              <td>
-                                <input name="tag" type="checkbox" id="tag<{$v.id}>" value="<{$v.id}>">
-                                <label for="tag<{$v.id}>"><{$v.value}></label>
-                              </td>
-                            </tr>
-                            {/volist}
-                          </tbody>
-                        </table>
+                        <label for="create_time">文章分类&标签</label>
                       </div>
-                      <div class="input-field col s6">
-                          <table>
-                          <thead>
-                            <tr>
-                              <th data-field="id"><i class="mdi-action-class"></i>文章类型</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {volist name="$articletype" id="v"}
-                            <tr>   
-                              <td>
-                                <input name="type_id" type="radio" id="type<{$v.id}>" value="<{$v.id}>" {if $v.delete_time} disabled="disabled" {/if}>
-                                <label style="color:<{$v.color}>" for="type<{$v.id}>"><{$v.value}></label>
-                              </td>
-                            </tr>
-                            {/volist}
-                          </tbody>
-                        </table>
+                      <br/>
+                      <br/>
+                      <div class="input-field col s12">
+                        <select id="type_id" onchange="change_color2(this.options[this.options.selectedIndex].value)" class="browser-default">
+                          <option value="" disabled selected>文章分类</option>
+                          {volist name="articletype" id="v"}
+                          <option class="<{$v.color}>" value="<{$v.id}>"><{$v.value}></option>
+                          {/volist}
+                        </select>
                       </div>
+                      {volist name="$tags" id="v"}
+                        <div class="input-field col s<{$length}>">
+                          <table>
+                            <tbody>
+                              {volist name="$v" id="v1"}
+                                <tr>
+                                  <td>
+                                    <input name="tag" type="checkbox" id="tag<{$v1.id}>" value="<{$v1.id}>">
+                                    <label for="tag<{$v1.id}>"><{$v1.value}></label>
+                                  </td>
+                                </tr>
+                              {/volist}
+                            </tbody>
+                          </table>
+                        </div>
+                      {/volist}
                     </div>
                     <div class="divider"></div>
                     <div class="row" id="list">
@@ -160,28 +145,28 @@
           var uniqid = createarticle.uniqid.value;
           var note = createarticle.note.value;
           var obj = document.getElementsByName("tag");  
+          var type_id = createarticle.type_id.value;
           check_val = [];
           for(k in obj){
               if(obj[k].checked)
                   check_val.push(obj[k].value);
           }
-          var type_id = createarticle.type_id.value; 
           if(article_title==""){
-            Materialize.toast('文章标题不能为空', 1000);
+            Materialize.toast('请填写文章标题', 1000);
             return false;
           }
           if(create_time==""){
-            Materialize.toast('添加时间不能为空', 1000);
+            Materialize.toast('请选择添加时间', 1000);
             return false;
           }
-          if(check_val==""){
-            Materialize.toast('至少选择一个标签', 1000);
-            return false;
-          } 
           if(type_id==""){
             Materialize.toast('文章类型不能为空', 1000);
             return false;
           }
+          if(check_val==""){
+            Materialize.toast('请选择文章标签', 1000);
+            return false;
+          } 
           var des = '[';
           for (var a=1;a<=i;a++)
           {
@@ -190,7 +175,7 @@
             des_name = document.getElementById('des_name'+a).value;
             des_text = document.getElementById('des'+a).contentWindow.document.getElementById('editor'+a).innerHTML;  
             if(des_name==""){
-                Materialize.toast("目录名称"+a+"不能为空", 1000);
+                Materialize.toast("请填写目录名称"+a, 1000);
                 return false;
             }
             des_text = htmlencode(des_text);
@@ -205,8 +190,8 @@
               "article":
                 {
                  'article_id':article_id,
-                 'article_title':article_title,
                  'type_id':type_id,
+                 'article_title':article_title,
                  'tag_ids':check_val.join(),        
                  'note':note,
                  'create_time':create_time,

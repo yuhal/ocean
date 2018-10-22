@@ -47,12 +47,21 @@ class BlogArticle extends Base
      */
     public function create($id='')
     {
+        //判断是否是手机登录
+        if(is_mobile_request())
+        {
+            $this->length = 6;
+        }else{
+            $this->length = 1;
+        }
+        $this->assign('length',$this->length); 
         if(request()->isAjax())
         {
             $article = input('post.article/a');
             $article['article_title'] = strtolower($article['article_title']);
             $article['note'] = strtolower($article['note']);
             $article['user_id'] = $this->UserInfo['id'];
+            $article['type_id'] = $this->ArticleTags::get($article['tag']);
             $article['create_time'] = $article['create_time'].' '.date("H:i");
             if($article['article_id'])
             {
@@ -94,10 +103,22 @@ class BlogArticle extends Base
                 $this->error('保存失败');
             }       
         }
-        $tags = $this->ArticleTags->getAllTagsByWhere("delete_time is null");
+        $re_tags = $this->ArticleTags->getAllTagsByWhere("delete_time is null");
+        $tags_count = count($re_tags);
+        $tags = [];
+        if(is_mobile_request()){
+            $this->pageSize = 2;
+        }else{
+            $this->pageSize = 12;
+        }
+        $maxCount = ceil($tags_count/$this->pageSize);
+        for ($i=0; $i <= $this->pageSize ; $i++) { 
+            $start = $i*$maxCount;
+            $tags[$i] = array_slice($re_tags,$start,$maxCount);
+        }
+        $this->assign('tags',$tags);
         $articletype = $this->ArticleType->getAllArticleTypeByWhere();
         $this->assign('articletype',$articletype);
-        $this->assign('tags',$tags);
         if(!empty($id))
         {
             $where = "article_id={$id}";
