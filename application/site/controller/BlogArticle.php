@@ -61,7 +61,6 @@ class BlogArticle extends Base
             $article['article_title'] = strtolower($article['article_title']);
             $article['note'] = strtolower($article['note']);
             $article['user_id'] = $this->UserInfo['id'];
-            $article['type_id'] = $this->ArticleTags::get($article['tag']);
             $article['create_time'] = $article['create_time'].' '.date("H:i");
             if($article['article_id'])
             {
@@ -82,19 +81,22 @@ class BlogArticle extends Base
             if($insertId)
             {
                 $des = json_decode(input('post.des/a')[0],true);
-                foreach ($des as $key=>$value) {
-                    $article_des[$key]['article_id'] = $insertId;
-                    $article_des[$key]['name'] = strtolower($value['name']);
-                    $text = (new MaterialPicture)->uploadContentImg($value['text'],$insertId);
-                    if($text){
-                        $article_des[$key]['text'] = $text;
-                    }else{
-                        $article_des[$key]['text'] = $value['text'];
-                    }
+                if(is_array($des)){
+                    foreach ($des as $key=>$value) {
+                        $article_des[$key]['article_id'] = $insertId;
+                        $article_des[$key]['name'] = strtolower($value['name']);
+                        $text = (new MaterialPicture)->uploadContentImg($value['text'],$insertId);
+                        if($text){
+                            $article_des[$key]['text'] = $text;
+                        }else{
+                            $article_des[$key]['text'] = $value['text'];
+                        }
+                    }  
+                    if(isset($article_des)){
+                        $re = $this->ArticleDes->allowField(true)->saveAll($article_des);    
+                    }  
                 }
-                if($article_des){
-                    $re = $this->ArticleDes->allowField(true)->saveAll($article_des);    
-                }
+                
                 if($re || ($re===0))
                 {   
                     $this->success('保存成功',"",['article_id'=>$insertId]);
@@ -103,52 +105,53 @@ class BlogArticle extends Base
                 $this->error('保存失败');
             }       
         }
-        $re_tags = $this->ArticleTags->getAllTagsByWhere("delete_time is null");
-        $tags_count = count($re_tags);
-        $tags = [];
-        if(is_mobile_request()){
-            $this->pageSize = 2;
-        }else{
-            $this->pageSize = 12;
-        }
-        $maxCount = ceil($tags_count/$this->pageSize);
-        for ($i=0; $i <= $this->pageSize ; $i++) { 
-            $start = $i*$maxCount;
-            $tags[$i] = array_slice($re_tags,$start,$maxCount);
-        }
-        $this->assign('tags',$tags);
         $articletype = $this->ArticleType->getAllArticleTypeByWhere();
         $this->assign('articletype',$articletype);
-        if(!empty($id))
-        {
-            $where = "article_id={$id}";
-            $content = $this->Article->getArticleByWhere($where);
-            if(empty($content))
-            {
+        if(!empty($id)){
+            $cfilter['article_id'] = $id;
+            $content = $this->Article->getArticleByWhere($cfilter);
+            if(empty($content)){
                 $this->redirect('/error');
+            }
+            $tfilter['type_id'] = $content['type_id'];
+            $tag = $this->ArticleTags->getAllTagsByWhere($tfilter);
+            $tag_count = count($tag);
+            $tags = [];
+            if(is_mobile_request()){
+                $this->pageSize = 2;
+            }else{
+                $this->pageSize = 12;
+            }
+            $maxCount = ceil($tag_count/$this->pageSize);
+            for ($i=0; $i <= $this->pageSize ; $i++) { 
+                $start = $i*$maxCount;
+                $tags[$i] = array_slice($tag,$start,$maxCount);
             }
             if(strstr($content['tag_ids'],','))
             {
                 $arr = explode(',',$content['tag_ids']);
                 $content['tag_ids']=$arr;
                 foreach ($tags as $key => $value) {
-                   if(in_array($value['id'],$content['tag_ids']))
-                   {
-                        $value['check']=1;
-                   }else{
-                        $value['check']=0;
-                   }
+                    foreach ($value as $k => $v) {
+                        if(in_array($v['id'],$content['tag_ids'])){
+                            $tags[$key][$k]['check']=1;
+                        }else{
+                            $tags[$key][$k]['check']=0;
+                        }
+                    }
                 }
             }else{
                 foreach ($tags as $key => $value) {
-                   if($content['tag_ids']==$value['id']){
-                        $value['check']=1;
-                   }else{
-                        $value['check']=0;
-                   }
+                    foreach ($value as $k => $v) {
+                        if($content['tag_ids']==$v['id']){
+                            $tags[$key][$k]['check']=1;
+                        }else{
+                            $tags[$key][$k]['check']=0;
+                        }
+                    }
                 }
             }
-            $content['tag_ids'] = $tags;
+            $content['tags'] = $tags;
             $content['des'] = $this->Article->getDes()->where("article_id",$id)->select();
             $this->assign('content',$content);
             return $this->fetch('edit');

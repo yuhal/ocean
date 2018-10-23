@@ -105,16 +105,23 @@ class Login extends Controller
             }
             if(empty($re['advert'])){
                 //设置广告位
-                $advert = json_encode($userConfig['advert']);
+                $advert = json_encode($userConfig['advert'],true);
                 $re['advert'] = current($this->User->UserSetUp($re['id'],'advert',$advert,false,false));
                 if(!$re['advert']){
                     $this->error('系统异常');        
                 }
             }
+            //内置参数设置
             $session_data = $re;
-            foreach (json_decode($re['insetup']) as $key => $value) {
+            foreach (json_decode($re['insetup'],true) as $key => $value) {
                 $session_data[$key] = $value;
+            } 
+            //个人介绍设置
+            $introduce = [];
+            foreach (json_decode($re['introduce'],true) as $key => $value) {
+                $introduce[$key] = $value;
             }    
+            $session_data['introduce'] = $introduce;
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
             $this->success('登录成功','');

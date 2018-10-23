@@ -46,43 +46,36 @@
                       </div> 
                     </div>
                     <div class="row">
-                      <div class="input-field col s6">
-                          <table>
-                          <thead>
-                            <tr>
-                              <th data-field="id"><i class="mdi-action-loyalty"></i>文章标签</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {volist name="$content['tag_ids']" id="v"}
-                            <tr>
-                              <td>
-                                <input name="tag" {if $v.check==1} checked="checked" {/if} type="checkbox" id="tag<{$v.id}>" value="<{$v.id}>">
-                                <label for="tag<{$v.id}>"><{$v.value}></label>
-                              </td>
-                            </tr>
-                            {/volist}
-                          </tbody>
-                        </table>
+                      <div class="input-field col s12">
+                        <label for="create_time">文章分类&标签</label>
                       </div>
-                      <div class="input-field col s6">
+                      <br/>
+                      <br/>
+                      <div class="input-field col s12">
+                        <select id="type_id" onchange="getAllTagsByType(this.options[this.options.selectedIndex].value)" class="browser-default">
+                          <option value="" disabled selected>文章分类</option>
+                          {volist name="articletype" id="v"}
+                          <option class="<{$v.color}>" {if $content.type_id==$v.id} selected="selected" {/if} value="<{$v.id}>"><{$v.value}></option>
+                          {/volist}
+                        </select>
+                      </div>
+                      <div class="row" id="tagdiv">
+                        {volist name="content['tags']" id="v"}
+                        <div class="input-field col s<{$length}>">
                           <table>
-                          <thead>
-                            <tr>
-                              <th data-field="id"><i class="mdi-action-class"></i>文章类型</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {volist name="$articletype" id="v"}
-                            <tr>   
-                              <td>
-                                <input name="type_id" {if $content.type_id==$v.id} checked="checked" {/if} type="radio" id="type<{$v.id}>" value="<{$v.id}>" {if $v.delete_time} disabled="disabled" {/if}>
-                                <label style="color:<{$v.color}>" for="type<{$v.id}>"><{$v.value}></label>
-                              </td>
-                            </tr>
-                            {/volist}
-                          </tbody>
-                        </table>
+                            <tbody>
+                              {volist name="v" id="v0"}
+                              <tr>
+                                <td>
+                                  <input name="tag" {if $v0.check==1} checked="checked" {/if} type="checkbox" id="tag<{$v0.id}>" value="<{$v0.id}>">
+                                  <label for="tag<{$v0.id}>"><{$v0.value}></label>
+                                </td>
+                              </tr>
+                              {/volist}
+                            </tbody>
+                          </table>
+                        </div>
+                        {/volist}
                       </div>
                     </div>
                     <div class="divider"></div>
@@ -92,7 +85,7 @@
                         <div class="input-field col s12">
                           <input id="des_name<{$k}>" type="text" maxlength="20" length="20" value="<{$v.name}>">
                           <textarea style="display: none;" id="des_text<{$k}>" class="materialize-textarea"><{$v.text}></textarea>
-                          <label for="des_name<{$k}>" class="active">目录名称<{$k}></label>
+                          <label for="des_name<{$k}>" class="active">自定义目录<{$k}></label>
                         </div>
                         <div class="input-field col s12">
                           <iframe id="des<{$k}>" width=100% height=293 src="/../editide/<{$k}>" frameborder=0></iframe>
@@ -166,7 +159,7 @@
             return false;
           } 
           if(type_id==""){
-            Materialize.toast('文章类型不能为空', 1000);
+            Materialize.toast('文章分类不能为空', 1000);
             return false;
           }
           var des = '[';
@@ -213,7 +206,7 @@
           var a = i+1;
           var html ="";
           html += "<div id='block"+a+"' class='list'>";
-          html += "<div class='input-field col s12'><input id='des_name"+a+"' type='text' maxlength='20' length='20'><label for='des_name"+a+"'>目录名称"+a+"</label></div><div class='input-field col s12'><iframe id='des"+a+"' width=100% height=293 src='/../editide/"+a+"' frameborder=0></iframe><span class='character-counter' style='float: right; font-size: 12px; height: 1px;'></span></div>";
+          html += "<div class='input-field col s12'><input id='des_name"+a+"' type='text' maxlength='20' length='20'><label for='des_name"+a+"'>自定义目录"+a+"</label></div><div class='input-field col s12'><iframe id='des"+a+"' width=100% height=293 src='/../editide/"+a+"' frameborder=0></iframe><span class='character-counter' style='float: right; font-size: 12px; height: 1px;'></span></div>";
           html += "</div>";  
           $("#list").append(html);
           $("#add-btn").html("<a onclick='addlist("+a+")' title='添加目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-av-playlist-add'></i></a>");

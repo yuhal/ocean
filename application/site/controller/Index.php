@@ -32,9 +32,11 @@ class Index extends Base
             {
                 //更改session信息
                 foreach ($updateData as $key => $value) {
-                    if($key=='contact'){
+                    if ($key == 'contact') {
                         session('user_info_'.$this->UserInfo['id'].'.'.$key,json_encode($value));    
-                    }else{
+                    } elseif ($key == 'introduce') {
+                        session('user_info_'.$this->UserInfo['id'].'.'.$key,json_decode($updateData['introduce'],true));    
+                    } else {
                         session('user_info_'.$this->UserInfo['id'].'.'.$key,$value);
                     }
                 }

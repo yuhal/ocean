@@ -34,60 +34,92 @@
                 <form id="postForm" method="post" enctype="multipart/form-data">
                   <div class="row">   
                     <div class="row">
-                          <div class="file-field input-field col s<{$length}>">
-                            <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.avatar}>"/>
-                            <div class="col s5 m4 l5">
-                              <img class="materialboxed circle responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.avatar}>">
-                            </div>
-                            <div class="col s5 m4 l7">
-                              <p class="width">图片宽度：<{$avatar.width}></p>
-                              <p class="height">图片高度：<{$avatar.height}></p>
-                              <p class="size">图片大小：<{$avatar.size}></p>
-                            </div>
-                            <div class="btn">
-                              <span>头像</span>
-                              <input onchange="putfile(this)" name="avatar" type="file" multiple="multiple"/>
-                            </div>
-                          </div>
-                          <div class="file-field input-field col s<{$length}>">
-                            <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.wxqrcode}>"/>
-                            <div class="col s5 m4 l5">
-                              <img class="materialboxed responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.wxqrcode}>">
-                            </div>
-                            <div class="col s5 m4 l7">
-                              <p class="width">图片宽度：<{$wxqrcode.width}></p>
-                              <p class="height">图片高度：<{$wxqrcode.height}></p>
-                              <p class="size">图片大小：<{$wxqrcode.size}></p>
-                            </div>
-                            <div class="btn">
-                              <span>公众号</span>
-                              <input onchange="putfile(this)" name="wxqrcode" type="file" multiple="multiple"/>
-                            </div>
-                          </div>
+                      <div class="file-field input-field col s<{$length}>">
+                        <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.avatar}>"/>
+                        <div class="col s5 m4 l5">
+                          <img class="materialboxed circle responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.avatar}>">
+                        </div>
+                        <div class="col s5 m4 l7">
+                          <p class="width">图片宽度：<{$avatar.width}></p>
+                          <p class="height">图片高度：<{$avatar.height}></p>
+                          <p class="size">图片大小：<{$avatar.size}></p>
+                        </div>
+                        <div class="btn">
+                          <span>头像</span>
+                          <input onchange="putfile(this)" name="avatar" type="file" multiple="multiple"/>
+                        </div>
+                      </div>
+                      <div class="file-field input-field col s<{$length}>">
+                        <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$user_info.wxqrcode}>"/>
+                        <div class="col s5 m4 l5">
+                          <img class="materialboxed responsive-img valign profile-image" width="115" alt="" title="" src="<{$user_info.wxqrcode}>">
+                        </div>
+                        <div class="col s5 m4 l7">
+                          <p class="width">图片宽度：<{$wxqrcode.width}></p>
+                          <p class="height">图片高度：<{$wxqrcode.height}></p>
+                          <p class="size">图片大小：<{$wxqrcode.size}></p>
+                        </div>
+                        <div class="btn">
+                          <span>公众号</span>
+                          <input onchange="putfile(this)" name="wxqrcode" type="file" multiple="multiple"/>
+                        </div>
+                      </div>
+                      <div class="input-field col s<{$length}>">
+                        <input name="nick_name" type="text" value="<{$user_info.nick_name}>" length="10" maxlength="10">
+                        <label {if $user_info.nick_name} class="active" {/if}>昵称</label>
+                      </div>
+                      <div class="input-field col s<{$length}>">
+                        <input name="sign" type="text" value="<{$user_info.sign}>" length="50" maxlength="50">
+                        <label {if $user_info.sign} class="active" {/if}>个性签名</label>
+                      </div>
+                      {foreach name="contact" item="v" key="key"}
+                      <div class="input-field col s<{$length}>">
+                        <input name="contact[<{$key}>]" type="text" value="<{$v}>">
+                        <label {if $v } class="active" {/if}><{$key}></label>
+                      </div>
+                      {/foreach}
+                    </div>
+                    <div class="row" id="list">
+                      <span class="badge">个人介绍</span>
+                      <input id="introduce" name="introduce" type="hidden" value="">
+                      {if $user_info.introduce}
+                        {volist name="user_info.introduce" key="k" id="v"}
+                        <div class="list" id="block<{$k}>">
                           <div class="input-field col s<{$length}>">
-                            <input name="nick_name" type="text" value="<{$user_info.nick_name}>" length="10" maxlength="10">
-                            <label {if $user_info.nick_name} class="active" {/if}>昵称</label>
+                            <input id="des_name<{$k}>" type="text" maxlength="20" length="20" value="<{$v.name}>">
+                            <textarea style="display: none;" id="des_text<{$k}>" class="materialize-textarea"><{$v.text}></textarea>
+                            <label for="des_name<{$k}>" class="active">自定义目录<{$k}></label>
                           </div>
+                          <div class="input-field col s12">
+                            <iframe id="des<{$k}>" width=100% height=293 src="/../editide/<{$k}>" frameborder=0></iframe>
+                          </div>
+                        </div> 
+                        {/volist}
+                      {else}
+                        <div class="list">
                           <div class="input-field col s<{$length}>">
-                            <input name="sign" type="text" value="<{$user_info.sign}>" length="50" maxlength="50">
-                            <label {if $user_info.sign} class="active" {/if}>个性签名</label>
+                            <input id="des_name1" type="text" maxlength="20" length="20">
+                            <label for="des_name1" class="active">自定义目录1</label>
                           </div>
-                          <div class="input-field col s<{$length}>">
-                            <textarea name="introduce" class="materialize-textarea" maxlength="255" length="255"><{$user_info.introduce}></textarea>
-                            <label {if $user_info.introduce} class="active" {/if} >个人介绍</label>
+                          <div class="input-field col s12">
+                            <iframe id="des1" width=100% height=293 src="/../editide/1" frameborder=0></iframe>
                           </div>
-                          {foreach name="contact" item="v" key="key"}
-                          <div class="input-field col s<{$length}>">
-                            <input name="contact[<{$key}>]" type="text" value="<{$v}>">
-                            <label {if $v } class="active" {/if}><{$key}></label>
-                          </div>
-                          {/foreach}
+                        </div>   
+                      {/if}  
+                    </div>
+                    <div class="row">
+                        <br/>
+                        <div id="add-btn" class="input-field col s2">
+                          <a onclick="addlist(1)" title="添加目录" class="btn-floating btn-move-up waves-effect waves-light darken-2 left"><i class="mdi-av-playlist-add"></i></a>
+                        </div>
+                        <div id="clear-btn" class="input-field col s2">
+                        </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
                         <br/>
                         <div id="sub-btn" class="input-field col s<{$length}>">
-                          <button onclick="checksubmit()" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
+                          <button onclick="checksubmit(1)" class="btn cyan waves-effect waves-light right" type="button" name="action">Submit<i class="mdi-content-send right"></i>
                           </button>
                         </div>
                     </div>
@@ -114,7 +146,37 @@
     </footer>
     <!-- END FOOTER -->
 <script type="text/javascript">
-  function checksubmit(){
+  //自动加载目录内容
+  window.onload = function(){
+    var count = "<{$user_info['introduce']|count}>";
+    if(count>1){
+      $("#add-btn").html("<a onclick='addlist("+count+")' title='添加目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-av-playlist-add'></i></a>");
+      $("#clear-btn").html("<a onclick='clearlist("+count+")' title='删除目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-content-clear'></i></a>");
+      $("#sub-btn").html("<button onclick='checksubmit("+count+")' class='btn cyan waves-effect waves-light right' type='button' name='action'>Submit<i class='mdi-content-send right'></i></button>");
+    }
+    for (var b=1;b<=count;b++){
+      var content = $("#des_text"+b).text();
+      document.getElementById('des'+b).contentWindow.document.getElementById('editor'+b).innerHTML=content;
+    }
+  }
+  function checksubmit(i){
+    var des = '[';
+    for (var a=1;a<=i;a++)
+    {
+      var des_name = '';
+      var des_text = '';
+      des_name = document.getElementById('des_name'+a).value;
+      des_text = document.getElementById('des'+a).contentWindow.document.getElementById('editor'+a).innerHTML;  
+      if(des_name==""){
+          Materialize.toast("请填写目录名称"+a, 1000);
+          return false;
+      }
+      des_text = htmlencode(des_text);
+      des_text = JSON.stringify(des_text).replace(/\"/g,"\""); 
+      des += '{"name":"'+des_name+'","text":'+des_text+'},';
+    }
+    des = des.substr(0,des.length-1)+']';  
+    $('#introduce').val(des);
     var formData = new FormData($( "#postForm" )[0]);
     $.ajax({
        type: "POST",

@@ -179,6 +179,30 @@ function formatSizeUnits(bytes){
     }
     return bytes;
 }
+//添加目录
+function addlist(i){
+      var a = i+1;
+      var html ="";
+      html += "<div id='block"+a+"' class='list'>";
+      html += "<div class='input-field col s12'><input id='des_name"+a+"' type='text' maxlength='20' length='20'><label for='des_name"+a+"'>自定义目录"+a+"</label></div><div class='input-field col s12'><iframe id='des"+a+"' width=100% height=293 src='/../editide/"+a+"' frameborder=0></iframe><span class='character-counter' style='float: right; font-size: 12px; height: 1px;'></span></div>";
+      html += "</div>";  
+      $("#list").append(html);
+      $("#add-btn").html("<a onclick='addlist("+a+")' title='添加目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-av-playlist-add'></i></a>");
+      $("#clear-btn").html("<a onclick='clearlist("+a+")' title='删除目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-content-clear'></i></a>");
+      $("#sub-btn").html(" <button onclick='checksubmit("+a+")' class='btn cyan waves-effect waves-light right' type='button' name='action'>Submit <i class='mdi-content-send right'></i></button>");
+}
+//删除目录
+function clearlist(i){
+      var a = i-1;
+      $("#block"+i).remove();
+      if(a==1){
+      $("#clear-btn").html("");
+      }else{
+      $("#clear-btn").html("<a onclick='clearlist("+a+")' title='删除目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-content-clear'></i></a>");    
+      }         
+      $("#add-btn").html("<a onclick='addlist("+a+")' title='添加目录' class='btn-floating btn-move-up waves-effect waves-light darken-2 left'><i class='mdi-av-playlist-add'></i></a>");
+      $("#sub-btn").html(" <button onclick='checksubmit("+a+")' class='btn cyan waves-effect waves-light right' type='button' name='action'>Submit <i class='mdi-content-send right'></i></button>");
+}
 </script>
 </body>
 
