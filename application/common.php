@@ -64,13 +64,12 @@ function deldir($dir) {
 
 
 /** 
- * 七牛云上传文件 
+ * 七牛云上传文件|重命名uniqid
  * 
  * @param array $file 图片信息 
- * @param bucket 仓库名
  * @return false|array 
  */
-function qiniu_upload($file){
+function uniqid_qiniu_upload($file){
     $UserInfo =  session('user_info_'.session('user_id'));
     $qiniu_sdk = config('sdk.qiniu_sdk');
     $ext = get_extension($file['name']);
@@ -88,14 +87,51 @@ function qiniu_upload($file){
         $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
         $domain = current(current($Qiniu->domains()));
         if($Qiniu->putFile($data)){
-            return 'http://'.$domain.'/'.$data['file'];
+            return 'https://'.$domain.'/'.$data['file'];
         }else{
             return false; 
         }
     }catch(\Exception $e){
         return false;
     }
-    
+}
+
+/** 
+ * 七牛云上传文件|重命名
+ * 
+ * @param array $file 图片信息 
+ * @param string $filename 图片名 
+ * @return false|array 
+ */
+function rename_qiniu_upload($file,$filename){
+    $UserInfo =  session('user_info_'.session('user_id'));
+    $qiniu_sdk = config('sdk.qiniu_sdk');
+    $ext = get_extension($file['name']);
+    $data['file'] = $filename.'.jpg';
+    $data['filepath']= TEMP_PATH.$data['file']; 
+    move_uploaded_file($file['tmp_name'],$data['filepath']);
+    $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
+    $buckets = current($Qiniu->buckets(['shared'=>$UserInfo['qiniu_account']]));
+    foreach ($buckets as $key => $value) {
+        if(strstr($value, 'image')){
+            $bucket = $value;
+        }
+    }
+    $qiniu_sdk['bucket'] = $bucket;
+    $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
+    $stat_re = $Qiniu->stat(['oldname'=>$data['file']]);
+    //如果该仓库是否存在该文件,则删除
+    if($stat_re){
+        $Qiniu->delete(['oldname'=>$data['file']]);
+    }
+    $domain = current(current($Qiniu->domains()));
+    $putFile_re = $Qiniu->putFile($data);
+    var_dump('<pre>',$putFile_re);exit;
+    if(1){
+        return 'https://'.$domain.'/'.$data['file'];
+    }else{
+        return false; 
+    }
 }
 
 /** 

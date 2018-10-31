@@ -458,7 +458,7 @@
                 <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates</div>
                 <div class="collapsible-body favorite-associates">
                     <div class="favorite-associate-list chat-out-list row">
-                        <div class="col s4"><img src="__STATIC__/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                        <div class="col s4"><img src="__STATIC__/images/default-avatar.png" alt="" class="circle responsive-img online-user valign profile-image">
                         </div>
                         <div class="col s8">
                             <p>Eileen Sideways</p>
@@ -466,7 +466,7 @@
                         </div>
                     </div>
                     <div class="favorite-associate-list chat-out-list row">
-                        <div class="col s4"><img src="__STATIC__/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                        <div class="col s4"><img src="__STATIC__/images/default-avatar.png" alt="" class="circle responsive-img online-user valign profile-image">
                         </div>
                         <div class="col s8">
                             <p>Zaham Sindil</p>
@@ -474,7 +474,7 @@
                         </div>
                     </div>
                     <div class="favorite-associate-list chat-out-list row">
-                        <div class="col s4"><img src="__STATIC__/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                        <div class="col s4"><img src="__STATIC__/images/default-avatar.png" alt="" class="circle responsive-img offline-user valign profile-image">
                         </div>
                         <div class="col s8">
                             <p>Renov Leongal</p>
@@ -482,7 +482,7 @@
                         </div>
                     </div>
                     <div class="favorite-associate-list chat-out-list row">
-                        <div class="col s4"><img src="__STATIC__/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                        <div class="col s4"><img src="__STATIC__/images/default-avatar.png" alt="" class="circle responsive-img online-user valign profile-image">
                         </div>
                         <div class="col s8">
                             <p>Weno Carasbong</p>
@@ -490,7 +490,7 @@
                         </div>
                     </div>
                     <div class="favorite-associate-list chat-out-list row">
-                        <div class="col s4"><img src="__STATIC__/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                        <div class="col s4"><img src="__STATIC__/images/default-avatar.png" alt="" class="circle responsive-img offline-user valign profile-image">
                         </div>
                         <div class="col s8">
                             <p>Nusja Nawancali</p>

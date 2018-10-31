@@ -6,7 +6,7 @@
     <form class="login-form">
       <div class="row">
         <div class="input-field col s12 center">
-          <img id="avatar" src="__STATIC__/images/default-user.png" class="circle responsive-img valign profile-image-login">
+          <img id="avatar" src="__STATIC__/images/default-avatar.png" class="circle responsive-img valign profile-image-login">
           <p class="center login-form-text" id="nick_name">materialize</p>
         </div>
       </div>
@@ -89,12 +89,12 @@ function showuserinfo(){
           document.getElementById("avatar").src=data.msg.avatar;
           $("#nick_name").text(data.msg.nick_name);
         }else{
-          document.getElementById("avatar").src="__STATIC__/images/default-user.png";
+          document.getElementById("avatar").src="__STATIC__/images/default-avatar.png";
         }
        }
     });  
   }else{
-    document.getElementById("avatar").src="__STATIC__/images/default-user.png";
+    document.getElementById("avatar").src="__STATIC__/images/default-avatar.png";
   }
 }
 

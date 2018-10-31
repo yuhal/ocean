@@ -45,6 +45,9 @@ class QiniuSdk{
 	    		case 'fetch':
 	    			return $this->bucketMgr->fetch($arguments['url'],$this->sdk_info['bucket']);
 	    		break;
+	    		case 'stat':
+	    			return $this->bucketMgr->stat($this->sdk_info['bucket'],$arguments['oldname']);
+	    		break;
 	    	}	
 		}elseif(method_exists($this->uploadMgr, $name)){
 			switch ($name) {
@@ -52,7 +55,7 @@ class QiniuSdk{
 					$arguments['token'] = $this->Auth->uploadToken($this->sdk_info['bucket']);
 					$re = $this->uploadMgr->putFile($arguments['token'],$arguments['file'],$arguments['filepath']);
 					if(isset($re[0]['key'])){
-						return true;
+						return $re[0]['key'];
 					}else{
 						return false;
 					}

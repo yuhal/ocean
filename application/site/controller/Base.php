@@ -28,11 +28,9 @@ class Base extends Controller
     public function __construct()
     {   	
     	parent::__construct();
-
         //验证登录
         $user_id = session('user_id');
         $this->UserInfo = $this->isLogin($user_id);
-    //var_dump('<pre>',$this->UserInfo);exit;
         if(!$this->UserInfo){
             $this->redirect(url('/login'));
         }

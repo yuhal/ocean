@@ -34,7 +34,7 @@ class BlogAdvert extends Base
         {
             $advert = input('post.');
             if(@$_FILES['file']['name']){
-                $advert['imageurl'] = qiniu_upload($_FILES['file']);    
+                $advert['imageurl'] = uniqid_qiniu_upload($_FILES['file']);    
             }
             foreach ($userAdvert as $k => $v) {
                 foreach ($advert as $key => $value) {

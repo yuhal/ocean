@@ -45,7 +45,7 @@ i:hover{ cursor: pointer; }
 animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
   
 z-index: 1001; }
-#loader-logo { display: block; position: absolute; left: 48%; top: 46%; background: url(../images/user-bg.jpg) no-repeat center center; z-index: 1001; }
+#loader-logo { display: block; position: absolute; left: 48%; top: 46%; background: url(../images/default-avatar-background.jpg) no-repeat center center; z-index: 1001; }
 #loader:before { content: ""; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; border-radius: 50%; border: 3px solid transparent; border-top-color: #e74c3c; -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
   
 animation: spin 3s linear infinite;/* Chrome, Firefox 16+, IE 10+, Opera */
@@ -185,7 +185,7 @@ ul.side-nav.fixed li a { font-size: 14px; font-weight: 400; }
 ul.side-nav.fixed ul.collapsible-accordion { background-color: #FFF; }
 ul.side-nav.fixed:hover { /*overflow-y:hidden;*/
 }
-ul.side-nav.fixed li.user-details { background: url(../images/user-bg.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; /*overflow: hidden;*/
+ul.side-nav.fixed li.user-details { background: url(../images/default-avatar-background.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; /*overflow: hidden;*/
   
 margin-bottom: 15px; padding: 15px 0px 0px 15px; }
 .user-details .row { margin: 0; }
@@ -262,7 +262,7 @@ h5.breadcrumbs-header { font-size: 1.64rem; line-height: 1.804rem; margin: 1.5re
   filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=3);
 /* Internet Explorer */
 }
-#flight-card .card-content-bg { background: url(../images/sample-1.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+#flight-card .card-content-bg { background: url(../images/default.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
 #flight-card .card-content { background: rgba(0, 0, 0, 0.25); }
 #flight-card .flight-state-wrapper { margin: 0 0 100px 0 !important; }
 /*task-card*/

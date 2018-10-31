@@ -5292,9 +5292,6 @@ nav {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px; }
-
-  .navbar-fixed {
-    height: 64px; } }
 @font-face {
   font-family: "Roboto";
   src: url("../font/roboto/Roboto-Thin.woff") format("woff"), url("../font/roboto/Roboto-Thin.ttf") format("truetype");
@@ -5315,6 +5312,8 @@ nav {
   font-family: "Roboto";
   src: url("../font/roboto/Roboto-Bold.woff") format("woff"), url("../font/roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700; }
+  .navbar-fixed {
+    height: 64px; } }
 a {
   text-decoration: none; }
 

@@ -29,8 +29,8 @@ class Login extends Controller
         parent::__construct();  
         $this->User = model('site/User');
         $this->Sdk = model('site/Sdk');
-        $this->Qauth_Qc = new Qc();
-        $this->Sign = new SaeTOAuthV2(config('sign.appkey'),config('sign.appsecret'));
+        // $this->Qauth_Qc = new Qc();
+        // $this->Sign = new SaeTOAuthV2(config('sign.appkey'),config('sign.appsecret'));
     }
 
     public function uptoken(){
@@ -97,7 +97,7 @@ class Login extends Controller
                 }   
             }
             if(empty($re['insetup'])){
-                //设置后台系统参数
+                //设置后台参数
                 $re['insetup'] = $this->User->UserSetUp($re['id'],'insetup',1);
                 if(!$re['insetup']){
                     $this->error('系统异常');        
@@ -111,17 +111,17 @@ class Login extends Controller
                     $this->error('系统异常');        
                 }
             }
-            //内置参数设置
+            if(!empty($re['insetup'])){
+                //后台参数
+                foreach (json_decode($re['insetup'],true) as $key => $value) {
+                    $re[$key] = $value;
+                }
+            }
+            if(!empty($re['introduce'])){
+                //个人介绍
+                $re['introduce'] = json_decode($re['introduce'],true);
+            }
             $session_data = $re;
-            foreach (json_decode($re['insetup'],true) as $key => $value) {
-                $session_data[$key] = $value;
-            } 
-            //个人介绍设置
-            $introduce = [];
-            foreach (json_decode($re['introduce'],true) as $key => $value) {
-                $introduce[$key] = $value;
-            }    
-            $session_data['introduce'] = $introduce;
             session('user_info_'.$session_data['id'],$session_data);
             session('user_id',$session_data['id']);
             $this->success('登录成功','');

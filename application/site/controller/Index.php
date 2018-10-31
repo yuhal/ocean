@@ -21,12 +21,11 @@ class Index extends Base
         {
             $updateData = input('post.');
             if(@$_FILES['avatar']['name']){
-                $updateData['avatar'] = qiniu_upload($_FILES['avatar']);    
+                $updateData['avatar'] = rename_qiniu_upload($_FILES['avatar'],'avatar');    
             }
             if(@$_FILES['wxqrcode']['name']){
-                $updateData['wxqrcode'] = qiniu_upload($_FILES['wxqrcode']);    
+                $updateData['wxqrcode'] = rename_qiniu_upload($_FILES['avatar'],'wxqrcode');    
             }
-
             $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
             if($re || ($re===0))
             {
@@ -46,14 +45,13 @@ class Index extends Base
             }  
         }
         if(!empty($this->UserInfo['avatar'])){
-            $avatar = myGetImageSize($this->UserInfo['avatar']);    
+            $avatar = myGetImageSize($this->UserInfo['avatar']);  
+            $this->assign('avatar',$avatar);  
         }
         if(!empty($this->UserInfo['wxqrcode'])){
             $wxqrcode = myGetImageSize($this->UserInfo['wxqrcode']);    
+            $this->assign('wxqrcode',$wxqrcode);
         }
-
-        $this->assign('avatar',$avatar);
-        $this->assign('wxqrcode',$wxqrcode);
         $this->assign('contact',$contact);
     	return $this->fetch();
     }
@@ -146,7 +144,7 @@ class Index extends Base
             if($files){
                 foreach ($files as $key => $value) {
                     if($_FILES[$value]['name']){
-                        $title = qiniu_upload($_FILES[$value]);
+                        $title = uniqid_qiniu_upload($_FILES[$value]);
                         if($title){
                             $setup[$value] = $title;    
                         }
@@ -210,8 +208,7 @@ class Index extends Base
             }  
         }
         //判断是否是手机登录
-        if(is_mobile_request())
-        {
+        if(is_mobile_request()){
             $this->length = 12;
         }else{
             $this->length = 4;

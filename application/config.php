@@ -139,8 +139,8 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-    	'__STATIC__'   =>  '/static',
-    	'__APP__'	=>	'/index.php',
+        '__STATIC__'   =>  '/static',
+        '__APP__'   =>  '/index.php',
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -287,9 +287,9 @@ return [
     //user默认参数配置
     'user'       =>[
         //头像
-        'avatar'      =>  'http://118.31.23.98/ocean/static/images/default-user.png', 
+        'avatar'      =>  'http://ocean.yuhal.com:90/static/images/default-avatar.png', 
         //微信二维码
-        'wxqrcode'    =>  'http://118.31.23.98/ocean/static/images/default-1.jpg', 
+        'wxqrcode'    =>  'https://image.yuhal.com/wxqrcode.jpg', 
         //联系方式
         'contact' =>  [
             //github链接地址
