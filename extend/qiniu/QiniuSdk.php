@@ -71,6 +71,14 @@ class QiniuSdk{
 						return false;
 					}
 	    		break;
+	    		case 'privateDownloadUrl':
+					$token = $this->Auth->privateDownloadUrl($arguments['baseUrl']);
+					if($token){
+						return $token;
+					}else{
+						return false;
+					}
+	    		break;
 	    	}
 		}else{
 			return 404;

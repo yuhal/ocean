@@ -24,7 +24,7 @@ class Index extends Base
                 $updateData['avatar'] = rename_qiniu_upload($_FILES['avatar'],'avatar');    
             }
             if(@$_FILES['wxqrcode']['name']){
-                $updateData['wxqrcode'] = rename_qiniu_upload($_FILES['avatar'],'wxqrcode');    
+                $updateData['wxqrcode'] = rename_qiniu_upload($_FILES['wxqrcode'],'wxqrcode');    
             }
             $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
             if($re || ($re===0))
@@ -144,7 +144,7 @@ class Index extends Base
             if($files){
                 foreach ($files as $key => $value) {
                     if($_FILES[$value]['name']){
-                        $title = uniqid_qiniu_upload($_FILES[$value]);
+                        $title = rename_qiniu_upload($_FILES[$value],$value);
                         if($title){
                             $setup[$value] = $title;    
                         }

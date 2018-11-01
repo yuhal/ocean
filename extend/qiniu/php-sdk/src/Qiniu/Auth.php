@@ -55,10 +55,9 @@ final class Auth
         return $originAuthorization === $authorization;
     }
 
-    public function privateDownloadUrl($baseUrl, $expires = 3600)
+    public function privateDownloadUrl($baseUrl, $expires = 3600*7)
     {
         $deadline = time() + $expires;
-
         $pos = strpos($baseUrl, '?');
         if ($pos !== false) {
             $baseUrl .= '&e=';

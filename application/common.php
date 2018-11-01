@@ -104,31 +104,42 @@ function uniqid_qiniu_upload($file){
  * @return false|array 
  */
 function rename_qiniu_upload($file,$filename){
+    //默认存储仓库字符
+    $defaultBucketStr = 'image';
     $UserInfo =  session('user_info_'.session('user_id'));
     $qiniu_sdk = config('sdk.qiniu_sdk');
     $ext = get_extension($file['name']);
-    $data['file'] = $filename.'.jpg';
-    $data['filepath']= TEMP_PATH.$data['file']; 
+    if($filename == $file['name']){
+        $filepath = TEMP_PATH.$filename.'.'.$ext;
+    }else{
+        $filepath = TEMP_PATH.$file['name'];
+    }
+    $data['file'] = $filename.'.'.$ext;
+    $data['filepath'] = $filepath;
     move_uploaded_file($file['tmp_name'],$data['filepath']);
+    //如果该七牛账户存在有带有字符$defaultBucketStr,则为默认存储仓库
+    $oldname = $filename.$ext;
     $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
     $buckets = current($Qiniu->buckets(['shared'=>$UserInfo['qiniu_account']]));
     foreach ($buckets as $key => $value) {
-        if(strstr($value, 'image')){
+        if(strstr($value, $defaultBucketStr)){
             $bucket = $value;
         }
     }
     $qiniu_sdk['bucket'] = $bucket;
     $Qiniu = new \qiniu\QiniuSdk($qiniu_sdk);
-    $stat_re = $Qiniu->stat(['oldname'=>$data['file']]);
+    $reStat = $Qiniu->stat(['oldname'=>$data['file']]);
     //如果该仓库是否存在该文件,则删除
-    if($stat_re){
+    if($reStat){
         $Qiniu->delete(['oldname'=>$data['file']]);
     }
     $domain = current(current($Qiniu->domains()));
-    $putFile_re = $Qiniu->putFile($data);
-    var_dump('<pre>',$putFile_re);exit;
-    if(1){
-        return 'https://'.$domain.'/'.$data['file'];
+    $rePutFile = $Qiniu->putFile($data);
+    if($rePutFile){
+        //$baseUrl = 'https://'.$domain.'/'.$rePutFile.'-'.$defaultBucketStr;//水印图
+        $baseUrl = 'https://'.$domain.'/'.$rePutFile;//普通图
+        $reUrl = $Qiniu->privateDownloadUrl(['baseUrl'=>$baseUrl]);
+        return $reUrl;
     }else{
         return false; 
     }
