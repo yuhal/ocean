@@ -86,14 +86,12 @@
                         <div class="card-image waves-effect waves-block waves-light">
                           <img {if $action!='yuhal-image'} class="activator" {/if} src="<{$v.path}>" alt="<{$v.title}>">
                         </div>
-                        {if $action!='yuhal-image'}
                         <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4"><{$v.title|mb_substr=0,13,'utf-8'}>
                             <i class="mdi-image-edit right"></i>
                           </span>
                           <i onClick="Materialize.toast('<span>确认删除？</span><a class=&quot;btn light-blue &quot; href=javascript:checkdelete(&quot;<{$v.hash}>&quot;);>确认<a>', 1000)" class="mdi-action-delete right"></i>
                         </div>
-                        {/if}
                         <div class="card-reveal">
                           <span class="card-title grey-text text-darken-4">  
                             <i class="mdi-navigation-close right"></i>

@@ -44,11 +44,13 @@ class MaterialPicture extends Base
         if(!isset($re[0]['items'])){
             $this->redirect('/page404');
         }
+        $bucketName = explode('-', $action);
+        $bucketStyle = end($bucketName);//图片样式
         $list = array_slice(current(current($re)),0,30);
         foreach ($list as $key => $value) {
             $list[$key]['bucket'] = $action;
             $list[$key]['title'] = $value['key'];
-            $list[$key]['path'] = 'http://'.$this->qiniu_sdk['url'].'/'.$value['key'];
+            $list[$key]['path'] = 'http://'.$this->qiniu_sdk['url'].'/'.$value['key'].'-'.$bucketStyle;
             $list[$key]['create_time'] = date('Y-m-d H:i:s',substr($value['putTime'],0,-7));
         }    
         $this->assign('buckets',$this->buckets);
