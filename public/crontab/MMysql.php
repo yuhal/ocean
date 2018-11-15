@@ -392,7 +392,11 @@ function GetTableValue($table,$field,$filter){
     global $mysql;
     $sql = "select {$field} from {$table} where {$filter}";
     $value = $mysql->doSql($sql);
-    return current(current($value));
+    if($value){
+        return current(current($value));    
+    }else{
+        return null;
+    }
 }
 
 /**
