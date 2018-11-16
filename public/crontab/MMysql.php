@@ -382,6 +382,7 @@ $configArr['user']='root';
 $configArr['passwd']='0507.HaI';
 $configArr['dbname']='blog';
 $mysql = new MMysql($configArr);
+$time = date('Y-m-d H:i:s');
 
 /**
  * 查询单个字段值
@@ -431,6 +432,11 @@ function curl_post($curlHttp, $postdata) {
     $data = curl_exec($curl);
     curl_close($curl);
     return $data;
+}
+
+function record_log($text){
+    global $mysql;
+    $mysql->insert('yh_sys_log',['text'=>$text]);
 }
 
 function curl_get($url, $getdata){

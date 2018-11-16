@@ -289,7 +289,7 @@ return [
         //头像
         'avatar'      =>  'http://ocean.yuhal.com:90/static/images/default-avatar.png', 
         //微信二维码
-        'wxqrcode'    =>  'https://image.yuhal.com/wxqrcode.jpg', 
+        'wxqrcode'    =>  'http://ocean.yuhal.com:90/static/images/default-wxqrcode.jpg', 
         //联系方式
         'contact' =>  [
             //github链接地址

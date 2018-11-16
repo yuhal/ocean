@@ -9,7 +9,7 @@ $getdata['key'] = $sdk_info['key'];
 $re = json_decode(curl_get('http://v.juhe.cn/toutiao/index',$getdata),true);
 
 TrunCateTable('yh_information');
-$msg = "最新资讯更新失败！记录时间：".date('Y-m-d H:i:s');
+
 if($re['result']['data']){
 	$list = $re['result']['data'];
 	$i = 0;
@@ -21,13 +21,13 @@ if($re['result']['data']){
 			$i++;
 		}
 	}
-	if(count($list)!=$i){
-		$log_data['text'] = $msg;
-		$mysql->insert('yh_sys_log',$log_data);
+	if(count($list)==$i && $i>0){
+		record_log("最新资讯更新成功！记录时间：".$time);
+	}else{
+		record_log("最新资讯更新失败！记录时间：".$time);
 	}
 }else{
-	$log_data['text'] = $msg;
-	$mysql->insert('yh_sys_log',$log_data);
+	record_log("最新资讯更新失败！记录时间：".$time);
 }
 
 
