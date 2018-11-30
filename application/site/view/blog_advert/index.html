@@ -43,7 +43,6 @@
                   <div class="row">   
                     <div class="row">
                           <div class="file-field input-field col s<{$length}>">
-                            {if isset($advert.imageurl)}
                             <input disabled class="file-path validate" placeholder="上传" type="text" value="<{$advert.imageurl}>"/>
                             <div class="col s5 m4 l5">
                               <img class="materialboxed responsive-img valign profile-image" width="115" alt="" title="" src="<{$advert.imageurl}>">
@@ -53,10 +52,9 @@
                               <p class="height">{if isset($advert.image.height)} 图片高度：<{$advert.image.height}> {/if}</p>
                               <p class="size">{if isset($advert.image.size)} 图片大小：<{$advert.image.size}> {/if}</p>
                             </div>
-                            {/if}
                             <div class="btn">
                               <span>广告图</span>
-                              <input onchange="putfile(this)" name="file" type="file" multiple="multiple"/>
+                              <input onchange="putfile(this)" name="ad" type="file" multiple="multiple"/>
                             </div>
                           </div>
                           <div class="input-field col s<{$length}>">

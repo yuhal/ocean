@@ -33,8 +33,8 @@ class BlogAdvert extends Base
         if(request()->isAjax())
         {
             $advert = input('post.');
-            if(@$_FILES['file']['name']){
-                $advert['imageurl'] = uniqid_qiniu_upload($_FILES['file']);    
+            if(@$_FILES['ad']['name']){
+                $advert['imageurl'] = rename_qiniu_upload($_FILES['ad'],'ad');    
             }
             foreach ($userAdvert as $k => $v) {
                 foreach ($advert as $key => $value) {
@@ -43,9 +43,7 @@ class BlogAdvert extends Base
                     }
                 }
             }
-            
             $updateData['advert'] = json_encode($advert);
-
             $re = $this->User->where('id',$this->UserInfo['id'])->update($updateData);
             if($re || ($re===0))
             {

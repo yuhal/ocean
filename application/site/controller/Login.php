@@ -226,7 +226,8 @@ class Login extends Controller
      */
     public function logout()
     {
-        session(null);
+        session('user_info_'.session('user_id'),null);
+        session('user_id',null);
         $this->redirect(url('/login'));
     }
 
