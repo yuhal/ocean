@@ -59,7 +59,6 @@ class BlogArticle extends Base
         {
             $article = input('post.article/a');
             $article['article_title'] = strtolower($article['article_title']);
-            $article['note'] = strtolower($article['note']);
             $article['user_id'] = $this->UserInfo['id'];
             $article['create_time'] = $article['create_time'].' '.date("H:i");
             if($article['article_id'])

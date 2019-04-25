@@ -128,7 +128,6 @@
           var create_time = createarticle.create_time.value;
           var article_id = createarticle.article_id.value;
           var uniqid = createarticle.uniqid.value;
-          var note = createarticle.note.value;
           var obj = document.getElementsByName("tag");  
           var type_id = createarticle.type_id.value;
           check_val = [];
@@ -136,6 +135,7 @@
               if(obj[k].checked)
                   check_val.push(obj[k].value);
           }
+
           if(article_title==""){
             Materialize.toast('请填写文章标题', 1000);
             return false;
@@ -178,7 +178,6 @@
                  'type_id':type_id,
                  'article_title':article_title,
                  'tag_ids':check_val.join(),        
-                 'note':note,
                  'create_time':create_time,
                  'uniqid':uniqid
                 },
